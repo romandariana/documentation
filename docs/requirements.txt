@@ -1,2 +1,4 @@
 sphinx
 https://github.com/analogdevicesinc/doctools/releases/download/latest/adi-doctools.tar.gz
+myst-parser
+git+https://github.com/tfcollins/sphinxcontrib-d2.git

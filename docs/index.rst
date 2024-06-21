@@ -17,6 +17,12 @@ Contents
 -------------------------------------------------------------------------------
 
 .. toctree::
+   :caption: Overview
+   :maxdepth: 1
+
+   Prototyping Platform <overview/toplevel.md>
+
+.. toctree::
    :caption: Evaluation Boards
    :maxdepth: 2
 
