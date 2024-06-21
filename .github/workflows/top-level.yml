@@ -22,6 +22,10 @@ jobs:
       with:
         lfs: 'true'
 
+    - name: Install go packages
+      run: |
+        curl -fsSL https://d2lang.com/install.sh | sh -s --
+
     - name: Install pip packages
       working-directory: docs
       run: |
