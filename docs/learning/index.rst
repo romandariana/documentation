@@ -56,6 +56,15 @@ Workshops
 
    workshop_what_sw_for_sdr/index
 
+DEMOs
+-------------------------------------------------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   demo_hp_analog_meets_ai/index
+
+
 Academic Workshops
 -------------------------------------------------------------------------------
 
