@@ -272,6 +272,11 @@ Save the table and reboot the system by entering the following command in the co
 
 Basic Operation
 ~~~~~~~~~~~~~~~
+
+.. attention::
+
+   REDO PICTURE
+      
 .. figure:: eval-cn0591-setup.png
 
    Complete Evaluation Setup
@@ -288,7 +293,7 @@ follow the below procedure:
 
 #. Using a twisted-pair cable, connect **P2** on the
    :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` USB2.0 to 10BASE-T1L Interface
-   to the **P1** terminal block on the :adi:`EVAL-CN0591-RPIZ <CN0591>`
+   to the **P2** terminal block on the :adi:`EVAL-CN0591-RPIZ <CN0591>`
 
 #. Using a USB-C cable, connect **P1** on the
    :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` evaluation board to a USB port on
@@ -314,6 +319,7 @@ follow the below procedure:
 #. On the host PC, change the IP address of the AD-T1LUSB2.0-EBZ:
 
    * From the start menu open the **Control Panel** and click on **Network and Internet**
+  
    * Click on **View network status and tasks**
       You should see two networks.
 

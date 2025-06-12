@@ -128,6 +128,13 @@ System Setup
 
 - :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` Circuit Evaluation Board
 - :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`
+- 10BASE-T1L media converter, either:
+
+  - :adi:`EVAL-ADIN1100EBZ <eval-adin1100>` Product Evaluation Board
+  - :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` USB2.0 to 10BASE-T1L Interface Board 
+  - Other 10BASE-T to 10BASE-T1L media converterBoard 
+  
+- Other 10BASE-T to 10BASE-T1L media converter
 
 - Power Source, either:
   
@@ -158,11 +165,8 @@ Platform provides a complete solution for powering the
 
 Basic Operation
 ~~~~~~~~~~~~~~~
-.. warning::
 
-   To be replaced!!!
-
-.. figure:: apard-pfwd-top-iso.png
+.. figure:: apard-pfwd-setup.png
 
    Complete Evaluation Setup
 
@@ -176,20 +180,23 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 #. Connect the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` circuit evaluation board to the 
    :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` Arduino headers.
 
+#. Using a USB-C cable, connect **P1** on the
+   :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` evaluation board to a USB port on
+   the computer.
+
 #. Operation with SPoE PSE:
 
    * Set the output of the PSE or DC power supply to either 24V (Class 12) or
      55V (Class 14), depending on the settings of **JP1** and **JP2** on the AD-APARDPFWD-SL board.
-   * Using a PROFIBUS cable, connect **P1** or **P2** on the :adi:`EVAL-CN0591-RPIZ <CN0591>`
-     evaluation board to **P1** on the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board.
+   * Using a PROFIBUS cable, connect **P1** on the CN0591 evaluation board to **P7** on the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board.
+   * Using a PROFIBUS cable, connect **P2** on the CN0591 evaluation board to **P2** on the :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` evaluation board.
 
-#. Upload the :git-no-OS:`AD-APARD32690-SL TCP Echo Server Example <projects/apard32690/src/examples/tcp_echo_server_example/>`
-   to the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board using the :adi:`MAX32625PICO <MAX32625PICO>` 
-   programmer or any other similar programmer supporting the SWD interface.
+#. Upload the :git-no-OS:`AD-APARD32690-SL ADIN2111 Example <projects/ASWPF/src/examples/adin2111_example/>`
+   to the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board using the :adi:`MAX32625PICO <MAX32625PICO>` programmer.
    
 #. By default the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` has 192.168.97.40 as its IP address.
    If you are using a different IP address, make sure to update the
-   :git-no-OS:`AD-APARD32690-SL ADIN1110 Standalone Example <projects/apard32690/src/examples/adin1110_standalone_example/>`
+   :git-no-OS:`AD-APARD32690-SL ADIN2111 Example <projects/ASWPF/src/examples/adin2111_example/>`
    with the new IP address.
 
 #. Update the IP address of the Raspberry Pi's Ethernet Interface depending on which port of the
@@ -197,24 +204,67 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
    .. warning::
         
-        Add pictures of the IP change.
+        ADD STATIC IP FOR BOTH PORTS
+        ETH1 192.168.97.10
+        ETH2 192.168.90.10
+   
+   Save the table and reboot the system by entering the following command in the console:
+   
+   .. shell::
+      :user: analog
+      :group: analog
+      :show-user:
+
+      $sudo reboot
+
+* From the start menu open the **Control Panel** and click on **Network and Internet**
+   * Click on **View network status and tasks**
+      You should see two networks.
+
+      .. figure:: ad-t1lusb2-network.png
+         :width: 400 px
+
+         Network Connections
+   * Click on the **Connections: Ethernet** and click on **Properties**
+   * Select **Internet Protocol Version 4 (TCP/IPv4)** and click on 
+     **Properties**
+   * Select **Use the following IP address:** and type in the following **IP 
+     address** and **Subnet mask**:
+     ::
+
+         IP address: 192.168.90.zzz
+         Subnet mask: 255.255.0.0
+
+     where **zzz** is a number between 1 and 254, currently unused in the network (for example, 10 cannot be used, since it is used by the CN0591).
+   * Click on **OK** to save the changes and close the dialog boxes.
 
 #. Wait for the **DS1** LED on the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board
-   and the **DS1** or **DS2** LED on the :adi:`EVAL-CN0591-RPIZ <CN0591>`
+   and the **DS1** LED on the :adi:`EVAL-CN0591-RPIZ <CN0591>`
    evaluation board to turn on and start blinking at the same time.
    This indicates that a 10BASE-T1L link has been established.
 
 #. Now you can ping the device to see if the connection is working properly.
-   Open a terminal on your host PC and run the following command:
+   Open a terminal on your host PC connect to the CN0591 through SSH:
+ 
+   ::
+
+      ssh analog@192.168.90.10
+   
+   Enter the password **analog** when prompted.
+
+   You can now ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board using the following command:
 
    .. shell::
       :user: analog
       :group: analog
       :show-user:
 
-      $ping -I eth1 192.168.97.40
+      $ping 192.168.97.50
 
-   .. warning:: ADD PICTURE!!!
+   .. figure:: 
+      apard-pfwd-result.png
+
+      Result
 
 Schematic, PCB Layout, Bill of Materials
 ----------------------------------------
