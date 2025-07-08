@@ -378,7 +378,7 @@ Additional Information
 ----------------------
 
 -  :ref:`pyadi-iio`
--  :ref:`Scopy`
+-  `Scopy <https://analogdevicesinc.github.io/scopy/index.html>`__
 -  :ref:`kuiper`
 
 Hardware Registration
