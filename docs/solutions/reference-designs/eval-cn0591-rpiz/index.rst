@@ -257,11 +257,7 @@ or for class 14:
 
    dtoverlay=rpi-cn0591-class14
 
-.. attention::
-
-      ADD STATIC IP
-
-Save the table and reboot the system by entering the following command in the console:
+Save the changes and reboot the system by entering the following command in the console:
 
 .. shell::
    :user: analog
@@ -270,13 +266,75 @@ Save the table and reboot the system by entering the following command in the co
 
    $sudo reboot
 
+Setting up a static IP
+^^^^^^^^^^^^^^^^^^^^^^
+
+To set up a static IP address for the CN0591, the user has to modify the IPv4
+address of the chosen network interface.
+This can be done by right-clicking in the top right corner the network icon
+and selecting Wireless & Wired Network Settings.
+
+.. figure:: eval-cn-0591-rpiz-static-ip-location.png
+   :width: 400 px
+
+   Network Settings Location
+
+Next to the **interface** field select the wanted interface (e.g. **eth1 / 
+eth2**) and type in the chosen IP address as shown below:
+
+.. figure:: eval-cn-0591-rpiz-static-ip-set-ip.png
+   :width: 400 px
+
+   Static IP Address Configuration
+
+The next set is to reset the ip link, which can be done by entering the
+following command in a terminal:
+
+.. shell::
+   :user: analog
+   :group: analog
+   :show-user:
+
+   $sudo ip link set eth0 down
+
+.. figure:: eval-cn-0591-rpiz-static-ip-set-eth0-down.png
+   :width: 400 px
+
+   Setting eth0 down
+
+Next, set the interface up again by entering the following command:
+
+.. shell::
+   :user: analog
+   :group: analog
+   :show-user:
+
+   $sudo ip link set eth0 up
+
+.. figure:: eval-cn-0591-rpiz-static-ip-set-eth0-up.png
+   :width: 400 px
+
+   Setting eth0 up
+
+If everything was done correctly the interface should be up and running with the
+static IP address set. To verify this, enter the following command in the
+console, the next to the **inet** field the static IP address should be shown:
+
+.. shell::
+   :user: analog
+   :group: analog
+   :show-user:
+
+   $ip a
+
+.. figure:: eval-cn-0591-rpiz-static-ip-result.png
+   :width: 400 px
+
+   Static IP Address Result
+
 Basic Operation
 ~~~~~~~~~~~~~~~
 
-.. attention::
-
-   REDO PICTURE
-      
 .. figure:: eval-cn0591-setup.png
 
    Complete Evaluation Setup
