@@ -1,20 +1,22 @@
-.. _eval-ad4130-pmod:
+.. _eval-ad4130-8-pmdz:
 
-EVAL-AD4130-PMOD
-#################
+EVAL-AD4130-8-PMDZ
+==================
+
+Minimalist 8-channel, 24-Bit, sigma-delta ADC with PGA and FIFO SPI PMOD board
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Overview
-========
+--------
 
-The :adi:`EVAL-AD4130-PMOD` is a compact, low-cost,
+The :adi:`EVAL-AD4130-8-PMDZ` is a compact, low-cost,
 Pmod-compatible evaluation board for the :adi:`AD4130` ultra low power, high precision, measurement
 solution for low bandwidth battery operated applications. The fully
 integrated analog front end (AFE) includes a multiplexer for up
 to 16 single-ended or eight differential inputs, programmable gain
 amplifier (PGA), 24-bit sigma-delta (Σ-Δ) analog-to-digital converter
 (ADC), on-chip reference and oscillator, selectable filter options,
-smart sequencer, sensor biasing and excitation options, diagnos-
-tics, and newly added features to improve the battery-operated
+smart sequencer, sensor biasing and excitation options, diagnostics, and newly added features to improve the battery-operated
 lifetime (more than 5 years on a coin cell), that is, a first in, first out
 (FIFO) buffer and duty cycling.
 
@@ -49,13 +51,13 @@ value or when a user programmable threshold is exceeded
    :width: 350px
 
 Input and Output Connections and Configurations
-===============================================
+-----------------------------------------------
 
 The PMOD board is small in size with dimensions approximately 2 cm in width
 by 6.7 cm in length.
 
-Pmod  Processor Connector
--------------------------
+Pmod Processor Connector
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PMOD interface is a series of standardized digital interfaces for various
 digital communication protocols such as SPI, I2C, and UART. These interface
@@ -63,7 +65,7 @@ types were standardized by Digilent, which is now a division of National
 Instruments. Complete details on the Pmod specification can be found on the
 `Digilent Pmod landing page <https://digilent.com/reference/pmod/start>`__.
 
-The specific interface used for the EVAL-AD4130-PMOD boards is the extended
+The specific interface used for the EVAL-AD4130-8-PMDZ boards is the extended
 SPI. In general ADI has adopted the extended SPI connector for all PMOD devices
 which have an SPI interface. It provides flexibility to add interrupts, general
 purpose I/O, resets, and other digitally controlled functions.
@@ -72,27 +74,31 @@ purpose I/O, resets, and other digitally controlled functions.
     :file: ad4130-pmod-pinout.csv
 
 AD4130 Interrupt Pins
-----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
-The EVAL-AD4130-PMOD has three interrupt pins which can be used as external indicators for the user. 
-The PMOD interrupt pins are connected togehter to the singular interrupt pin of the AD4130 and 
-can be programmed through software as data ready signal of FIFO interrupt signal, 
-and those pins are accessible through the SPI PMOD header. For complete details on the
-individual status flags, what they mean, and how to program the chip to reflect
-those interrupts, please consult the :adi:`AD4130` data sheet.
+The EVAL-AD4130-8-PMDZ features three interrupt pins that can be used as external 
+indicators for user-defined events. These PMOD interrupt pins are internally
+connected to the single interrupt output of the AD4130, and can be configured 
+via software to signal either a Data Ready or FIFO Interrupt condition.
+
+These interrupt signals are accessible through the SPI PMOD header. For detailed
+information on individual status flags, their meanings, and how to configure 
+the chip to generate specific interrupts, please refer to the :adi:`AD4130`` 
+data sheet.
 
 Power Supply Considerations and Configuration
 ---------------------------------------------
 
-When using the AD4130 PMOD board, the 3.3V power for the PMOD comes directly
-from the host board it is connected to. Most Pmod platform boards can supply at
-least 100 mA, more than adquate for the EVAL-AD4130-PMOD.
+When using the EVAL-AD4130-8-PMDZ board, the 3.3V power supply is provided 
+directly by the host platform to which it is connected. Most PMOD-compatible 
+host boards can supply at least 100 mA, which is more than sufficient for the 
+power requirements of the EVAL-AD4130-8-PMDZ.
 
 Device Driver and Software Support
-==================================
+----------------------------------
 
-There are two device driver and accompanying software solutions provided for
-the EVAL-AD4130-PMOD:
+Two device drivers and corresponding software solutions are available for the 
+EVAL-AD4130-8-PMDZ:
 
 **AD4130 no-OS Driver**
 
@@ -103,14 +109,11 @@ the EVAL-AD4130-PMOD:
    * The :git-no-OS:`AD4130 no-OS example project <main:projects/ad413x>`
      uses the AD4130 no-OS driver and has several configuration options:
 
-
-.. Warning:: TODO
 .. ADMONITION:: Download
 
    A zip file containing prebuilt programming files for the no-OS example project,
    targeting platforms below are available at:
-   :git-no-OS:`eval-ad4130-pmod.zip <releases/download/last_commit/eval-ad4130-pmod.zip+>`.
-
+   :git-no-OS:`EVAL-AD4130-8-PMDZ.zip <releases/download/last_commit/eval-ad4130-8-pmdz.zip+>`.
 
    More details are provided in the platform-specific sections below.
 
@@ -126,20 +129,19 @@ the EVAL-AD4130-PMOD:
   board, communicating with the device over the local backend, or from a remote
   host over the network or USB backends.
 
-
 System Setup Using Raspberry Pi
-===============================
+-------------------------------
 
-The EVAL-AD4130-PMOD can be used with a Raspberry Pi.
+The EVAL-AD4130-8-PMDZ can be used with a Raspberry Pi.
 
 Demo Requirements
------------------
+^^^^^^^^^^^^^^^^^
 
 The following is a list of items needed in order to replicate this demo.
 
 -  **Hardware**
 
-   -  :adi:`EVAL-AD4130-PMOD <AD4130>`
+   -  :adi:`EVAL-AD4130-8-PMDZ <AD4130>`
    -  :adi:`PMOD to Raspberry Pi Adapter (PMD-RPI-INTZ) <PMD-RPI-INTZ>`
    -  Raspberry PI Zero, Zero W, 3B+, or 4
    -  16GB (or larger) Class 10 (or faster) micro-SD card
@@ -155,15 +157,15 @@ The following is a list of items needed in order to replicate this demo.
 
 
 Loading Image on SD Card
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to boot the Raspberry Pi and control the **EVAL-AD4130-PMOD**, you
+In order to boot the Raspberry Pi and control the **EVAL-AD4130-8-PMDZ**, you
 will need to install ADI Kuiper Linux on an SD card. Complete instructions,
 including where to download the SD card image, how to write it to the SD card,
 and how to configure the system are provided on the :ref:`kuiper`.
 
 Configuring the SD Card
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the configuration procedure under **Configuring the SD Card for
 Raspberry Pi Projects** at :ref:`kuiper sdcard`, substituting the
@@ -174,7 +176,7 @@ following lines in **config.txt**:
    dtoverlay=rpi-ad4130
 
 Setting up the Hardware
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 To set up the circuit for evaluation, consider the following steps:
 
@@ -184,22 +186,24 @@ To set up the circuit for evaluation, consider the following steps:
    .. image:: interposer.png
       :width: 500px
 
-#. Connect the :adi:`EVAL-AD4130-PMOD <EVAL-AD4130-PMOD>` on the
-   PMOD to Raspberry Pi Interposer board either via Port P1.
+#. Attach the EVAL-AD4130-8-PMDZ to the Raspberry Pi Interposer Board via Port P1.
 
-#. Burn the SD card with the proper ADI Kuiper Linux image. Insert the burned
-   SD card on the designated slot on the RPi.
-#. Connect the system to a monitor using an HDMI cable through the mini HDMI
-   connector on the RPi.
-#. Connect a USB keyboard and mouse to the RPi through the USB ports.
-#. Power on the RPi board by plugging in a 5V power supply with a micro-USB
-   connector. The final setup should look similar to the picture below.
+#. Flash the SD card with the appropriate ADI Kuiper Linux image. Insert the 
+flashed SD card into the Raspberry Pi's SD card slot.
 
-   .. image:: eval-ad4130-pmod_overall_setup.png
+#. Use an HDMI cable to connect the Raspberry Pi to a monitor via 
+the mini-HDMI connector.
+
+#. Plug in a USB keyboard and mouse into the Raspberry Pi's USB ports.
+
+#. Power the Raspberry Pi by connecting a 5V power supply through the micro-USB 
+connector. The final setup should look similar to the picture below.
+
+   .. image:: eval-ad4130-8-pmdz_overall_setup.png
       :width: 600px
 
 Application Software 
-====================
+--------------------
 
 The Libiio is a library used for interfacing with IIO devices and is required
 to be installed on your computer.
@@ -209,10 +213,9 @@ to be installed on your computer.
    Download and install the latest :git-libiio:`Libiio package <releases+>` on
    your machine.
 
-
 To be able to connect your device, the software must be able to create a
 context. The context creation in the software depends on the backend used to
-connect to the device as well as the platform where the EVAL-AD4130-PMOD is
+connect to the device as well as the platform where the EVAL-AD4130-8-PMDZ is
 attached. The user needs to supply a **URI** which will be used in
 the context creation.
 
@@ -223,14 +226,12 @@ Upon installation, simply enter the command on the terminal command line to
 access it.
 
 For RPI Direct Local Access:
-----------------------------
 
 .. shell::
 
    $iio_info
 
 For Windows machine connected to Raspberry Pi:
-----------------------------------------------
 
 .. shell::
 
@@ -242,14 +243,13 @@ For example, if your Raspberry Pi has the IP address 192.168.1.7, then enter:
 
    $iio_info -u ip:192.168.1.7
 
-
 .. NOTE::
 
    Do note that the Windows machine and the RPI board should be connected to
    the same network in order for the machine to detect the device.
 
 IIO Commands
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 There are different commands that can be used to manage and control the device
 being used. The :ref:`libiio iio_attr` command reads and writes IIO attributes.
@@ -282,7 +282,7 @@ Windows machine, enter the following code on the terminal:
    $iio_reg -u ip:<ip address> ad4130 0x05
 
 Scopy 2.0
-~~~~~~~~~
+^^^^^^^^^
 
 Download and install the latest version of IIO Oscilloscope from:
 :git-scopy:`Scopy Installers <releases+>`.
@@ -300,23 +300,29 @@ After this click on add device and then connect!
 .. image:: ad4130-scopy-connected.png
    :width: 600px
 
-You can now go to the *Register map* section and check again the 0X05 register's value.
+You can now go to the *Register map* section and check again the 0X05 register's 
+value.
 
 Data Logger
 ^^^^^^^^^^^
-To see the readings of the ADC, click on the *Data Logger* tab on the left side 
-of the application. You can enable the voltage18-voltage19 channel and click on run. You should see a stable 2.5V which is the internal reference of the ADC.
+To view ADC readings, navigate to the Data Logger tab on the left side of the 
+application. Enable the voltage18 to voltage19 channel and click Run. You should 
+observe a stable 2.5V signal, which corresponds to the internal reference 
+voltage of the ADC.
 
 .. image:: ad4130-scopy-reference.png
    :width: 600px
 
-You can also enable the voltage16-voltage19 channel to vizualize the internal tempreture sensor's measurements. By putting your finger on the DAC you can observe the voltage reading of the tempreture sensor increase.
+Additionally, you can enable the voltage16 to voltage19 channel to visualize 
+measurements from the internal temperature sensor. By placing your finger on 
+the ADC, you'll notice an increase in the voltage reading, indicating a rise in 
+temperature detected by the sensor.
 
-.. image:: ad4130-scopy-tempreture.png
+.. image:: ad4130-scopy-temperature.png
    :width: 600px
 
 PyADI-IIO
-~~~~~~~~~
+^^^^^^^^^
 
 :ref:`pyadi-iio` is a python abstraction module for ADI hardware with IIO
 drivers to make them easier to use. This module provides device-specific APIs
@@ -340,7 +346,7 @@ found in the examples folder.
    Github link for the python sample script: :git-pyadi-iio:`AD4130 Python
    Example <examples/ad4130_example.py>`
 
-.. shell:: shell
+.. shell::
    :user: analog
    :group: pi
    :show-user:
@@ -356,16 +362,16 @@ Press enter and you will get these readings.
 More information and useful links
 ---------------------------------
 
--  :adi:`EVAL-AD4130-PMOD Product Page <EVAL-AD4130-PMOD>`
+-  :adi:`EVAL-AD4130-8-PMDZ Product Page <eval-ad4130-8-pmdz>`
 -  :adi:`AD4130 Product Page <AD4130>`
--  :git-no-OS:`EVAL-AD4130-PMOD no-OS projects <eval-ad4130-pmod>`
+-  :git-no-OS:`EVAL-AD4130-8-PMDZ no-OS projects <eval-ad4130-8-pmdz>`
 
 Schematic, PCB Layout, Bill of Materials
 ----------------------------------------
 
 .. ADMONITION:: Download
 
-   :download:`EVAL-AD4130-PMOD Design & Integration Files <EVAL-AD4130-PMOD-DesignSupport.zip>`
+   :download:`EVAL-AD4130-8-PMDZ Design & Integration Files <eval-ad4130-8-pmdz-DesignSupport.zip>`
 
    * Schematics
    * Bill of Materials
@@ -388,5 +394,5 @@ Hardware Registration
 
    Receive software update notifications, documentation updates, view the
    latest videos, and more when you register your hardware.
-   `Register <https://my.analog.com/en/app/registration/hardware/EVAL-AD4130-PMOD?&v=Rev%20B>`__
+   `Register <https://my.analog.com/en/app/registration/hardware/eval-ad4130-8-pmdz?&v=Rev%20B>`__
    to receive all these great benefits and more!
