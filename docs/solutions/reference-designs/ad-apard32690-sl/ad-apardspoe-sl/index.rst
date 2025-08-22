@@ -26,9 +26,7 @@ Designed for use on the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform,
 the :adi:`AD-APARDSPOE-SL <AD-APARDSPOE-SL>` hardware features Arduino Form-factor headers, and 3 pins 
 to extract power from the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` board.
 
-To allow board stacking and development of field device applications using
-Arduino shields, the :adi:`AD-APARDSPOE-SL <AD-APARDSPOE-SL>` has extra tall 
-headers that allows other Arduino shields to be stacked on top of it. 
+To support board stacking and the development of field device applications using Arduino shields, the :adi:`AD-APARDSPOE-SL<AD-APARD32690-SL>` is equipped with extra-tall headers, enabling other Arduino shields to be stacked on top of it. 
 
 The design also features a complete power isolation to the host 
 :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`.
@@ -175,7 +173,7 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
       $sudo reboot
 
-* From the start menu open the **Control Panel** and click on **Network and Internet**
+   * From the start menu open the **Control Panel** and click on **Network and Internet**
    * Click on **View network status and tasks**
       You should see two networks.
 

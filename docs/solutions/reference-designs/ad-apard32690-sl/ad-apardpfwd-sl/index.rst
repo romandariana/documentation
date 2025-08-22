@@ -3,8 +3,8 @@
 AD-APARDPFWD-SL
 ================
 
-10BASE-T1L Power Forwarding with Class 10-14 SPoE
-"""""""""""""""""""""""""""""""""""""""""""""""""
+2-port 10BASE-T1L Arduino Shield with SPoE Power Forwarding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 General Description
 -------------------
@@ -63,12 +63,10 @@ platform board. The :adi:`ADIN2111` is connected to the :adi:`AD-APARD32690-SL
 <AD-APARD32690-SL>` platform board via the **P5** and uses the SPI4 port of the 
 :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`.
 
-The :adi:`ADIN2111` feature selectable peek-to-peak transmit levels of 1.1V or
-2.4V, which can be selected by shorting the **P9** and **P10** solder jumpers
-for **PHY1** and **PHY2** respectively:
+The :adi:`ADIN2111` supports selectable peak-to-peak transmit levels of 1.1V or 2.4V for each PHY. To select the desired level, configure the P9 and P10 solder jumpers for PHY1 and PHY2, respectively:
 
-- Disconnected: 2.4V
-- Shorted: 1.1V
+- Disconnected: Sets the transmit level to 2.4V
+- Shorted: Sets the transmit level to 1.1V
 
 The generic SPI protocol is half duplex. Therefore, it is not possible
 to write frame data into the MAC_TX register and read from the
@@ -80,11 +78,12 @@ configured as follows:
 .. csv-table::
    :file: ADIN2111_SPI_Selection.csv
 
-The :adi:`ADIN2111` support software power-down after power-up / reset for each
-port independently. To enable the software power-down feature for **PHY1** the 
-**P11** jumper must be shorted. In order the enable the software power-down 
-feature for **PHY2** the **JP4** solder jumper has to be configured as follows:
+The :adi:`ADIN2111` supports software power-down after power-up / reset for each
+port independently. To utilize this feature:
 
+- Short jumper P11 to enable the software power-down for PHY1.
+- In order to enable the software power-down for PHY2, configure JP4 solder jumper with the following settings
+  
 .. csv-table::
    :file: ADIN2111_Power_Down_Selection.csv
 
@@ -217,7 +216,7 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
       $sudo reboot
 
-* From the start menu open the **Control Panel** and click on **Network and Internet**
+   * From the start menu open the **Control Panel** and click on **Network and Internet**
    * Click on **View network status and tasks**
       You should see two networks.
 
