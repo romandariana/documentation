@@ -32,6 +32,7 @@ interref_repos = [
     'scopy',
     'no-OS',
     'precision-converters-firmware',
+    'adi-kuiper-gen',
 ]
 
 # -- Options for HTML output --------------------------------------------------

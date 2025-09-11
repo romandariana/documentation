@@ -103,12 +103,10 @@ Linux
 
 These steps are done before the hardware setup, with the board powered off.
 
-For both CoraZ7S and DE10-Nano, :ref:`prepare a SD Card with Kuiper <kuiper sdcard>`.
+For both CoraZ7S and DE10-Nano, prepare a SD with :ref:`Kuiper <kuiper>`.
 
-Then, patch the SD Card with the downloaded files:
-
-* :ref:`CoraZ7S (Zynq) <kuiper fpga xilinx>`
-* :ref:`DE10-Nano (Cyclone5) <kuiper fpga intel>`
+Make sure the boot files for CoraZ7S (Zynq) / DE10-Nano (Cyclone5) are present
+on the SD Card.
 
 Insert the flashed SD Card on the carrier powered off and follow the hardware
 setup steps.
