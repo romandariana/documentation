@@ -9,16 +9,16 @@ Minimalist 8-channel, 24-Bit, sigma-delta ADC with PGA and FIFO SPI PMOD board
 Overview
 --------
 
-The :adi:`EVAL-AD4130-8-PMDZ` is a compact, low-cost,
-Pmod-compatible evaluation board for the :adi:`AD4130` ultra low power, high precision, measurement
-solution for low bandwidth battery operated applications. The fully
-integrated analog front end (AFE) includes a multiplexer for up
-to 16 single-ended or eight differential inputs, programmable gain
-amplifier (PGA), 24-bit sigma-delta (Σ-Δ) analog-to-digital converter
-(ADC), on-chip reference and oscillator, selectable filter options,
-smart sequencer, sensor biasing and excitation options, diagnostics, and newly added features to improve the battery-operated
-lifetime (more than 5 years on a coin cell), that is, a first in, first out
-(FIFO) buffer and duty cycling.
+The :adi:`EVAL-AD4130-8-PMDZ` is a compact, low-cost, Pmod-compatible
+evaluation board for the :adi:`AD4130` ultra low power, high precision,
+measurement solution for low bandwidth battery operated applications. The fully
+integrated analog front end (AFE) includes a multiplexer for up to 16
+single-ended or eight differential inputs, programmable gain amplifier (PGA),
+24-bit sigma-delta (Σ-Δ) analog-to-digital converter (ADC), on-chip reference
+and oscillator, selectable filter options, smart sequencer, sensor biasing and
+excitation options, diagnostics, and newly added features to improve the
+battery-operated lifetime (more than 5 years on a coin cell), that is, a first
+in, first out (FIFO) buffer and duty cycling.
 
 - Smart transmitters
 - Wireless battery and harvester powered sensor nodes
@@ -331,28 +331,28 @@ match the driver naming as much as possible without the need to understand the
 complexities of libIIO and IIO.
 
 Follow the step-by-step procedure on how to install, configure, and set up
-PYADI-IIO and install the necessary packages/modules needed by referring to
+PyADI-IIO and install the necessary packages/modules needed by referring to
 this :ref:`link <pyadi-iio>`.
 
 Running the example directly on the RPi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After installing and configuring PYADI-IIO in your machine, you are now ready
+After installing and configuring PyADI-IIO in your machine, you are now ready
 to run python script examples. In our case, run the **ad4130_example.py**
 found in the examples folder.
 
 .. NOTE::
 
-   Github link for the python sample script: :git-pyadi-iio:`AD4130 Python
-   Example <examples/ad4130_example.py>`
+   Github link for the python sample script:
+   :git-pyadi-iio:`AD4130 Python Example <examples/ad4130_example.py>`
 
 .. shell::
    :user: analog
    :group: pi
    :show-user:
 
-   $ cd <path-to-pyadi-iio>/pyadi-iio/examples/
-   $ sudo python ad4130_example.py
+   $cd pyadi-iio/examples
+   $sudo python ad4130_example.py
 
 Press enter and you will get these readings.
 
@@ -383,9 +383,9 @@ Schematic, PCB Layout, Bill of Materials
 Additional Information
 ----------------------
 
--  :ref:`pyadi-iio`
--  `Scopy <https://analogdevicesinc.github.io/scopy/index.html>`__
--  :ref:`kuiper`
+-  :external+pyadi-iio:doc:`pyadi-iio <index>`
+-  :external+scopy:doc:`index`
+-  :external+adi-kuiper-gen:doc:`index`
 
 Hardware Registration
 ---------------------
