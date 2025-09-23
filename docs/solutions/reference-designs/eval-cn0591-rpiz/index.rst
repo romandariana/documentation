@@ -15,19 +15,19 @@ General Description
 
    EVAL-CN0591-RPIZ Board
 
-The :adi:`EVAL-CN0591-RPIZ <CN0591>` is a 10BASE-T1L MAC/PHY interface with Single 
-Pair Power over Ethernet (SPoE), designed for developing field devices and applications 
-on the Raspberry Pi platform. It functions as Power Sourcing Equipment (PSE), 
+The :adi:`EVAL-CN0591-RPIZ <CN0591>` is a 10BASE-T1L MAC/PHY interface with Single
+Pair Power over Ethernet (SPoE), designed for developing field devices and applications
+on the Raspberry Pi platform. It functions as Power Sourcing Equipment (PSE),
 capable of delivering power to other devices over a 10BASE-T1L network.
 
-The board can be powered via USB-C (*M1*, up to 20V) or through a Pluggable Terminal 
-Block (*P21*, up to 60V). A synchronous step-down DC-DC converter supplies a 
+The board can be powered via USB-C (*M1*, up to 20V) or through a Pluggable Terminal
+Block (*P21*, up to 60V). A synchronous step-down DC-DC converter supplies a
 regulated 5V to the Raspberry Pi.
 
-The system supports SPoE Class 10–12 (nominal 24V) and Class 13–14 (nominal 55V), 
+The system supports SPoE Class 10–12 (nominal 24V) and Class 13–14 (nominal 55V),
 enabling flexible power configurations for various industrial and embedded applications.
 
-Designed for use on the Raspberry Pi platform, the CN0591 hardware features a 
+Designed for use on the Raspberry Pi platform, the CN0591 hardware features a
 40-pin GPIO header and uses an extended version of the standard HAT.
 
 Evaluation Board Hardware
@@ -48,17 +48,17 @@ Primary Side
 
    10BASE-T1L Ports
 
-The :adi:`EVAL-CN0591-RPIZ <CN0591>` evaluation board features two 10BASE-T1L ports, 
-allowing connection to up to two PDs. Each port supports independent control of 
+The :adi:`EVAL-CN0591-RPIZ <CN0591>` evaluation board features two 10BASE-T1L ports,
+allowing connection to up to two PDs. Each port supports independent control of
 power sourcing and data transmission.
 
-*P1* and  *P2* are 3-pin terminal blocks designed for twisted pair cables, with optional shielding. 
-These ports deliver class-dependent DC voltage to connected PDs and transmit AC-coupled 
-data signals for 10BASE-T1L communication. Both ports include protection against overvoltage 
+*P1* and  *P2* are 3-pin terminal blocks designed for twisted pair cables, with optional shielding.
+These ports deliver class-dependent DC voltage to connected PDs and transmit AC-coupled
+data signals for 10BASE-T1L communication. Both ports include protection against overvoltage
 and electrostatic discharge (ESD) events.
 
-When the board is powered via USB-C, the default output voltage is 24V, generated 
-by the :adi:`LT3757A` flyback boost converter, suitable for SPoE Classes 10–12. To enable 
+When the board is powered via USB-C, the default output voltage is 24V, generated
+by the :adi:`LT3757A` flyback boost converter, suitable for SPoE Classes 10–12. To enable
 SPoE Classes 13–14, which require 54V, switch *S3* to activate the higher voltage output.
 
 .. figure:: eval-cn0591-s3-switch.png
@@ -66,23 +66,23 @@ SPoE Classes 13–14, which require 54V, switch *S3* to activate the higher volt
 
    SPoE Voltage Switch
 
-The USB-C uses the :adi:`MAX77958 <MAX77958>` standalone USB Power Delivery 
-(PD) controller, which can be programmed using the **P49** header. 
+The USB-C uses the :adi:`MAX77958 <MAX77958>` standalone USB Power Delivery
+(PD) controller, which can be programmed using the **P49** header.
 When power is supplied via the terminal block **P21**, the voltage can be set
 to 24V or 55V using the customers power supply.
 The supply port can be selected via the **S2** switch.
 
-In either of the cases, to power the Raspberry Pi, 5V is generated using the 
+In either of the cases, to power the Raspberry Pi, 5V is generated using the
 :adi:`MAX17573`.
 
-ADIN2111 
+ADIN2111
 ^^^^^^^^^
 
-The onboard :adi:`ADIN2111` PHY provides the 10BASE-T1L connection to the host 
-platform board. The :adi:`ADIN2111` is connected to the Raspberry Pi using the 
+The onboard :adi:`ADIN2111` PHY provides the 10BASE-T1L connection to the host
+platform board. The :adi:`ADIN2111` is connected to the Raspberry Pi using the
 SPI0 port of the Raspberry Pi.
 
-The :adi:`ADIN2111` features selectable peak-to-peak transmit voltage levels of either 1.1V or 2.4V. 
+The :adi:`ADIN2111` features selectable peak-to-peak transmit voltage levels of either 1.1V or 2.4V.
 These levels can be configured by adjusting the P6 and P4 solder jumpers for PHY1 and PHY2, respectively:
 
 - Disconnected: 2.4V
@@ -90,15 +90,15 @@ These levels can be configured by adjusting the P6 and P4 solder jumpers for PHY
 
 The generic SPI protocol is half duplex. Therefore, it is not possible
 to write frame data into the MAC_TX register and read from the
-MAC_RX register at the same time. To achieve full duplex transmission on 
+MAC_RX register at the same time. To achieve full duplex transmission on
 Ethernet at 10 Mbps, OPEN Alliance SPI must be used.
-To select which SPI protocol to use, the **JP1** (located on the bottom of the 
+To select which SPI protocol to use, the **JP1** (located on the bottom of the
 board) solder jumper should be configured as follows:
 
 .. csv-table::
    :file: ADIN2111_SPI_Selection.csv
 
-The :adi:`ADIN2111` supports software power-down functionality for each port 
+The :adi:`ADIN2111` supports software power-down functionality for each port
 independently after power-up or reset. To enable this feature:
 - For PHY1, short the P8 jumper.
 - For PHY2, configure the JP2 solder jumper as follows:
@@ -109,22 +109,22 @@ independently after power-up or reset. To enable this feature:
 LTC4296
 ^^^^^^^
 
-The :adi:`LTC4296<LTC4296-1>` is a five port, single-pair power over Ethernet 
-(SPoE), power sourcing equipment (PSE) controller. The LTC4296-1 is designed 
+The :adi:`LTC4296<LTC4296-1>` is a five port, single-pair power over Ethernet
+(SPoE), power sourcing equipment (PSE) controller. The LTC4296-1 is designed
 for interoperability with powered devices (PDs) in 24 V or 54 V systems.
-PD classification via the serial communication classification protocol (SCCP) 
-and maintain full voltage signature (MFVS) ensure full operating voltage is 
-only applied to the cable when a PD is present. PD initiated sleep and wake-up 
+PD classification via the serial communication classification protocol (SCCP)
+and maintain full voltage signature (MFVS) ensure full operating voltage is
+only applied to the cable when a PD is present. PD initiated sleep and wake-up
 are supported.
-Telemetry, status, and software control features are accessed via SPI bus 
+Telemetry, status, and software control features are accessed via SPI bus
 interface with packet error code (PEC) protection.
 
-The LTC4296 is directly powered from the :adi:`LT3757A <LT3757>` flyback boost 
-converter or from the 24V or 55V power supply connected to the **P21** terminal 
+The LTC4296 is directly powered from the :adi:`LT3757A <LT3757>` flyback boost
+converter or from the 24V or 55V power supply connected to the **P21** terminal
 block.
 
 The device by default is configured to operate in SPoE Class 12 (24V nominal) or
-SPoE Class 14 (54V nominal) mode. In order to use classes 11 and 13, the 
+SPoE Class 14 (54V nominal) mode. In order to use classes 11 and 13, the
 following solder jumper configurations are required:
 
 .. figure:: eval-cn0591-spoe-classes.png
@@ -134,11 +134,11 @@ following solder jumper configurations are required:
 
 .. csv-table:: SPoE PSE High Side Circuit Breaker Resistor Selection Table
    :file: SPoE_PSE_Power_Class_Selection_High_Side.csv
-   
+
 .. csv-table:: SPoE PSE Low Side Sensing Resistor Selection Table
    :file: SPoE_PSE_Power_Class_Selection_Low_Side.csv
 
-The :adi:`LTC4296` also supports SPoE Class 10. To enable this functionality, 
+The :adi:`LTC4296` also supports SPoE Class 10. To enable this functionality,
 specific resistor changes are required:
 
 High-side circuit breaker resistors:
@@ -155,7 +155,7 @@ The complete power requirements for the SPoE classes are shown in the table belo
 
 .. csv-table:: SPoE PSE Power Class Requirements
    :file: SPoE_PSE_Power_Class_Requirements.csv
-   
+
 Secondary Side
 ~~~~~~~~~~~~~~
 
@@ -165,23 +165,23 @@ Secondary Side
 
 The secondary side of the :adi:`EVAL-CN0591-RPIZ <CN0591>` evaluation board
 features a Raspberry Pi compatible 40-pin GPIO header, which is used to
-connect the board to the Raspberry Pi and the serial communication and 
-classification protocol (SCCP) drivers. 
-The USB-C uses a standalone USB Power Delivery (PD) controller, can be 
+connect the board to the Raspberry Pi and the serial communication and
+classification protocol (SCCP) drivers.
+The USB-C uses a standalone USB Power Delivery (PD) controller, can be
 configured using the following jumper configurations:
 
 .. csv-table:: USB-C Power Delivery Controller Configuration
    :file: USB_PD_Controller_Configuration.csv
 
-.. warning:: 
+.. warning::
 
-   Although the PD supports 5V input, we do not recommend using it because the :adi:`MAX17573` 
+   Although the PD supports 5V input, we do not recommend using it because the :adi:`MAX17573`
    requires a voltage higher than 5V to reliably generate a stable 5V output for the Raspberry Pi.
 
 .. attention::
 
-   Using a 9V power source is not recommended for Class 14 operation without external active cooling. 
-   The boost converter generates significant heat at this voltage, which could potentially damage the 
+   Using a 9V power source is not recommended for Class 14 operation without external active cooling.
+   The boost converter generates significant heat at this voltage, which could potentially damage the
    Raspberry Pi or the :adi:`EVAL-CN0591-RPIZ <CN0591>` evaluation board.
 
 .. important::
@@ -201,7 +201,7 @@ System Setup
 - 10BASE-T1L media converter, either:
 
   - :adi:`EVAL-ADIN1100EBZ <eval-adin1100>` Product Evaluation Board
-  - :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` USB2.0 to 10BASE-T1L Interface Board 
+  - :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` USB2.0 to 10BASE-T1L Interface Board
   - Other 10BASE-T to 10BASE-T1L media converter
 
 
@@ -236,8 +236,8 @@ Downloading and Flashing the Micro-SD Card
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use the :adi:`EVAL-CN0591-RPIZ <CN0591>` with the Raspberry Pi, the
-micro-SD card should be preloaded with :ref:`kuiper`, a distribution based on 
-Raspbian from the Raspberry Pi Foundation that incorporates Linux drivers for 
+micro-SD card should be preloaded with :ref:`kuiper`, a distribution based on
+Raspbian from the Raspberry Pi Foundation that incorporates Linux drivers for
 ADI products as well as tools and other software products.
 
 Complete instructions, including where to download the SD card image, how to
@@ -288,7 +288,7 @@ and selecting Wireless & Wired Network Settings.
 
    Network Settings Location
 
-Next to the **interface** field select the wanted interface (e.g. **eth1 / 
+Next to the **interface** field select the wanted interface (e.g. **eth1 /
 eth2**) and type in the chosen IP address as shown below:
 
 .. figure:: eval-cn-0591-rpiz-static-ip-set-ip.png
@@ -349,7 +349,7 @@ Basic Operation
    Complete Evaluation Setup
 
 To establish a 10BASE-T1L connection to a Raspberry Pi using the
-:adi:`EVAL-CN0591-RPIZ <CN0591>` evaluation board and ping the Raspberry Pi 
+:adi:`EVAL-CN0591-RPIZ <CN0591>` evaluation board and ping the Raspberry Pi
 follow the below procedure:
 
 #. Ensure that the jumpers and switches of the :adi:`EVAL-ADIN1100EBZ <eval-adin1100>` are configured to the default settings.
@@ -375,18 +375,18 @@ follow the below procedure:
 #. *Operation with external DC Power Supply (Using the P21 terminal block):*
 
    * Using wires, connect the **P21** terminal block on the :adi:`EVAL-CN0591-RPIZ <CN0591>`
-   * Set the **S2** switch towards the **Terminal Block**. 
+   * Set the **S2** switch towards the **Terminal Block**.
 
 #. Wait for the **DS1** LED on the :adi:`EVAL-CN0591-RPIZ <CN0591>` circuit
-   evaluation board and the **DS1**, **DS2** LEDs on the 
+   evaluation board and the **DS1**, **DS2** LEDs on the
    :adi:`EVAL-ADIN1100EBZ <EVAL-ADIN1100>` evaluation board to turn on and
-   start blinking at the same time. This indicates that a 10BASE-T1L link has 
+   start blinking at the same time. This indicates that a 10BASE-T1L link has
    been established.
 
 #. On the host PC, change the IP address of the AD-T1LUSB2.0-EBZ:
 
    * From the start menu open the **Control Panel** and click on **Network and Internet**
-  
+
    * Click on **View network status and tasks**
       You should see two networks.
 
@@ -395,9 +395,9 @@ follow the below procedure:
 
          Network Connections
    * Click on the **Connections: Ethernet** and click on **Properties**
-   * Select **Internet Protocol Version 4 (TCP/IPv4)** and click on 
+   * Select **Internet Protocol Version 4 (TCP/IPv4)** and click on
      **Properties**
-   * Select **Use the following IP address:** and type in the following **IP 
+   * Select **Use the following IP address:** and type in the following **IP
      address** and **Subnet mask**:
      ::
 
@@ -410,7 +410,7 @@ follow the below procedure:
 #. Open up a terminal and ping the CN0591:
    ::
 
-      ping 192.168.90.10 
+      ping 192.168.90.10
 
    .. figure:: ping-result.png
       :width: 400 px
