@@ -76,28 +76,28 @@ purpose I/O, resets, and other digitally controlled functions.
 AD4130 Interrupt Pins
 ^^^^^^^^^^^^^^^^^^^^^
 
-The EVAL-AD4130-8-PMDZ features three interrupt pins that can be used as external 
+The EVAL-AD4130-8-PMDZ features three interrupt pins that can be used as external
 indicators for user-defined events. These PMOD interrupt pins are internally
-connected to the single interrupt output of the AD4130, and can be configured 
+connected to the single interrupt output of the AD4130, and can be configured
 via software to signal either a Data Ready or FIFO Interrupt condition.
 
 These interrupt signals are accessible through the SPI PMOD header. For detailed
-information on individual status flags, their meanings, and how to configure 
-the chip to generate specific interrupts, please refer to the :adi:`AD4130`` 
+information on individual status flags, their meanings, and how to configure
+the chip to generate specific interrupts, please refer to the :adi:`AD4130``
 data sheet.
 
 Power Supply Considerations and Configuration
 ---------------------------------------------
 
-When using the EVAL-AD4130-8-PMDZ board, the 3.3V power supply is provided 
-directly by the host platform to which it is connected. Most PMOD-compatible 
-host boards can supply at least 100 mA, which is more than sufficient for the 
+When using the EVAL-AD4130-8-PMDZ board, the 3.3V power supply is provided
+directly by the host platform to which it is connected. Most PMOD-compatible
+host boards can supply at least 100 mA, which is more than sufficient for the
 power requirements of the EVAL-AD4130-8-PMDZ.
 
 Device Driver and Software Support
 ----------------------------------
 
-Two device drivers and corresponding software solutions are available for the 
+Two device drivers and corresponding software solutions are available for the
 EVAL-AD4130-8-PMDZ:
 
 **AD4130 no-OS Driver**
@@ -188,21 +188,21 @@ To set up the circuit for evaluation, consider the following steps:
 
 #. Attach the EVAL-AD4130-8-PMDZ to the Raspberry Pi Interposer Board via Port P1.
 
-#. Flash the SD card with the appropriate ADI Kuiper Linux image. Insert the 
+#. Flash the SD card with the appropriate ADI Kuiper Linux image. Insert the
 flashed SD card into the Raspberry Pi's SD card slot.
 
-#. Use an HDMI cable to connect the Raspberry Pi to a monitor via 
+#. Use an HDMI cable to connect the Raspberry Pi to a monitor via
 the mini-HDMI connector.
 
 #. Plug in a USB keyboard and mouse into the Raspberry Pi's USB ports.
 
-#. Power the Raspberry Pi by connecting a 5V power supply through the micro-USB 
+#. Power the Raspberry Pi by connecting a 5V power supply through the micro-USB
 connector. The final setup should look similar to the picture below.
 
    .. image:: eval-ad4130-8-pmdz_overall_setup.png
       :width: 600px
 
-Application Software 
+Application Software
 --------------------
 
 The Libiio is a library used for interfacing with IIO devices and is required
@@ -289,7 +289,7 @@ Download and install the latest version of IIO Oscilloscope from:
 
 Once done with the installation or an update of the latest Scopy,
 open the application. The user needs to supply a URI which will be used in the
-context creation and the instructions can be seen from the previous section. 
+context creation and the instructions can be seen from the previous section.
 Click and **+** icon to add a device and enter the URI of your device and then click verify.
 
 .. image:: ad4130-scopy-setup.png
@@ -300,22 +300,22 @@ After this click on add device and then connect!
 .. image:: ad4130-scopy-connected.png
    :width: 600px
 
-You can now go to the *Register map* section and check again the 0X05 register's 
+You can now go to the *Register map* section and check again the 0X05 register's
 value.
 
 Data Logger
 ^^^^^^^^^^^
-To view ADC readings, navigate to the Data Logger tab on the left side of the 
-application. Enable the voltage18 to voltage19 channel and click Run. You should 
-observe a stable 2.5V signal, which corresponds to the internal reference 
+To view ADC readings, navigate to the Data Logger tab on the left side of the
+application. Enable the voltage18 to voltage19 channel and click Run. You should
+observe a stable 2.5V signal, which corresponds to the internal reference
 voltage of the ADC.
 
 .. image:: ad4130-scopy-reference.png
    :width: 600px
 
-Additionally, you can enable the voltage16 to voltage19 channel to visualize 
-measurements from the internal temperature sensor. By placing your finger on 
-the ADC, you'll notice an increase in the voltage reading, indicating a rise in 
+Additionally, you can enable the voltage16 to voltage19 channel to visualize
+measurements from the internal temperature sensor. By placing your finger on
+the ADC, you'll notice an increase in the voltage reading, indicating a rise in
 temperature detected by the sensor.
 
 .. image:: ad4130-scopy-temperature.png
