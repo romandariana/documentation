@@ -15,25 +15,25 @@ General Description
 
    AD-APARDPFWD-SL
 
-The :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` is a 10BASE-T1L power forwarder 
+The :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` is a 10BASE-T1L power forwarder
 with Single Pair Power over Ethernet (SPoE) for development of field devices and
-applications on a :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board. 
-The SPoE powered device (PD) and isolated flyback regulator provide 12 V 
-power to the platform board. SPoE Class 10-12 (24 V nominal) and 
+applications on a :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board.
+The SPoE powered device (PD) and isolated flyback regulator provide 12 V
+power to the platform board. SPoE Class 10-12 (24 V nominal) and
 Class 13-14 (55 V nominal) are supported.
 
-Designed for use on the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform, 
+Designed for use on the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform,
 the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` hardware features Arduino Mega
 Form-factor headers, and two 10BASE-T1L ports for connecting to a
-10BASE-T1L Power Sourcing Equipment (PSE) such as the 
+10BASE-T1L Power Sourcing Equipment (PSE) such as the
 :adi:`EVAL-CN0591-RPIZ <CN0591>` 2-port 10BASE-T1L w/SPoE PSE Development
 Platform.
 
 To allow board stacking and development of field device applications using
-Arduino shields, the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` has extra tall 
-headers that allows other Arduino shields to be stacked on top of it. 
+Arduino shields, the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` has extra tall
+headers that allows other Arduino shields to be stacked on top of it.
 
-The design also features a complete power and data isolation to the host 
+The design also features a complete power and data isolation to the host
 :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`.
 
 Evaluation Board Hardware
@@ -46,21 +46,21 @@ Primary Side
 
    AD-APARDPFWD-SL Primary Side
 
-The :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` uses 2 10BASE-T1L ports. One port 
-is the input port (**P7**), which supplies power to the 
-:adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board, and the other port 
-is the output port (**P8**), which can be used to connect to another 10BASE-T1L 
-device or to daisy chain multiple devices. The input port is connected to the 
-:adi:`LTC9111` SPoE PD controller, which extracts the SPoE power from the 
-10BASE-T1L cable and provides it to the :adi:`LT8304` isolated flyback 
+The :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` uses 2 10BASE-T1L ports. One port
+is the input port (**P7**), which supplies power to the
+:adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board, and the other port
+is the output port (**P8**), which can be used to connect to another 10BASE-T1L
+device or to daisy chain multiple devices. The input port is connected to the
+:adi:`LTC9111` SPoE PD controller, which extracts the SPoE power from the
+10BASE-T1L cable and provides it to the :adi:`LT8304` isolated flyback
 regulator. The :adi:`LT8304` provides a regulated 12V.
 
-Power is supplied to the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform 
+Power is supplied to the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform
 board via **PIN8** of the **P1** header.
 
-The onboard :adi:`ADIN2111` PHY provides the 10BASE-T1L connection to the host 
-platform board. The :adi:`ADIN2111` is connected to the :adi:`AD-APARD32690-SL 
-<AD-APARD32690-SL>` platform board via the **P5** and uses the SPI4 port of the 
+The onboard :adi:`ADIN2111` PHY provides the 10BASE-T1L connection to the host
+platform board. The :adi:`ADIN2111` is connected to the :adi:`AD-APARD32690-SL
+<AD-APARD32690-SL>` platform board via the **P5** and uses the SPI4 port of the
 :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`.
 
 The :adi:`ADIN2111` supports selectable peak-to-peak transmit levels of 1.1V or 2.4V for each PHY. To select the desired level, configure the P9 and P10 solder jumpers for PHY1 and PHY2, respectively:
@@ -70,7 +70,7 @@ The :adi:`ADIN2111` supports selectable peak-to-peak transmit levels of 1.1V or 
 
 The generic SPI protocol is half duplex. Therefore, it is not possible
 to write frame data into the MAC_TX register and read from the
-MAC_RX register at the same time. To achieve full duplex transmission on 
+MAC_RX register at the same time. To achieve full duplex transmission on
 Ethernet at 10 Mbps, OPEN Alliance SPI must be used.
 To select which SPI protocol to use, the **JP3** solder jumper should be
 configured as follows:
@@ -83,7 +83,7 @@ port independently. To utilize this feature:
 
 - Short jumper P11 to enable the software power-down for PHY1.
 - In order to enable the software power-down for PHY2, configure JP4 solder jumper with the following settings
-  
+
 .. csv-table::
    :file: ADIN2111_Power_Down_Selection.csv
 
@@ -115,7 +115,7 @@ class.
 
    Do not use PD Classes 15!
 
-   The :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board is not 
+   The :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board is not
    designed to handle the class 15's power specifications.
 
 System Setup
@@ -130,32 +130,32 @@ System Setup
 - 10BASE-T1L media converter, either:
 
   - :adi:`EVAL-ADIN1100EBZ <eval-adin1100>` Product Evaluation Board
-  - :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` USB2.0 to 10BASE-T1L Interface Board 
-  - Other 10BASE-T to 10BASE-T1L media converterBoard 
-  
+  - :adi:`AD-T1LUSB2.0-EBZ <ad-t1lusb20-ebz>` USB2.0 to 10BASE-T1L Interface Board
+  - Other 10BASE-T to 10BASE-T1L media converterBoard
+
 - Other 10BASE-T to 10BASE-T1L media converter
 
 - Power Source, either:
-  
+
   - :adi:`EVAL-CN0591-RPIZ <CN0591>` 2-port 10BASE-T1L w/SPoE PSE Development Platform
-  
+
     - Raspberry Pi Model 3B (or higher)
     - Micro-SD Card for Raspberry Pi
-  
-  - Other 10BASE-T1L Power Coupling Network Board w/ SPoE PSE 
 
-- :adi:`MAX32625PICO <MAX32625PICO>` or any other similar programmer supporting 
+  - Other 10BASE-T1L Power Coupling Network Board w/ SPoE PSE
+
+- :adi:`MAX32625PICO <MAX32625PICO>` or any other similar programmer supporting
   the SWD interface
 
 Block Diagram
 ~~~~~~~~~~~~~
 
-Setup with SPoE via PSE 
+Setup with SPoE via PSE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The :adi:`EVAL-CN0591-RPIZ <CN0591>` 2-port 10BASE-T1L w/SPoE PSE Development 
-Platform provides a complete solution for powering the 
-:adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board and the 
+The :adi:`EVAL-CN0591-RPIZ <CN0591>` 2-port 10BASE-T1L w/SPoE PSE Development
+Platform provides a complete solution for powering the
+:adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board and the
 :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board via SPoE.
 
 .. figure:: apard-pfwd-block-diagram.png
@@ -169,14 +169,14 @@ Basic Operation
 
    Complete Evaluation Setup
 
-To establish a 10BASE-T1L connection to an 
+To establish a 10BASE-T1L connection to an
 :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` using the
-:adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board 
+:adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` evaluation board
 and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
 #. Ensure that the jumpers and switches of the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` are configured to the default settings.
 
-#. Connect the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` circuit evaluation board to the 
+#. Connect the :adi:`AD-APARDPFWD-SL <AD-APARDPFWD-SL>` circuit evaluation board to the
    :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` Arduino headers.
 
 #. Using a USB-C cable, connect **P1** on the
@@ -192,7 +192,7 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
 #. Upload the :git-no-OS:`AD-APARD32690-SL ADIN2111 Example <projects/ASWPF/src/examples/adin2111_example/>`
    to the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board using the :adi:`MAX32625PICO <MAX32625PICO>` programmer.
-   
+
 #. By default the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` has 192.168.97.40 as its IP address.
    If you are using a different IP address, make sure to update the
    :git-no-OS:`AD-APARD32690-SL ADIN2111 Example <projects/ASWPF/src/examples/adin2111_example/>`
@@ -202,13 +202,13 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
    :adi:`EVAL-CN0591-RPIZ <CN0591>` you are using (**ETH1** / **ETH2**).
 
    .. warning::
-        
+
         ADD STATIC IP FOR BOTH PORTS
         ETH1 192.168.97.10
         ETH2 192.168.90.10
-   
+
    Save the table and reboot the system by entering the following command in the console:
-   
+
    .. shell::
       :user: analog
       :group: analog
@@ -225,9 +225,9 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
          Network Connections
    * Click on the **Connections: Ethernet** and click on **Properties**
-   * Select **Internet Protocol Version 4 (TCP/IPv4)** and click on 
+   * Select **Internet Protocol Version 4 (TCP/IPv4)** and click on
      **Properties**
-   * Select **Use the following IP address:** and type in the following **IP 
+   * Select **Use the following IP address:** and type in the following **IP
      address** and **Subnet mask**:
      ::
 
@@ -244,11 +244,11 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
 #. Now you can ping the device to see if the connection is working properly.
    Open a terminal on your host PC connect to the CN0591 through SSH:
- 
+
    ::
 
       ssh analog@192.168.90.10
-   
+
    Enter the password **analog** when prompted.
 
    You can now ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>` platform board using the following command:
@@ -260,7 +260,7 @@ and ping the :adi:`AD-APARD32690-SL <AD-APARD32690-SL>`:
 
       $ping 192.168.97.50
 
-   .. figure:: 
+   .. figure::
       apard-pfwd-result.png
 
       Result
