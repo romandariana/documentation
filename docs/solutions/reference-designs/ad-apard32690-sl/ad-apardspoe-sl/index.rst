@@ -32,8 +32,6 @@ headers, enabling other Arduino shields to be stacked on top of it.
 The design also features a complete power isolation to the host
 :adi:`AD-APARD32690-SL`.
 
-
-
 Evaluation Board Hardware
 -------------------------
 
