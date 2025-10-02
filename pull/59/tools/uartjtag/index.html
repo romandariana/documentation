@@ -432,7 +432,7 @@ Content on this topic
             
   <section id="adalm-uartjtag">
 <span id="uartjtag"></span><h1>ADALM-UARTJTAG<a class="headerlink" href="#adalm-uartjtag" title="Link to this heading"></a></h1>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/adalm-uartjtag.png"><img alt="ADLAM-UARTJTAG photo" class="align-right" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/adalm-uartjtag.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/adalm-uartjtag.png"><img alt="ADLAM-UARTJTAG photo" class="align-right" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/adalm-uartjtag.png" style="width: 400px;" />
 </a>
 <p>In a few of the designs we have done, like the
 <a class="reference internal" href="../pluto/index.html#pluto"><span class="std std-ref">ADALM-PLUTO</span></a> and <a class="reference internal" href="../m2k/index.html#m2k"><span class="std std-ref">ADALM2000</span></a> there hasn’t been enough room on the
@@ -457,20 +457,20 @@ doing debug. The 1.8V supply on the connector above is the I/O voltage, and can
 be used anywhere between 1.8V and 3.3V.</p>
 <p>In the box, you should have received the UARTJTAG board, ribbon cable, and
 jumper.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/adalm-uartjtag.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/adalm-uartjtag.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/adalm-uartjtag.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/adalm-uartjtag.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/adalm-uartjtag.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/adalm-uartjtag.png" style="width: 400px;" />
 </a>
 <p>The PCB includes a jumper, which forces the Zynq to HALT on JTAG. This is great
 for halting, and not allowing anything to run, but does pull down a chip select
 for SPI flash, and will not allow the SPI flash to be found by the on-chip
 bootloader, or by U-Boot. (If you are loading a U-Boot over JTAG).</p>
 <p>The pin connector is likely inserted into the ribbon cable:</p>
-<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcablepluspins2.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcablepluspins2.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcablepluspins2.png" style="width: 300px;" />
+<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcablepluspins2.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcablepluspins2.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcablepluspins2.png" style="width: 300px;" />
 </a>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcablepluspins.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcablepluspins.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcablepluspins.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcablepluspins.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcablepluspins.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcablepluspins.png" style="width: 200px;" />
 </a>
 </div><p>but can be removed, and either soldered to the PCB, or left in the ribbon cable,
 so you don’t lose it.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcable.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcable.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/uartjtag/uartjtagcable.png" style="width: 300px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcable.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcable.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/uartjtag/uartjtagcable.png" style="width: 300px;" />
 </a>
 <p>If you do want more, they can be obtained from
 <a class="icon link reference external" href="https://www.samtec.com/products/ftsh-105-01-l-d" target="_blank">Samtec</a>,

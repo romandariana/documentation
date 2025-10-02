@@ -476,7 +476,7 @@ Content on this topic
 <p>This tutorial is also designed to be presented as a live, hands-on workshop; a slide deck is provided here:</p>
 <div class="admonition-download admonition">
 <p class="admonition-title">Download</p>
-<p><a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ADI_Software_Infrastructure_for_ADCs_DACs_Sensors.pptx"><code class="xref download docutils literal notranslate"><span class="pre">Slide</span> <span class="pre">Deck:</span> <span class="pre">ADI’s</span> <span class="pre">Software</span> <span class="pre">Infrastructure</span> <span class="pre">for</span> <span class="pre">designing</span> <span class="pre">with</span> <span class="pre">ADCs,</span> <span class="pre">DACs,</span> <span class="pre">and</span> <span class="pre">Sensors</span></code></a></p>
+<p><a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ADI_Software_Infrastructure_for_ADCs_DACs_Sensors.pptx"><code class="xref download docutils literal notranslate"><span class="pre">Slide</span> <span class="pre">Deck:</span> <span class="pre">ADI’s</span> <span class="pre">Software</span> <span class="pre">Infrastructure</span> <span class="pre">for</span> <span class="pre">designing</span> <span class="pre">with</span> <span class="pre">ADCs,</span> <span class="pre">DACs,</span> <span class="pre">and</span> <span class="pre">Sensors</span></code></a></p>
 </div>
 <p>A complete video run-through will also be provided, either as a companion to following the tutorial yourself, or to practice before presenting as a hands-on workshop. This video is a placeholder for the time being, but many of the concepts apply directly to this workshop:</p>
 <div class="admonition-todo admonition">
@@ -527,14 +527,14 @@ Content on this topic
 <p>ToDo: Replace with link to controlled file when released. In the meantime, use this file.</p>
 <div class="admonition-download admonition">
 <p class="admonition-title">Download</p>
-<p><a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_stm32_nucleo_h563.bin"><code class="xref download docutils literal notranslate"><span class="pre">ST</span> <span class="pre">Nucleo</span> <span class="pre">Programming</span> <span class="pre">File</span></code></a></p>
+<p><a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_stm32_nucleo_h563.bin"><code class="xref download docutils literal notranslate"><span class="pre">ST</span> <span class="pre">Nucleo</span> <span class="pre">Programming</span> <span class="pre">File</span></code></a></p>
 </div>
 <p>MD5 checksum: 637690bad1d489a5429f8bc518336aaf</p>
 <p>(On Windows: <code class="docutils literal notranslate"><span class="pre">certutil</span> <span class="pre">-hashfile</span> <span class="pre">.\ad4080_stm32_nucleo_h563.bin</span> <span class="pre">MD5</span></code>)</p>
 </div>
 <p>Mount the EVAL-AD4080-ARDZ to the Nucleo-H563ZI board. Pin connections are unambiguous; it will only plug in in one location. Connect the m2k’s W1 and W2 waveform generator  outputs to the EVAL-AD4080-ARDZ inputs with the 1k series resistors or 2k/3k attenuator, and optionally connect the m2k’s 1+ and 1- to the ADC inputs as shown in <a class="reference internal" href="#fig-m2k-ad4080-nucleo"><span class="std std-numref">Figure 1</span></a>.</p>
 <figure class="align-center" id="id2">
-<span id="fig-m2k-ad4080-nucleo"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/setup_ad4080eval_m2k.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/setup_ad4080eval_m2k.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/setup_ad4080eval_m2k.jpg" style="width: 30em;" />
+<span id="fig-m2k-ad4080-nucleo"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/setup_ad4080eval_m2k.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/setup_ad4080eval_m2k.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/setup_ad4080eval_m2k.jpg" style="width: 30em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 1 </span><span class="caption-text">AD4080-ARDZ mounting and ADALM2000 connections.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
@@ -542,7 +542,7 @@ Content on this topic
 </figure>
 <p>For reference, the connector pinouts are shown in <a class="reference internal" href="#fig-m2k-ad4080-pinout"><span class="std std-numref">Figure 2</span></a>.</p>
 <figure class="align-center" id="id3">
-<span id="fig-m2k-ad4080-pinout"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/setup_connections.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/setup_connections.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/setup_connections.png" style="width: 30em;" />
+<span id="fig-m2k-ad4080-pinout"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/setup_connections.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/setup_connections.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/setup_connections.png" style="width: 30em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 2 </span><span class="caption-text">EVAL-AD4080 Connector Pinouts.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
@@ -584,7 +584,7 @@ Content on this topic
 <h2>Exercise 1: Command line<a class="headerlink" href="#exercise-1-command-line" title="Link to this heading"></a></h2>
 <p>Multiple examples require running Linux commands. For those, open the terminal
 from the task bar:</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/terminal_open.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/terminal_open.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/terminal_open.png" style="width: 15em;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/terminal_open.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/terminal_open.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/terminal_open.png" style="width: 15em;" />
 </a>
 <section id="iio-info">
 <h3>IIO Info<a class="headerlink" href="#iio-info" title="Link to this heading"></a></h3>
@@ -676,7 +676,7 @@ from the task bar:</p>
 version.</p>
 </div>
 <figure class="align-center" id="id4">
-<span id="fig-open-scopy"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_connect.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_connect.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_connect.png" style="width: 30em;" />
+<span id="fig-open-scopy"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_connect.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_connect.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_connect.png" style="width: 30em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 3 </span><span class="caption-text">Opening Scopy and Connecting to ADALM2000</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
@@ -684,7 +684,7 @@ version.</p>
 </figure>
 <p>A Scopy profile is available to set up the initial configuration. Load the <strong>m2k_and_ad408_scopy_ini</strong> file as shown in <a class="reference internal" href="#fig-load-ini"><span class="std std-numref">Figure 4</span></a>.</p>
 <figure class="align-center" id="id5">
-<span id="fig-load-ini"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_load_ini.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_load_ini.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_load_ini.png" style="width: 40em;" />
+<span id="fig-load-ini"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_load_ini.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_load_ini.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_load_ini.png" style="width: 40em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 4 </span><span class="caption-text">Loading Scopy Profile</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
@@ -692,7 +692,7 @@ version.</p>
 </figure>
 <p>Connect to the AD4080 as shown in <a class="reference internal" href="#fig-connect-ad4080"><span class="std std-numref">Figure 5</span></a>.</p>
 <figure class="align-center" id="id6">
-<span id="fig-connect-ad4080"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_connect.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_connect.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_connect.png" style="width: 50em;" />
+<span id="fig-connect-ad4080"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_connect.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_connect.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_connect.png" style="width: 50em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 5 </span><span class="caption-text">Connecting to the AD4080</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
@@ -700,7 +700,7 @@ version.</p>
 </figure>
 <p>Open the AD4080 debug panel as shown in <a class="reference internal" href="#fig-open-debug"><span class="std std-numref">Figure 6</span></a>.</p>
 <figure class="align-center" id="id7">
-<span id="fig-open-debug"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_debug_panel.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_debug_panel.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_debug_panel.png" style="width: 50em;" />
+<span id="fig-open-debug"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_debug_panel.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_debug_panel.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_debug_panel.png" style="width: 50em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 6 </span><span class="caption-text">Opening the AD4080 Debug Panel</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
@@ -709,7 +709,7 @@ version.</p>
 <p>Explore the context’s hierarchy, attributes, and channels. Take a peek at filter_sel, sinc_dec_rate, etc.</p>
 <p>Next, open the Signal Generator instrument and click run. Open the AD4080 data panel as shown in <a class="reference internal" href="#fig-open-data"><span class="std std-numref">Figure 7</span></a>.</p>
 <figure class="align-center" id="id8">
-<span id="fig-open-data"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_data_panel.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_data_panel.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_data_panel.png" style="width: 50em;" />
+<span id="fig-open-data"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_data_panel.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_data_panel.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_data_panel.png" style="width: 50em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 7 </span><span class="caption-text">Opening the AD4080 Data Panel</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
@@ -719,7 +719,7 @@ version.</p>
 <p><strong>Extra Credit:</strong></p>
 <p>Observe the SINC5+Comp filter’s step response. Set the FILTER_SEL attribute to <strong>sinc5_plus_compensation</strong>. The step response should look like <a class="reference internal" href="#fig-sinc5-step"><span class="std std-numref">Figure 8</span></a>.</p>
 <figure class="align-center" id="id9">
-<span id="fig-sinc5-step"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_sinc5_comp_step_resp.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_sinc5_comp_step_resp.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/ad4080_sinc5_comp_step_resp.png" style="width: 50em;" />
+<span id="fig-sinc5-step"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_sinc5_comp_step_resp.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_sinc5_comp_step_resp.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/ad4080_sinc5_comp_step_resp.png" style="width: 50em;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 8 </span><span class="caption-text">SINC5+Comp Step Response</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
@@ -729,7 +729,7 @@ version.</p>
 <section id="exercise-3-python-and-the-thonny-ide">
 <h2>Exercise 3: Python and the Thonny IDE<a class="headerlink" href="#exercise-3-python-and-the-thonny-ide" title="Link to this heading"></a></h2>
 <p>Most examples in this workshop are Python scripts. Thonny is a Python IDE and will allow you to edit and run them easily. Launch Thony from the start menu:</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/thonny_open.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/thonny_open.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/thonny_open.png" style="width: 20em;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/thonny_open.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/thonny_open.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/thonny_open.png" style="width: 20em;" />
 </a>
 </section>
 <section id="simple-sine-wave-from-the-m2k-to-the-ad4080">
@@ -737,7 +737,7 @@ version.</p>
 <p>Start generating a sine wave using Scopy. In Thonny, load
 <strong>Desktop/ftc24-ws/hello_hw/hello_ad4080.py</strong>
 and click Run:</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/hello_ad4080.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/hello_ad4080.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/hello_ad4080.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/hello_ad4080.png" />
 </section>
 <section id="performance-metrics-with-genalyzer">
 <h2>Performance metrics with Genalyzer<a class="headerlink" href="#performance-metrics-with-genalyzer" title="Link to this heading"></a></h2>
@@ -745,19 +745,19 @@ and click Run:</p>
 a signal programaticaly. In Thonny, load
 <strong>Desktop/ftc24-ws/hello_genalyzer/m2k_source_ad4080_sink.py</strong>
 and Run:</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_source_ad4080_sink.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/m2k_source_ad4080_sink.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_source_ad4080_sink.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/m2k_source_ad4080_sink.png" />
 </section>
 <section id="sinc1-frequency-response">
 <h2>Sinc1 frequency response<a class="headerlink" href="#sinc1-frequency-response" title="Link to this heading"></a></h2>
 <p>In Thonny, load and run
 <strong>Desktop/ftc24-ws/hello_genalyzer/sinc_folding_interactive.py</strong>.
 Drag the slider controlling the frequency of the transmitted noise and interpret the resulting FFT for different frequencies:</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/sinc_folding_interactive.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/sinc_folding_interactive.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/sinc_folding_interactive.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/sinc_folding_interactive.png" />
 </section>
 <section id="obspy">
 <h2>ObsPy<a class="headerlink" href="#obspy" title="Link to this heading"></a></h2>
 <p>In Thonny, load and run <strong>Desktop/ftc24-ws/hello_seismograph/seismograph.py</strong>:</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/seismograph.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/sw_infrastructure/seismograph.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/seismograph.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/learning/sw_infrastructure/seismograph.png" />
 </section>
 <section id="exercise-4-using-libiio-in-c">
 <h2>Exercise 4: Using libiio in C<a class="headerlink" href="#exercise-4-using-libiio-in-c" title="Link to this heading"></a></h2>

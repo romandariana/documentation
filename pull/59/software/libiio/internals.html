@@ -1017,7 +1017,7 @@ the application requests the buffer to be refilled with iio_buffer_refill or
 wants to submit a buffer full of data with iio_buffer_push. The data flow
 occuring with the low-speed interface can be explained with the following
 schema:</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_lowspeed_interface.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_lowspeed_interface.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_lowspeed_interface.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_lowspeed_interface.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_lowspeed_interface.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_lowspeed_interface.png" style="width: 600px;" />
 </a>
 <p>When receiving from an input device (red arrows), the kernel will fill its
 internal buffer with new samples, directly from the hardware using DMA transfers
@@ -1056,7 +1056,7 @@ buffer that the application can fill, and push the previous buffer that has been
 written to.</p>
 <p>Better than a wall of text, this schema sums up the principle of the high-speed
 interface:</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_highspeed_interface.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_highspeed_interface.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_highspeed_interface.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_highspeed_interface.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_highspeed_interface.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_highspeed_interface.png" style="width: 500px;" />
 </a>
 <p>Note that this schema represents a capture process. For an output process, just
 consider all the arrows inverted.</p>
@@ -1166,7 +1166,7 @@ the daemon is in charge of duplicating the stream to the connected clients.</p><
 </section>
 <section id="far-distance-view">
 <h4>Far-distance view<a class="headerlink" href="#far-distance-view" title="Link to this heading"></a></h4>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_farview.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_farview.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_farview.png" style="width: 350px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_farview.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_farview.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_farview.png" style="width: 350px;" />
 </a>
 <p>One interesting characteristic of IIOD is that it actually uses libiio
 underneath. In a way, it is at the same time a client application for the libiio
@@ -1289,7 +1289,7 @@ object with a channel mask corresponding to the two channels being enabled.
 This is done to ensure that each client application will receive samples for
 each channel it requested.</p></li>
 </ul>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_open_command.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_open_command.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_open_command.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_open_command.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_open_command.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_open_command.png" style="width: 700px;" />
 </a>
 </section>
 <section id="the-read-write-thread">
@@ -1311,7 +1311,7 @@ object, and then use iio_buffer_push to submit the data to the hardware.</p>
 <p>If one or more clients are requesting to read samples, the thread will call the
 libiio API function iio_buffer_refill to fetch a set of fresh samples, and then
 upload them to each client.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_readbuf_command.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_readbuf_command.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_readbuf_command.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_readbuf_command.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_readbuf_command.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_readbuf_command.png" style="width: 700px;" />
 </a>
 <p>As soon as the amount of bytes requested by one client thread has been
 transferred, it will be awaken by the R/W thread, and will be passed a return
@@ -1335,7 +1335,7 @@ chunks, each chunk containing one return code followed by a number of bytes
 inferior or equal to the buffer size. This makes sense, considering that the R/W
 thread can only refill one buffer worth of data, so it cannot assume that more
 than one buffer of samples will be available.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_details_readbuf.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_details_readbuf.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_details_readbuf.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_details_readbuf.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_details_readbuf.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_details_readbuf.png" style="width: 600px;" />
 </a>
 <p>A return code of zero is actually not an error code. It is used to notify the
 client application that no more samples can be read in this READBUF command, and
@@ -1393,7 +1393,7 @@ will send the OPEN command, the “read” function will send READBUF, etc. The
 parameters passed to the backend functions are properly converted to ASCII
 according to the schema that the IIOD understands. The code returned by the
 server will be used as the return value of the backend function.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_commands.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_commands.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_commands.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_commands.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_commands.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_commands.png" style="width: 500px;" />
 </a>
 <p>Considering that the IIOD also uses the public API of libiio, the network
 backend is completely transparent: the backend functions behave just like their
@@ -1562,7 +1562,7 @@ libiio will then use the CPU to copy the samples to the iio_buffer object,
 and then copy again to the packet buffer of the Linux kernel by writing the
 client’s socket.</p></li>
 </ul>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_lowspeed.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_lowspeed.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_lowspeed.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_lowspeed.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_lowspeed.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_lowspeed.png" style="width: 600px;" />
 </a>
 <ul class="simple">
 <li><p>The high-speed interface works roughly the same, but the manual copy from the
@@ -1570,7 +1570,7 @@ kernel’s IIO buffer to the iio_buffer object is avoided by swapping the
 buffers from user space and kernel space. However, it is still required to
 write the buffer to each client’s socket.</p></li>
 </ul>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_highspeed.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_highspeed.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_highspeed.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_highspeed.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_highspeed.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_highspeed.png" style="width: 600px;" />
 </a>
 <ul>
 <li><p>Then comes zerocopy. The principle, is to avoid the second manual copy of the
@@ -1591,7 +1591,7 @@ copying a single byte of it! Then, from the hardware to the network link, the
 CPU never has to copy anything, and the 400 MHz ARM board can push hundreds
 of megabytes of samples on the network while having a CPU usage staying close
 to zero.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_zerocopy.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_zerocopy.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/software/libiio/libiio_route_zerocopy.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_zerocopy.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_zerocopy.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/software/libiio/libiio_route_zerocopy.png" style="width: 600px;" />
 </a>
 <p>While vmsplice moves the pages to kernel space, it is also possible to
 duplicate them using the “tee” system call, and serve the same data to

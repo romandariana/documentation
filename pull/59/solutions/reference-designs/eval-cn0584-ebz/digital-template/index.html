@@ -465,7 +465,7 @@ designed to run with the ADCs and DACs connected in loopback mode, as described
 in the example <a class="reference internal" href="../index.html#eval-cn0584-ebz-setting-up-the-hardware"><span class="std std-ref">Setting Up the Hardware Section</span></a>,
 and shown in the following image.</p>
 <figure class="align-default" id="id10">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/cn0584_loopback_connection.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/cn0584_loopback_connection.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/cn0584_loopback_connection.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/cn0584_loopback_connection.png" />
 <figcaption>
 <p><span class="caption-number">Figure 1 </span><span class="caption-text">EVAL-CN0585-FMCZ with loopback connection</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
 </figcaption>
@@ -492,15 +492,15 @@ are labeled DAC0, DAC1, DAC2 and DAC3. Same applies to ADCs.</p>
 <section id="files">
 <h2>Files<a class="headerlink" href="#files" title="Link to this heading"></a></h2>
 <p>The simulink model files can be downloaded from this zip file
-<a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/digital_template_simulink_models.zip"><code class="xref download docutils literal notranslate"><span class="pre">Simulink</span> <span class="pre">models</span></code></a> and placed in the
+<a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/digital_template_simulink_models.zip"><code class="xref download docutils literal notranslate"><span class="pre">Simulink</span> <span class="pre">models</span></code></a> and placed in the
 HighSpeedConverterToolbox/test folder. The PID and DDS are submodels within the
 top level testModel_template_top.slx file, and the path pointing to the
 submodels should be updated to reflect the new correct path on the user’s
 machine. See the Build section at the bottom of tutorial for instructions on
-implementing the model. Additionally, the bootfile is provided here <a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/boot.zip"><code class="xref download docutils literal notranslate"><span class="pre">Boot</span> <span class="pre">file</span></code></a>
+implementing the model. Additionally, the bootfile is provided here <a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/boot.zip"><code class="xref download docutils literal notranslate"><span class="pre">Boot</span> <span class="pre">file</span></code></a>
 and can be copied directly into the boot directory of the SD card.</p>
 <p>The Python example scripts can be downloaded from this zip file
-<a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/digital_template_python_example_scripts.zip"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Examples</span></code></a>, and placed in the
+<a class="icon reference download external" download="" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/digital_template_python_example_scripts.zip"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Examples</span></code></a>, and placed in the
 pyadi-iio/examples folder while in the cn0585_v1 branch.</p>
 <p>The following sections describe the model and scripts in more detail.</p>
 </section>
@@ -509,7 +509,7 @@ pyadi-iio/examples folder while in the cn0585_v1 branch.</p>
 <p>One subsystem in the model is a Direct Digital Synthesizer (DDS) that outputs a
 sine wave. This signal outputs on DAC3.</p>
 <figure class="align-default" id="id11">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_bd.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_bd.png" />
 <figcaption>
 <p><span class="caption-number">Figure 2 </span><span class="caption-text">DDS subsystem diagram</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
 </figcaption>
@@ -551,7 +551,7 @@ AXI registers. These can be compared to the Python plot for accuracy.</p>
 captured at ADC3 in the top plot, and the corresponding spectrum done by FFT
 (Fast Fourier Transform) of the data in the bottom plot.</p>
 <figure class="align-default" id="id12">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_plot.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_dds_plot.png" />
 <figcaption>
 <p><span class="caption-number">Figure 3 </span><span class="caption-text">DDS output captured on ADC3 and FFT</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
 </figcaption>
@@ -590,7 +590,7 @@ by connecting DAC3 to the desired system.</p>
 DDS. In loopback mode, the signal into ADC0 is generated from the DMA of DAC0.
 The output of the mixer goes to DAC2.</p>
 <figure class="align-default" id="id13">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_bd.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_bd.png" />
 <figcaption>
 <p><span class="caption-number">Figure 4 </span><span class="caption-text">Mixer subsystem diagram</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
 </figcaption>
@@ -634,7 +634,7 @@ waves, as well as the largest frequency component of the mixer output.</p>
 ADC3, and the second plot shows the input on ADC0. The final two plots show the
 mixer output looped back and captured from ADC2, and its FFT transformation.</p>
 <figure class="align-default" id="id14">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_plot.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_mixer_plot.png" />
 <figcaption>
 <p><span class="caption-number">Figure 5 </span><span class="caption-text">Mixer inputs from DDS and ADC0 (top 2 graphs), Mixer out and its FFT
 (bottom 2 graphs)</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
@@ -674,7 +674,7 @@ device or system.</p>
 cutoff frequency of the filter is at 200kHz. The simulated frequency response of
 the filter is shown below.</p>
 <figure class="align-default" id="id15">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bode.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bode.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bode.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bode.png" />
 <figcaption>
 <p><span class="caption-number">Figure 6 </span><span class="caption-text">FIR filter bode plot</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
 </figcaption>
@@ -683,7 +683,7 @@ the filter is shown below.</p>
 to ADC3. The filter takes the input from ADC3, and outputs the filtered signal
 on DAC0.</p>
 <figure class="align-default" id="id16">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bd.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_bd.png" />
 <figcaption>
 <p><span class="caption-number">Figure 7 </span><span class="caption-text">FIR filter subsystem diagram</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
 </figcaption>
@@ -728,7 +728,7 @@ should be substantially attenuated.</p>
 and its FFT are displayed in the first and third plots, while the filter output
 and its FFT are in the second and fourth.</p>
 <figure class="align-default" id="id17">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_plot.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_fir_plot.png" />
 <figcaption>
 <p><span class="caption-number">Figure 8 </span><span class="caption-text">FIR filter output in plots 2 and 4, from the input captures in plots 1 and 3</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
 </figcaption>
@@ -755,7 +755,7 @@ filter output can be taken from DAC0.</p>
 respectively, with the output on DAC1. Figure 8 shows the isolated system in the
 board. Figure 9 shows a closed loop example using a voltage divider as a plant.</p>
 <figure class="align-default" id="id18">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_bd.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_bd.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_bd.png" />
 <figcaption>
 <p><span class="caption-number">Figure 9 </span><span class="caption-text">PID subsystem diagram</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
 </figcaption>
@@ -772,7 +772,7 @@ two 3k-Ohm resistors in series, connecting PID output at DAC1 to ground. The
 connection point between the resistors the connects to the feedback point at
 ADC1. The set point is driven by a +/-4V square wave.</p>
 <figure class="align-default" id="id19">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_close_loop.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_close_loop.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_close_loop.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_close_loop.png" />
 <figcaption>
 <p><span class="caption-number">Figure 10 </span><span class="caption-text">PID subsystem diagram with resistor divider connected as plant
 forming a closed loop system</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
@@ -817,7 +817,7 @@ displayed on top graph, it’s a 500Hz square wave with -/+4V amplitude. The
 bottom graph is the feedback which resembles the set point with some overshoot
 feature and small latency.</p>
 <figure class="align-default" id="id20">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_plot.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_plot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_plot.png" />
 <figcaption>
 <p><span class="caption-number">Figure 11 </span><span class="caption-text">Setpoint of PID in top plot, feedback in bottom plot</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
 </figcaption>
@@ -825,7 +825,7 @@ feature and small latency.</p>
 <p>The following figure shows the two signals on an oscilloscope with clear PID
 features shown.</p>
 <figure class="align-default" id="id21">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_scope.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_scope.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_scope.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_pid_scope.png" />
 <figcaption>
 <p><span class="caption-number">Figure 12 </span><span class="caption-text">Example PID controller test result. Channel 1 (yellow) is setpoint,
 Channel 3 (blue) is feedback after going through voltage divider plant</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
@@ -857,7 +857,7 @@ Generation -&gt; Global Settings and set the Reset Type to Synchronous.</p>
 Matlab Configuration Guide.</p>
 <p>In step 1.2, the reference design should be selected as TX.</p>
 <figure class="align-default" id="id22">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_1-2.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_1-2.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_1-2.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_1-2.png" />
 <figcaption>
 <p><span class="caption-number">Figure 13 </span><span class="caption-text">Build step 1.2 Reference design TX</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
 </figcaption>
@@ -865,20 +865,20 @@ Matlab Configuration Guide.</p>
 <p>In step 1.3, ensure the connections are configured to match the screenshots
 below.</p>
 <figure class="align-default" id="id23">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports1.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports1.png" />
 <figcaption>
 <p><span class="caption-number">Figure 14 </span><span class="caption-text">Build step 1.3 Port connections</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id24">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports2.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports2.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports2.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_ports2.png" />
 <figcaption>
 <p><span class="caption-number">Figure 15 </span><span class="caption-text">Build step 1.3 Port connections</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>In step 4.1, set the synthesis objective to Speed Optimized.</p>
 <figure class="align-default" id="id25">
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_4-1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_4-1.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_4-1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0584-ebz/digital-template/dt_build_4-1.png" />
 <figcaption>
 <p><span class="caption-number">Figure 16 </span><span class="caption-text">Build step 4.1 Synthesis objective speed optimized</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
 </figcaption>

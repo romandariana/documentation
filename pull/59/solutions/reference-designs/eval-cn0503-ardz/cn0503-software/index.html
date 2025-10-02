@@ -467,7 +467,7 @@ possible.</p>
 present on the board. It enables 2 ADC channels per time slot to measure the
 light beam before and after passing through the substance. This means that a
 packet of 8 samples of data come from the <strong>ADC</strong> once per sampling period.</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_data_gather.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_data_gather.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_data_gather.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_data_gather.png" />
 <p>The samples can then be plugged into a user defined equation that can include
 any of the samples and any random constant to generate a ratio, which the
 application defines as the <strong>absolute ratio</strong>. Before being displayed or used
@@ -517,11 +517,11 @@ platform.</p>
 <li><p>Set up the the <strong>EVAL-CN0503-ARDZ</strong> as shown in the
 <a class="reference internal" href="../index.html#eval-cn0503-ardz"><span class="std std-ref">Hardware User Guide</span></a>.</p></li>
 <li><p>Connect the board to the <strong>EVAL-ADICUP3029</strong> via the Arduino headers.</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_arduino.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_arduino.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_arduino.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_arduino.jpg" />
 </li>
 <li><p>Connect a micro-USB cable to P10 connector of the EVAL-ADICUP3029 and connect
 it to a computer. The final setup should look similar to the picture below.</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_system_pc.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_system_pc.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_system_pc.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_system_pc.jpg" />
 </li>
 </ol>
 </section>
@@ -586,18 +586,18 @@ features that will make it easier to read back data from the connected devices.<
 <li><p>Open your device manager and check which COM port was assigned to your
 device.</p></li>
 </ol>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/device_manager.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/device_manager.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/device_manager.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/device_manager.png" />
 <p>Open up your serial terminal program (Putty for this example). Click on the serial
 configuration tab or window, and input the settings to match the requirements of
 your connected device. The default baud rate for most of the reference designs is
 <strong>115200</strong>. Make sure that you use the correct baud rate for your application.</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_serial_config.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_serial_config.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_serial_config.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_serial_config.png" />
 <p>Ensure you click on the checkboxes for Implicit CR in every LF and Implicit LF in
 every CF. Ensure that local echo and line editing are enabled, so that you can
 see what you type and are able to correct mistakes. (Some devices may echo typed
 characters - if so, you will see each typed character twice. If this happens,
 turn off local echo.)</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_terminal_options.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_terminal_options.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_terminal_options.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/putty_terminal_options.png" />
 <p>Click on the open button, and as long as your connected device and serial
 terminal program are setup the same, then you should see data displaying.</p>
 <div class="admonition tip">
@@ -1076,7 +1076,7 @@ section.</p>
 <li><p>Initialization routine</p></li>
 <li><p>Main process</p></li>
 </ol>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main.png" />
 <p>The platform initialization includes the carrier clock and power initialization
 as well as initialization for <strong>DMA</strong>, <strong>GPIO</strong>, <strong>SPI</strong>, <strong>I2C</strong>, <strong>UART</strong>, and
 <strong>flash</strong> cores. Then the program initializes the ADPD device driver with
@@ -1086,11 +1086,11 @@ configuration saved in the flash pages in the following order: manufacturer page
 and user page. If the manufacturer page is not initialized it will initialize
 it. Applying the user page after the manufacturer default will only change the
 specific configurations mentioned in the user page, leaving the rest untouched.</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_intialization.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_intialization.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_intialization.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_intialization.png" />
 <p>The main process of the application runs into a loop and is responsible for
 taking data out of the device and displaying it and for implementing the user
 <strong>CLI</strong> using the serial <strong>UART</strong> interface.</p>
-<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main_process.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main_process.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main_process.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/solutions/reference-designs/eval-cn0503-ardz/cn0503-software/cn0503_main_process.png" />
 </section>
 <section id="interacting-with-the-cli">
 <h3>Interacting with the CLI<a class="headerlink" href="#interacting-with-the-cli" title="Link to this heading"></a></h3>

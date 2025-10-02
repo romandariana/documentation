@@ -447,22 +447,22 @@ desire to actually receive.</p>
 set to 2400 MHZ, and the Tx set to 2402 MHz, with the internal DDS, set to 3
 MHz, and -30dB down (which would put things at 2405 MHz), with the default
 antennas connected, and the LTE20 Filters loaded.</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_dds.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_dds.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_dds.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_dds.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_dds.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_dds.png" style="width: 600px;" />
 </a>
 <p>This shows the peak at the signal (at 2405 MHz, where we expect it), and a LO
 leakage at 2402 MHz. It’s difficult to see what this really means in terms of
 signal power, so we can look at the actual gain is set to by the Automatic Gain
 Control (AGC), and the Receive Signal Strength Indicator (RSSI).</p>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_dds_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_dds_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_dds_rx1.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_dds_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_dds_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_dds_rx1.png" style="width: 200px;" />
 </a>
 <p>We can see the RSSI is 66.25 dB, and the Hardware Gain is set to 43 dB.</p>
 </section>
 <section id="tx-on-and-not-sending-a-signal">
 <h2>Tx On, and not sending a signal<a class="headerlink" href="#tx-on-and-not-sending-a-signal" title="Link to this heading"></a></h2>
 <p>If we simply disable the DSS, this is what we see:</p>
-<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_leakage.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_leakage.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_leakage.png" style="width: 600px;" />
+<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_leakage.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_leakage.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_leakage.png" style="width: 600px;" />
 </a>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_leakage_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_leakage_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_leakage_rx1.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_leakage_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_leakage_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_leakage_rx1.png" style="width: 200px;" />
 </a>
 </div><p>Now our RSSI has gone to 90.5 dB and the hardware gain is set to 68 dB (which is
 still not at the max gain of the device), we are listening to our own LO
@@ -497,9 +497,9 @@ dev &#39;ad9361-phy&#39;, channel &#39;altvoltage1&#39; (output), id &#39;TX_LO&
 </pre></div>
 </div>
 <p>Then we get:</p>
-<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_off.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_off.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_off.png" style="width: 500px;" />
+<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_off.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_off.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_off.png" style="width: 500px;" />
 </a>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_off_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_off_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_off_rx1.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_off_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_off_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_off_rx1.png" style="width: 200px;" />
 </a>
 </div></section>
 <section id="tx-on-but-offset-more-than-your-channel">
@@ -507,9 +507,9 @@ dev &#39;ad9361-phy&#39;, channel &#39;altvoltage1&#39; (output), id &#39;TX_LO&
 <p>If we shift things around a bit - if we configure things for an LTE10 signal,
 (LTE10 filter, with an LTE10 signal going out the DAC at full scale), and set
 the Tx and Rx to the same (2400 MHz), we can see this:</p>
-<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_lte10.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_lte10.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_lte10.png" style="width: 500px;" />
+<div class="grid" style="grid-template-columns: 50% 50%;"><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_lte10.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_lte10.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_lte10.png" style="width: 500px;" />
 </a>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_lte10_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_lte10_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/hacking/tx_lo_lte10_rx1.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_lte10_rx1.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_lte10_rx1.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/doc_apollo/docs/tools/pluto/hacking/tx_lo_lte10_rx1.png" style="width: 200px;" />
 </a>
 </div><p>By offsetting things in 10 MHz steps, how far do things need to be away, so that
 it stops affecting the receiver:</p>
