@@ -13,11 +13,8 @@
                 "hdl": {
                     "projects/ad4052_ardz": {}
                 },
-                "linux": {
-                    "iio/ad4052": {}
-                },
                 "no-OS": {
-                    "drivers/ad405x": {}
+                    "drivers/adc/ad405x": {}
                 }
             },
             "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
