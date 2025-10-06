@@ -34,7 +34,7 @@ The profile generator allows you to configure various parameters of the AD9084:
    ``User Library`` folder:
 
    - A ``.json`` file containing all the profile settings
-   - A ``_summary.json`` file containg a brief summary of the profile settings
+   - A ``_summary.json`` file containing a brief summary of the profile settings
    - A ``.bin`` file containing the profile settings in binary format which will be
      loaded on the AD9084
 
