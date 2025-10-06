@@ -5,8 +5,8 @@ AD9084-FMCA-EBZ Virtex UltraScale+ VCU118/VCU128 Quick Start Guide
 
 This guide provides some quick instructions on how to setup the AD9084 eval board on:
 
--  :xilinx:`VCU118`
--  :xilinx:`VCU128`
+- :xilinx:`VCU118`
+- :xilinx:`VCU128`
 
 Required Hardware
 -----------------
@@ -22,16 +22,16 @@ Required Software
 -----------------
 
 - A Linux OS on a PC
-- Xilinx Vivado 2023.2
-- Xilinx Vitis 2023.2
+- Xilinx Vivado 2025.1
+- Xilinx Vitis 2025.1
 - A UART terminal (Putty/Tera Term/Minicom, etc.), Baud rate 115200 (8N1).
 - :ref:`IIO-Oscilloscope <iio-oscilloscope>` with the :ref:`AD9084 plugin <ad9084 iio-oscilloscope-plugin>`
 
 Building the HDL project
 ------------------------
 
-Before building the hdl project setup your computer based on the
-following guide: `Building HDL projects <https://analogdevicesinc.github.io/hdl/user_guide/build_hdl.html>`__
+Before building the hdl project setup your computer based on the following
+guide: :external+hdl:ref:`build_hdl`
 
 .. shell::
   :show-user:
@@ -46,31 +46,31 @@ following guide: `Building HDL projects <https://analogdevicesinc.github.io/hdl/
 Build the Linux files
 -----------------------
 
-Microblaze gnu toolchain from Xilinx is no longer available on git.
+Microblaze gnu toolchain from Xilinx is no longer available on gcc.
 Please use gnu tools from Vitis installation as below:
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $export PATH=/opt/Xilinx/Vitis/2023.2/gnu/microblaze/linux_toolchain/lin64_le/bin/:$PATH
-  $export ARCH=microblaze
-  $export CROSS_COMPILE=microblazeel-xilinx-linux-gnu-
+   $export PATH=/opt/Xilinx/Vitis/2025.1/gnu/microblaze/linux_toolchain/lin64_le/bin/:$PATH
+   $export ARCH=microblaze
+   $export CROSS_COMPILE=microblazeel-xilinx-linux-gnu-
 
 or alternatively, source the Vivado **settings64.sh** as below:
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $source /opt/Xilinx/Vivado/2023.2/settings64.sh
-  $export ARCH=microblaze
-  $export CROSS_COMPILE=microblazeel-xilinx-linux-gnu-
+   $source /opt/Xilinx/Vivado/2025.1/settings64.sh
+   $export ARCH=microblaze
+   $export CROSS_COMPILE=microblazeel-xilinx-linux-gnu-
 
 Get Linux kernel source
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $git clone https://github.com/analogdevicesinc/linux.git
+   $git clone https://github.com/analogdevicesinc/linux.git
     Cloning into 'linux'...
     remote: Counting objects: 2757163, done.
     remote: Compressing objects: 100% (495484/495484), done.
@@ -83,26 +83,27 @@ Get the Root File-System
 The root file system or rootfs contains everything (besides the Linux kernel itself) needed to support a full Linux system.
 It contains all the (user) applications, configurations, services, data, etc.
 Without the rootfs your Linux system cannot run. You can either just download the pre-build image or
-build it yourself. Instructions can be found here: `Building with buildroot <https://wiki.analog.com/resources/tools-software/linux-build/generic/buildroot>`__
+build it yourself. Instructions can be found here: :dokuwiki:`Building with buildroot <resources/tools-software/linux-build/generic/buildroot>`
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $cd linux
-  $wget https://swdownloads.analog.com/cse/microblaze/rootfs/rootfs.cpio.gz
-    --2022-01-18 09:52:08--  https://swdownloads.analog.com/cse/microblaze/rootfs/rootfs.cpio.gz
-    Resolving swdownloads.analog.com (swdownloads.analog.com)... 23.63.205.142
-    Connecting to swdownloads.analog.com (swdownloads.analog.com)|23.63.205.142|:443... connected.
-    HTTP request sent, awaiting response... 200 OK
-    Length: 6772207 (6,5M) [application/x-gzip]
-    Saving to: ‘rootfs.cpio.gz’
+   $cd linux
+   $wget https://swdownloads.analog.com/cse/microblaze/rootfs/rootfs.cpio.gz
+     --2022-01-18 09:52:08--  https://swdownloads.analog.com/cse/microblaze/rootfs/rootfs.cpio.gz
+     Resolving swdownloads.analog.com (swdownloads.analog.com)... 23.63.205.142
+     Connecting to swdownloads.analog.com (swdownloads.analog.com)|23.63.205.142|:443... connected.
+     HTTP request sent, awaiting response... 200 OK
+     Length: 6772207 (6,5M) [application/x-gzip]
+     Saving to: ‘rootfs.cpio.gz’
 
-    rootfs.cpio.gz                                     100%[===============================================================================================================>]   6,46M  3,32MB/s    in 1,9s
+     rootfs.cpio.gz                                     100%[===============================================================================================================>]   6,46M  3,32MB/s    in 1,9s
 
-    2022-01-18 09:52:12 (3,32 MB/s) - ‘rootfs.cpio.gz’ saved [6772207/6772207]
+     2022-01-18 09:52:12 (3,32 MB/s) - ‘rootfs.cpio.gz’ saved [6772207/6772207]
 
 .. important::
-  rootfs.cpio.gz must be placed in the root of your kernel tree. (~/linux/rootfs.cpio.gz)
+
+   rootfs.cpio.gz must be placed in the root of your kernel tree. (~/linux/rootfs.cpio.gz)
 
 Configure the Kernel and build it
 
@@ -110,18 +111,18 @@ The following command shows the general format for the build target name:
 
 .. shell::
 
-  $make simpleImage.<dts file name>
+   $make simpleImage.<dts file name>
 
 .. note::
 
-  The <dts file name> does not include the file extension “.dts”.
+   The <dts file name> does not include the file extension “.dts”.
 
 To see what device-trees for the different FPGA carrier and FMC module combination exist type:
 
 .. shell::
 
-  ~/linux
-  $ls -l arch/microblaze/boot/dts | grep ad9084
+   ~/linux
+   $ls -l arch/microblaze/boot/dts | grep ad9084
 
 Building the kernel with the default device tree
 
@@ -132,51 +133,51 @@ Building the kernel with the default device tree
    before proceeding in order to add the profile to the Linux build.
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $cd linux
-  $make adi_mb_defconfig
-  #
-  # configuration written to .config
-  #
-  $make -j4 simpleImage.vcu118_ad9084
-    SYNC    include/config/auto.conf.cmd
-    CC      scripts/mod/empty.o
-    CC      scripts/mod/devicetable-offsets.s
-    MKELF   scripts/mod/elfconfig.h
-    HOSTCC  scripts/mod/modpost.o
-    HOSTCC  scripts/mod/sumversion.o
-    HOSTCC  scripts/mod/file2alias.o
-    [ --snip-- ]
-    AR      init/built-in.a
-    LD      vmlinux.o
-    MODPOST vmlinux.symvers
-    MODINFO modules.builtin.modinfo
-    GEN     modules.builtin
-    LD      .tmp_vmlinux.kallsyms1
-    KSYMS   .tmp_vmlinux.kallsyms1.S
-    AS      .tmp_vmlinux.kallsyms1.S
-    LD      .tmp_vmlinux.kallsyms2
-    KSYMS   .tmp_vmlinux.kallsyms2.S
-    AS      .tmp_vmlinux.kallsyms2.S
-    LD      vmlinux
-    SORTTAB vmlinux
-    SYSMAP  System.map
-    OBJCOPY arch/microblaze/boot/simpleImage.vcu118_ad9084
-    SHIPPED arch/microblaze/boot/simpleImage.vcu118_ad9084.unstrip
-    STRIP   vmlinux arch/microblaze/boot/simpleImage.vcu118_ad9084.strip
-    UIMAGE  arch/microblaze/boot/simpleImage.vcu118_ad9084.ub
-    Image Name:   Linux-5.10.0-97916-g513446e488c3
-    Created:      Tue Jan 18 12:07:35 2022
-    Image Type:   MicroBlaze Linux Kernel Image (uncompressed)
-    Data Size:    18398124 Bytes = 17966.92 KiB = 17.55 MiB
-    Load Address: 80000000
-    Entry Point:  80000000
-    Kernel: arch/microblaze/boot/simpleImage.vcu118_ad9084 is ready  (#3678)
+   $cd linux
+   $make adi_mb_defconfig
+   #
+   # configuration written to .config
+   #
+   $make -j4 simpleImage.vcu118_ad9084
+     SYNC    include/config/auto.conf.cmd
+     CC      scripts/mod/empty.o
+     CC      scripts/mod/devicetable-offsets.s
+     MKELF   scripts/mod/elfconfig.h
+     HOSTCC  scripts/mod/modpost.o
+     HOSTCC  scripts/mod/sumversion.o
+     HOSTCC  scripts/mod/file2alias.o
+     [ --snip-- ]
+     AR      init/built-in.a
+     LD      vmlinux.o
+     MODPOST vmlinux.symvers
+     MODINFO modules.builtin.modinfo
+     GEN     modules.builtin
+     LD      .tmp_vmlinux.kallsyms1
+     KSYMS   .tmp_vmlinux.kallsyms1.S
+     AS      .tmp_vmlinux.kallsyms1.S
+     LD      .tmp_vmlinux.kallsyms2
+     KSYMS   .tmp_vmlinux.kallsyms2.S
+     AS      .tmp_vmlinux.kallsyms2.S
+     LD      vmlinux
+     SORTTAB vmlinux
+     SYSMAP  System.map
+     OBJCOPY arch/microblaze/boot/simpleImage.vcu118_ad9084
+     SHIPPED arch/microblaze/boot/simpleImage.vcu118_ad9084.unstrip
+     STRIP   vmlinux arch/microblaze/boot/simpleImage.vcu118_ad9084.strip
+     UIMAGE  arch/microblaze/boot/simpleImage.vcu118_ad9084.ub
+     Image Name:   Linux-5.10.0-97916-g513446e488c3
+     Created:      Tue Jan 18 12:07:35 2022
+     Image Type:   MicroBlaze Linux Kernel Image (uncompressed)
+     Data Size:    18398124 Bytes = 17966.92 KiB = 17.55 MiB
+     Load Address: 80000000
+     Entry Point:  80000000
+     Kernel: arch/microblaze/boot/simpleImage.vcu118_ad9084 is ready  (#3678)
 
 .. note::
 
-  The STRIP image found under arch/microblaze/boot/ is the ELF image which can be loaded via the debugger
+   The STRIP image found under arch/microblaze/boot/ is the ELF image which can be loaded via the debugger
 
 Testing
 -------
@@ -189,29 +190,30 @@ From the Linux build directory locate the simpleImage and copy it to the working
 
 .. shell::
 
-  $mkdir working_dir
-  $cp <hdl_repo_dir>/projects/ad9084_ebz/vcu118/ad9084_ebz_vcu118.runs/impl_1/system_top.bit working_dir
-  $cp <linux_repo_dir>/arch/microblaze/boot/simpleImage.vcu118_ad9084.strip working_dir
+   $mkdir working_dir
+   $cp <hdl_repo_dir>/projects/ad9084_ebz/vcu118/ad9084_ebz_vcu118.runs/impl_1/system_top.bit working_dir
+   $cp <linux_repo_dir>/arch/microblaze/boot/simpleImage.vcu118_ad9084.strip working_dir
 
 Next step is to program the board with xsct or similar tool
 
 .. shell::
 
-  $xsct
-  $xsct% connect
-  $xsct% fpga -f system_top.bit
-  $xsct% after 1000
-  $xsct% target 3
-  $xsct% dow simpleImage.vcu118_ad9084.strip
-  $xsct% after 1000
-  $xsct% con
-  $xsct% disconnect
+   $xsct
+   $xsct% connect
+   $xsct% fpga -f system_top.bit
+   $xsct% after 1000
+   $xsct% target 3
+   $xsct% dow simpleImage.vcu118_ad9084.strip
+   $xsct% after 1000
+   $xsct% con
+   $xsct% disconnect
 
 .. note::
 
    Login Information
-         - user: analog
-         - password: analog
+
+   - user: analog
+   - password: analog
 
 .. collapsible:: Complete boot log
 
@@ -706,9 +708,9 @@ Next step is to program the board with xsct or similar tool
 .. shell::
 
    $iio_attr -d
-      iio:device0: xlnx,versal-sysmon
-      iio:device1: hmc7044
-      iio:device2: axi-ad9084-rx-hpc (buffer capable)
-      iio:device2: axi-ad9084-rx-hpc-b
-      iio:device3: axi-ad9084-tx-hpc (buffer capable)
-      iio:device3: axi-ad9084-tx-hpc-b
+    iio:device0: xlnx,versal-sysmon
+    iio:device1: hmc7044
+    iio:device2: axi-ad9084-rx-hpc (buffer capable)
+    iio:device2: axi-ad9084-rx-hpc-b
+    iio:device3: axi-ad9084-tx-hpc (buffer capable)
+    iio:device3: axi-ad9084-tx-hpc-b

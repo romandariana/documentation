@@ -3,34 +3,29 @@
 AD9084-FMCA-EBZ (Apollo)
 ========================
 
+16-bit, 28 GSPS, RF DAC core, and 12-bit, 20 GSPS RF ADC
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Overview
 --------
 
-The Apollo mixed signal front-end (MxFE®) is a highly integrated
-device with a 16-bit, 28 GSPS maximum sample rate, RF
-digital-to-analog converter (DAC) core, and 12-bit, 20 GSPS maximum
-sample rate, RF analog-to-digital converter (ADC) core. The AD9084
-supports four transmit channels and four receive channels. The
-AD9084 is well suited for applications requiring both wideband
-ADCs and DACs to process signal(s) having wide instantaneous
-bandwidth. The device features a 48 lane, 32.5 Gbps JESD204C
-or 20 Gbps JESD204B data transceiver port, an on-chip clock
-multiplier, and a digital signal processing (DSP) capability targeted
-at either wideband or multiband, direct to RF applications. The
-AD9084 also features a bypass mode that allows the full bandwidth
-capability of the ADC and/or DAC cores to bypass the DSP data-paths.
-The device also features low latency loopback and frequency
-hopping modes targeted at phased array radar systems and electronic
-warfare applications.
-
 .. image:: ad9084_ebz.png
+   :align: right
    :width: 600px
 
-.. toctree::
-   :hidden:
-
-   prerequisites
-   quickstart/index
+The Apollo mixed signal front-end (MxFE®) is a highly integrated device with a
+16-bit, 28 GSPS maximum sample rate, RF digital-to-analog converter (DAC) core,
+and 12-bit, 20 GSPS maximum sample rate, RF analog-to-digital converter (ADC)
+core. The AD9084 supports four transmit channels and four receive channels. The
+AD9084 is well suited for applications requiring both wideband ADCs and DACs to
+process signal(s) having wide instantaneous bandwidth. The device features a 48
+lane, 32.5 Gbps JESD204C or 20 Gbps JESD204B data transceiver port, an on-chip
+clock multiplier, and a digital signal processing (DSP) capability targeted at
+either wideband or multiband, direct to RF applications. The AD9084 also
+features a bypass mode that allows the full bandwidth capability of the ADC
+and/or DAC cores to bypass the DSP data-paths. The device also features low
+latency loopback and frequency hopping modes targeted at phased array radar
+systems and electronic warfare applications.
 
 Table of Contents
 -----------------
@@ -91,6 +86,17 @@ things. However, like many things, documentation is never as complete as it shou
       .. #. :dokuwiki:`HDL Reference Design <resources/eval/user-guides/ad9084/reference_hdl>` which you must use in your FPGA.
 
 .. #. `Help and Support <TODO>`__
+
+Pre-requisites and quickstart
+-----------------------------
+
+.. toctree::
+   :caption: The prerequisites and quickstart guides are provided at:
+   :titlesonly:
+   :maxdepth: 1
+
+   prerequisites
+   quickstart/index
 
 .. _ad9084 block-diagram:
 

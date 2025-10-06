@@ -5,8 +5,8 @@ AD9084-FMCA-EBZ Versal ACAP VCK190/VPK180 Quick Start Guide
 
 This guide provides some quick instructions on how to setup the AD9084 eval board on:
 
--  :xilinx:`VCK190`
--  :xilinx:`VPK180`
+- :xilinx:`VCK190`
+- :xilinx:`VPK180`
 
 Required Hardware
 -----------------
@@ -24,7 +24,7 @@ Required Software
 -----------------
 
 - A Linux OS on a PC
-- Xilinx Vivado 2023.2
+- Xilinx Vivado 2025.1
 - A UART terminal (Putty/Tera Term/Minicom, etc.), Baud rate 115200 (8N1).
 - :ref:`IIO-Oscilloscope <iio-oscilloscope>` with the :ref:`AD9084 plugin <ad9084 iio-oscilloscope-plugin>`
 
@@ -32,23 +32,23 @@ Building the HDL project
 ------------------------
 
 Before building the hdl project setup your computer based on the
-following guide: `Building HDL projects <https://analogdevicesinc.github.io/hdl/user_guide/build_hdl.html>`__
+following guide: :external+hdl:ref:`build_hdl`
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $git clone https://github.com/analogdevicesinc/hdl.git
-  $cd hdl/projects/ad9084_ebz/vck190
-  $make
-    Building ad9084_ebz_vck190 [/home/analog/hdl/projects/ad9084_ebz/vck190/ad9084_ebz_vck190_vivado.log] ... OK
+   $git clone https://github.com/analogdevicesinc/hdl.git
+   $cd hdl/projects/ad9084_ebz/vck190
+   $make
+     Building ad9084_ebz_vck190 [/home/analog/hdl/projects/ad9084_ebz/vck190/ad9084_ebz_vck190_vivado.log] ... OK
 
 Building the boot image BOOT.BIN
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Instructions on how to build the boot image BOOT.BIN image for Versal boards can be found here:
 
-- `Building an HDL Project <https://analogdevicesinc.github.io/hdl/user_guide/build_hdl.html>`__
-- `Build the boot image BOOT.BIN <https://analogdevicesinc.github.io/hdl/user_guide/build_boot_bin.html#for-versal>`__
+- :external+hdl:ref:`Building an HDL Project <build_hdl>`
+- :external+hdl:ref:`Build the boot image BOOT.BIN <build_boot_bin versal>`
 
 .. _ad9084_ebz versal linux:
 
@@ -60,28 +60,28 @@ On the development host
 Get the cross compiler and set the CROSS_COMPILE and ARCH variables
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  /github-linux-build
-  $wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz
-  $tar xvf gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz
-  $export CROSS_COMPILE=arm64
-  $export PATH=`pwd`/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin:$PATH
+   /github-linux-build
+   $wget https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz
+   $tar xvf gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz
+   $export CROSS_COMPILE=arm64
+   $export PATH=`pwd`/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin:$PATH
 
 Create a local copy of ADI's kernel tree
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  $mkdir github-linux-build
-  $cd github-linux-build
-  $git clone https://github.com/analogdevicesinc/linux.git
-    Cloning into 'linux'...
-    remote: Counting objects: 2757163, done.
-    remote: Compressing objects: 100% (495484/495484), done.
-    remote: Total 2757163 (delta 2296596), reused 2687337 (delta 2234506)
-    Receiving objects: 100% (2757163/2757163), 782.04 MiB | 1.39 MiB/s, done.
-    Resolving deltas: 100% (2296596/2296596), done.
+   $mkdir github-linux-build
+   $cd github-linux-build
+   $git clone https://github.com/analogdevicesinc/linux.git
+     Cloning into 'linux'...
+     remote: Counting objects: 2757163, done.
+     remote: Compressing objects: 100% (495484/495484), done.
+     remote: Total 2757163 (delta 2296596), reused 2687337 (delta 2234506)
+     Receiving objects: 100% (2757163/2757163), 782.04 MiB | 1.39 MiB/s, done.
+     Resolving deltas: 100% (2296596/2296596), done.
 
 Configure the kernel and build it
 
@@ -92,52 +92,48 @@ Configure the kernel and build it
    before proceeding in order to add the profile to the Linux build.
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  /github-linux-build/linux
-  $make adi_versal_defconfig
-  #
-  # configuration written to .config
-  #
-  $make -j16 Image
-    CHK     include/config/kernel.release
-    CHK     include/generated/uapi/linux/version.h
-    HOSTCC  scripts/basic/fixdep
-    HOSTCC  scripts/basic/bin2c
-    [ -- snip --]
-    CC      init/version.o
-    LD      init/built-in.o
-    KSYM    .tmp_kallsyms1.o
-    KSYM    .tmp_kallsyms2.o
-    LD      vmlinux
-    SORTEX  vmlinux
-    SYSMAP  System.map
-    OBJCOPY arch/arm64/boot/Image
+   /github-linux-build/linux
+   $make adi_versal_defconfig
+   #
+   # configuration written to .config
+   #
+   $make -j16 Image
+     CHK     include/config/kernel.release
+     CHK     include/generated/uapi/linux/version.h
+     HOSTCC  scripts/basic/fixdep
+     HOSTCC  scripts/basic/bin2c
+     [ -- snip --]
+     CC      init/version.o
+     LD      init/built-in.o
+     KSYM    .tmp_kallsyms1.o
+     KSYM    .tmp_kallsyms2.o
+     LD      vmlinux
+     SORTEX  vmlinux
+     SYSMAP  System.map
+     OBJCOPY arch/arm64/boot/Image
 
-Build the devicetree
-
-============================= =================================================
-Device tree                   Board
-============================= =================================================
-versal-vck190-reva-ad9084.dts :xilinx:`VCK190` and the :adi:`AD9084` eval board
-versal-vpk180-reva-ad9084.dts :xilinx:`VPK180` and the :adi:`AD9084` eval board
-============================= =================================================
+Build one of the supported devicetrees ``versal-vck190-reva-ad9084-*.dts``, such as
+``versal-vck190-reva-ad9084-204C-M4-L4-NP16-20p0-4x4.dts``.
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  /github-linux-build/linux
-  $make xilinx/versal-vck190-reva-ad9084.dtb
-    DTC     arch/arm64/boot/dts/xilinx/versal-vck190-reva-ad9084.dtb
+   /github-linux-build/linux
+   $ls arch/arm64/boot/dts/xilinx/versal-vck190-reva-ad9084-*.dts
+     arch/arm64/boot/dts/xilinx/versal-vck190-reva-ad9084-204C-M4-L4-NP16-20p0-4x4.dts
+   $make xilinx/versal-vck190-reva-ad9084-204C-M4-L4-NP16-20p0-4x4.dtb
+     DTC     arch/arm64/boot/dts/xilinx/versal-vck190-reva-ad9084-204C-M4-L4-NP16-20p0-4x4.dtb
 
-Copy the generated files to your SD Card
+Copy the generated files to your SD Card.
 
 .. shell::
-  :show-user:
+   :show-user:
 
-  /github-linux-build/linux
-  $cp arch/arm64/boot/Image /media/BOOT
-  $cp arch/arm64/boot/dts/xilinx/versal-vck190-reva-ad9084.dtb /media/BOOT/system.dtb
+   /github-linux-build/linux
+   $cp arch/arm64/boot/Image /media/BOOT
+   $cp arch/arm64/boot/dts/xilinx/versal-vck190-reva-ad9084-204C-M4-L4-NP16-20p0-4x4.dtb /media/BOOT/system.dtb
 
 
 Testing
@@ -147,7 +143,6 @@ The following steps are intended for :xilinx:`VCK190` but they mostly apply to
 :xilinx:`VPK180` as well.
 
 .. image:: versal/vck190.jpg
-   :width: 900px
 
 Physical setup
 ^^^^^^^^^^^^^^
@@ -159,18 +154,15 @@ Physical setup
 #. Configure ACAP for SD BOOT (mode SW1[4:1] switch in the position **OFF,OFF,OFF,ON** as seen in the below picture).
 
    .. image:: versal/vck190_sw1.jpg
-      :width: 200px
 
 #. Configure System Controller for SD BOOT (mode SW11[4:1] switch in the position **OFF,OFF,OFF,ON** as seen in the below picture).
 
    .. image:: versal/vck190_sw11.jpg
-      :width: 200px
 
 #. Connect :adi:`AD9084-FMCA-EBZ <AD9084>` to FMCP2 (J53) with FMC+ riser or equivalent.
 #. Connect the power supplies to the FPGA carrier board and the AD9084-FMCA-EBZ evaluation board.
 
    .. image:: versal/vck190_ad9084_ebz.jpg
-      :width: 800px
 
 #. Verify VADJ is set to 1.5 V
 
@@ -188,13 +180,27 @@ Verify 1.5 V VADJ
    Then on "Set VADJ_FMC", select 1.5V and click "Set", AD9084 LEDs should turn on immediately.
 
    .. image:: versal/beam-home.jpg
-      :width: 700px
 
    .. image:: versal/beam-board-settings.jpg
-      :width: 700px
 
    .. image:: versal/beam-set-vadj.jpg
-      :width: 700px
+
+   .. tip::
+
+      Alternatively to the GUI, you can setup VADJ and reboot with ``curl``:
+
+      .. shell::
+
+         # Update according the BEAM Tool Web Address
+         $URL=128.0.0.84
+         $until curl \
+         $    'http://$URL:50002/cmdquery?sc_cmd=setvoltage&target=VADJ_FMC&params=1.5' \
+         $    --connect-timeout 1 ; \
+         $  do sleep 1 ; done
+         $until curl \
+         $    'http://$URL:50002/cmdquery?sc_cmd=reset&target=&params=' \
+         $    --connect-timeout 1 ; \
+         $  do sleep 1 ; done
 
 #. On the ACAP UART interface console, reboot the system. After reboot, ad9084 devices should be present.
 
@@ -226,8 +232,9 @@ evaluation board will be initialized.
 .. note::
 
    Login Information
-         - user: analog
-         - password: analog
+
+   - user: analog
+   - password: analog
 
 Boot messages
 ^^^^^^^^^^^^^
@@ -725,12 +732,12 @@ Boot messages
 .. shell::
 
    $iio_attr -d
-      iio:device0: xlnx,versal-sysmon
-      iio:device1: hmc7044
-      iio:device2: axi-ad9084-rx-hpc (buffer capable)
-      iio:device2: axi-ad9084-rx-hpc-b
-      iio:device3: axi-ad9084-tx-hpc (buffer capable)
-      iio:device3: axi-ad9084-tx-hpc-b
+    iio:device0: xlnx,versal-sysmon
+    iio:device1: hmc7044
+    iio:device2: axi-ad9084-rx-hpc (buffer capable)
+    iio:device2: axi-ad9084-rx-hpc-b
+    iio:device3: axi-ad9084-tx-hpc (buffer capable)
+    iio:device3: axi-ad9084-tx-hpc-b
 
 .. important::
 

@@ -97,7 +97,7 @@ The carriers we support are:
 Supported Environments
 ----------------------
 
-The supported OS are:
+The supported environments are:
 
 .. list-table::
   :header-rows: 1
