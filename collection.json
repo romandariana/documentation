@@ -17,6 +17,7 @@
                     "drivers/adc/ad405x": {}
                 }
             },
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/adc/ad4052-ardz/eval-angle.png",
             "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
             "label": [
                 "eval",
