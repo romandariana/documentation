@@ -11,10 +11,14 @@
                     }
                 },
                 "hdl": {
-                    "projects/ad4052_ardz": {}
+                    "projects/ad4052_ardz": {
+                        "name": "HDL Project (ad4052_ardz)"
+                    }
                 },
                 "no-OS": {
-                    "drivers/adc/ad405x": {}
+                    "drivers/adc/ad405x": {
+                        "name": "no-OS driver (ad405x)"
+                    }
                 }
             },
             "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/adc/ad4052-ardz/eval-angle.png",
