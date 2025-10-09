@@ -27,6 +27,21 @@
                 "eval",
                 "user-guide"
             ]
+        },
+        "Applied Systems Control": {
+            "docname": "documentation/learning/workshops_applied_systems_control/index",
+            "description": "Introduction to applied systems control, focusing on practical applications\nand real-world scenarios. Participants will learn about various control\nsystems, their design and implementation.\n",
+            "include": {
+                "documentation": {
+                    "learning/workshops_applied_systems_control": {},
+                    "solutions/reference-designs/ad-swiot1l-sl/index": {}
+                }
+            },
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/workshops_applied_systems_control/industrial.png",
+            "subtitle": "Overview of industrial control and automation systems.",
+            "label": [
+                "workshop"
+            ]
         }
     }
 }
