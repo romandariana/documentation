@@ -47,7 +47,7 @@
                 },
                 "pyadi-iio": {
                     "devices/adi.adxl355": {
-                        "name": "pyADI-iio Driver (adxl355)"
+                        "name": "pyadi-iio Abstraction (adxl355)"
                     }
                 }
             },
