@@ -28,6 +28,36 @@
                 "user-guide"
             ]
         },
+        "EVAL-ADXL355-PMDZ": {
+            "docname": "documentation/eval/user-guide/mem/adxl355-pmdz/index",
+            "description": "",
+            "include": {
+                "documentation": {
+                    "eval/user-guide/mem/adxl355-pmdz": {
+                        "name": "User guide"
+                    },
+                    "learning/converter_connectivity_tutorial/index": {
+                        "name": "Converter Connectivity Tutorial"
+                    }
+                },
+                "no-OS": {
+                    "drivers/accel/adxl355": {
+                        "name": "no-OS Driver (adxl355)"
+                    }
+                },
+                "pyadi-iio": {
+                    "devices/adi.adxl355": {
+                        "name": "pyADI-iio Driver (adxl355)"
+                    }
+                }
+            },
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/mem/adxl355-pmdz/adxl355_pmdz.png",
+            "subtitle": "Evaluating the ADXL355 Low-Noise, Low-Drift, Low-Power, 3-Axis MEMS Accelerometers",
+            "label": [
+                "eval",
+                "user-guide"
+            ]
+        },
         "Applied Systems Control": {
             "docname": "documentation/learning/workshops_applied_systems_control/index",
             "description": "Introduction to applied systems control, focusing on practical applications\nand real-world scenarios. Participants will learn about various control\nsystems, their design and implementation.\n",
