@@ -16,3 +16,12 @@ System-level block diagram
 
 .. figure:: demo_block_diagram.svg
    :align: center
+
+
+Software Configuration
+-----------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   software/index
