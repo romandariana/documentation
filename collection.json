@@ -21,7 +21,7 @@
                     }
                 }
             },
-            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/mem/adxl355-pmdz/eval-angle.png",
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/adc/ad4052-ardz/eval-angle.png",
             "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
             "label": [
                 "eval",
@@ -63,8 +63,12 @@
             "description": "Introduction to applied systems control, focusing on practical applications\nand real-world scenarios. Participants will learn about various control\nsystems, their design and implementation.\n",
             "include": {
                 "documentation": {
-                    "learning/workshops_applied_systems_control": {},
-                    "solutions/reference-designs/ad-swiot1l-sl/index": {}
+                    "learning/workshops_applied_systems_control": {
+                        "name": "Applied Systems Control Workshop"
+                    },
+                    "solutions/reference-designs/ad-swiot1l-sl/index": {
+                        "name": "AD-SWIOT1L-SL"
+                    }
                 }
             },
             "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/workshops_applied_systems_control/industrial.png",
