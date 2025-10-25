@@ -21,7 +21,7 @@
                     }
                 }
             },
-            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/adc/ad4052-ardz/eval-angle.png",
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/mem/adxl355-pmdz/eval-angle.png",
             "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
             "label": [
                 "eval",
@@ -51,7 +51,7 @@
                     }
                 }
             },
-            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/mem/adxl355-pmdz/adxl355_pmdz.png",
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/eval/user-guide/mem/adxl355-pmdz/eval-angle.png",
             "subtitle": "Evaluating the ADXL355 Low-Noise, Low-Drift, Low-Power, 3-Axis MEMS Accelerometers",
             "label": [
                 "eval",
