@@ -490,10 +490,9 @@ then:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../linux/kuiper/index.html#kuiper"><span class="std std-ref">Kuiper</span></a> has matured considerably, with broad support for ADI devices
 and popular processor and FPGA development platforms</p></li>
-<li><p>The very popular <a class="icon adi reference external" href="https://www.analog.com/eval-adxl355-pmdz" target="_blank">ADXL355 Pmod</a> would have been
-used initially, but the Linux driver had not been upstreamed yet. It has since
-been released, and is being added as an option for this tutorial. (The original
-ADXL345 / Digilent Pmod-ACL is still included.)</p></li>
+<li><p>The <a class="icon adi reference external" href="https://www.analog.com/eval-adxl355-pmdz" target="_blank">ADXL355 Pmod</a> has since been released, and
+is being added as an option for this tutorial. (The original ADXL345 /
+Digilent Pmod-ACL is still included.)</p></li>
 <li><p>LibIIO now supports HWMON devices (if these terms aren’t familiar, you’ll
 learn about them soon), enabling the use of the absolute <strong>best</strong> device to
 start learning about embedded Linux systems: the LM75 temperature sensor.
@@ -647,7 +646,7 @@ correct image shortly. This is a fairly common step in bringing up embedded
 computers - Raspberry Pi, BeagleBone, Zedboard, Arrow SoCkit, or any machine
 that boots from an SD card. There are lots of ways to burn images, but the most
 straightforward way is to use the standard Raspberry Pi Imager, available here:
-<a class="icon link reference external" href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi OS (including Raspbery Pi Imager</a></p>
+<a class="icon link reference external" href="https://www.raspberrypi.com/software/" target="_blank">Raspberry Pi OS (including Raspbery Pi Imager)</a></p>
 <p>There are instructions for Windows, Mac, and Linux. The imager also works on
 machines that encrypt data being written to external drives since it’s writing
 “raw” data. HOWEVER - beware encryption software when editing configuration
@@ -757,25 +756,48 @@ find anything. While we do have our ADXL3x5/LM75 physically connected to the
 board, Linux doesn’t know about it yet because UNlike USB, PCI, SCSI, Firewire,
 HDMI, etc, SPI and I2C devices do not support enumeration. How do we tell the
 Linux kernel what we’ve connected to the expansion header? The answer is the
-“Device Tree Overlay”g</p>
+“Device Tree Overlay”.</p>
 <p>While you won’t have to do anything more than editing a couple of files in this
 tutorial, it helps to understand a bit about what is going on under the
 surface. A “Device Tree” contains information about a system’s hardware - what
 peripherals exist (like displays, memory, USB, Ethernet controllers, GPIO pins,
 etc.) A “Device Tree Overlay” contains information about additional connected
-hardware, like our ADXL3x5/LM75. <a class="reference internal" href="#fig-device-tree"><span class="std std-numref">Figure 9</span></a> shows a screenshot
-of the ADXL345’s overlay source.
+hardware, like our ADXL3x5/LM75. <a class="reference internal" href="#code-device-tree"><span class="std std-numref">Listing 1</span></a> shows the devicetree
+of the ADXL345’s overlay targetting the Raspberry Pi.
 It shows that the ADXL345 is connected to the SPI port, using
 the first CS signal (CS0), the maximum SPI clock frequency is 1MHz, and the
 interrupt signal is connected to Pin 19 (as shown in the connection diagram
 above.)</p>
-<figure class="align-center" id="id13">
-<span id="fig-device-tree"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/device_tree.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/device_tree.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/device_tree.png" style="width: 600px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Figure 9 </span><span class="caption-text">Partial ADXL345 overlay source (dts)</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
-</figcaption>
-</figure>
+<div class="literal-block-wrapper docutils container" id="id13">
+<span id="code-device-tree"></span><div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Partial ADXL345 overlay source (dts)</span><a class="headerlink" href="#id13" title="Link to this code"></a></div>
+<div class="highlight-dts notranslate"><div class="highlight"><pre><span></span><span class="c1">// SPDX-License-Identifier: GPL-2.0</span>
+<span class="cp">/dts-v1/</span><span class="p">;</span>
+<span class="cp">/plugin/</span><span class="p">;</span>
+
+<span class="cp">#include</span><span class="cm"> </span><span class="cpf">&lt;dt-bindings/interrupt-controller/irq.h&gt;</span>
+
+<span class="o">&amp;</span><span class="p">{</span><span class="o">/</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;brcm,bcm2835&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;brcm,bcm2708&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;brcm,bcm2709&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="o">&amp;</span><span class="na">spi0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nl">adxl345</span><span class="p">:</span><span class="w"> </span><span class="nf">adxl345</span><span class="o">@</span><span class="mi">0</span><span class="cm"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;adi,adxl345&quot;</span><span class="p">;</span>
+<span class="w">                </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">                </span><span class="n">spi-max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1000000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">                </span><span class="n">spi-cpha</span><span class="p">;</span>
+<span class="w">                </span><span class="n">spi-cpol</span><span class="p">;</span>
+<span class="w">                </span><span class="n">interrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">19</span><span class="w"> </span><span class="na">IRQ_TYPE_LEVEL_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">                </span><span class="n">interrupt-parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="o">&amp;</span><span class="nf">spidev0</span><span class="cm"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;disabled&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
 <p>The device tree source is then compiled into a “flattened” device tree that the
 Linux kernel reads directly. While this process is fairly straightforward, it’s
 beyond the scope of this tutorial. Furthermore, the device tree overlay for
@@ -785,12 +807,11 @@ is specific to a particular device AND how it is connected to the Raspberry Pi.
 Any changes to the connections - SPI CS line, interrrupt line, etc. will
 require a corresponding modification to the overlay.)</p>
 <p>For reference, here are the overlay source files for the three devices in this
-tutorial. These are in the Linux rpi-5.15.y branch, used for Kuiper Linux
-2022_r2 release:</p>
+tutorial. These are in the Linux rpi-6.12.y branch:</p>
 <ul class="simple">
-<li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux/blob/rpi-5.15.y/arch/arm/boot/dts/overlays/rpi-lm75-overlay.dts" target="_blank">LM75 Device Tree Overlay</a></p></li>
-<li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux/blob/rpi-5.15.y/arch/arm/boot/dts/overlays/rpi-adxl345-overlay.dts" target="_blank">ADXL345 Device Tree Overlay</a></p></li>
-<li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux/blob/rpi-5.15.y/arch/arm/boot/dts/overlays/rpi-adxl355-overlay.dts" target="_blank">ADXL355 Device Tree Overlay</a></p></li>
+<li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/rpi-lm75-overlay.dts" target="_blank">LM75 Device Tree Overlay</a></p></li>
+<li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/rpi-adxl345-overlay.dts" target="_blank">ADXL345 Device Tree Overlay</a></p></li>
+<li><p><a class="icon link reference external" href="https://github.com/analogdevicesinc/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/rpi-adxl355-overlay.dts" target="_blank">ADXL355 Device Tree Overlay</a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -825,7 +846,7 @@ it to:</p>
 <span id="fig-edit-config"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/edit_config.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/edit_config.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/edit_config.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 10 </span><span class="caption-text">Editing config.txt directly on Raspberry Pi</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 9 </span><span class="caption-text">Editing config.txt directly on Raspberry Pi</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Notice the two commented lines beginning with <strong>#</strong>. As you might expect, you
@@ -863,15 +884,29 @@ can do this from the start menu, or from a terminal type:</p>
 </section>
 <section id="hello-adxl345-adxl355-or-lm75">
 <h2>Hello, ADXL345, ADXL355, or LM75!<a class="headerlink" href="#hello-adxl345-adxl355-or-lm75" title="Link to this heading"></a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The ADXL345 has two drivers:</p>
+<ul class="simple">
+<li><p><a class="icon git reference external" href="https://github.com/analogdevicesinc/linux/tree/main/drivers/iio/accel/adxl345.h" target="_blank">drivers/iio/accel/adxl345.h</a> (<code class="docutils literal notranslate"><span class="pre">ADXL345_I2C/SPI</span></code>)</p></li>
+<li><p><a class="icon git reference external" href="https://github.com/analogdevicesinc/linux/tree/main/drivers/input/misc/adxl34x.h" target="_blank">drivers/input/misc/adxl34x.h</a> (<code class="docutils literal notranslate"><span class="pre">INPUT_ADXL34X</span></code>)</p></li>
+</ul>
+<p>And the IIO driver <code class="docutils literal notranslate"><span class="pre">ADXL345_I2C/SPI</span></code> cannot be selected if the inputs
+<code class="docutils literal notranslate"><span class="pre">INPUT_ADXL34X</span></code> driver is selected! Make sure to do <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">menufconfig</span></code> to
+disable <code class="docutils literal notranslate"><span class="pre">INPUT_ADXL34X</span></code>, then enable <code class="docutils literal notranslate"><span class="pre">ADXL345_I2C/SPI</span></code>.</p>
+<p>Kuiper and RPI ships with <code class="docutils literal notranslate"><span class="pre">INPUT_ADXL34X</span></code> compiled as a module.
+Make sure to <a class="icon link reference external" href="https://wiki.debian.org/KernelModuleBlacklisting" target="_blank">blacklist</a>
+the one that won’t be used before attaching the devicetree.</p>
+</div>
 <p>If all went well, Linux should have booted, found the ADXL3x5 or LM75, and
 loaded its driver. Run IIO Oscilloscope again. locate the DMM screen, check the
 ADXL345, select all channels, and click the triangular “play” button. You
-should see acceleration values displayed as shown in <a class="reference internal" href="#fig-iio-scope-adxl345"><span class="std std-numref">Figure 11</span></a></p>
+should see acceleration values displayed as shown in <a class="reference internal" href="#fig-iio-scope-adxl345"><span class="std std-numref">Figure 10</span></a></p>
 <figure class="align-center" id="id15">
 <span id="fig-iio-scope-adxl345"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iio_scope_adxl345.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iio_scope_adxl345.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iio_scope_adxl345.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 11 </span><span class="caption-text">IIO Oscilloscope showing ADXL345 channels</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 10 </span><span class="caption-text">IIO Oscilloscope showing ADXL345 channels</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>IIO Oscilloscope is a great tool for establishing signs of life, but really
@@ -902,7 +937,7 @@ Mac / Linuxg</p>
 </div>
 <div class="clear-left"></div></div></div><p>Which means “list all processes from all users, but only display ones that
 include the text “iiod””. You should see a process running as shown in
-<a class="reference internal" href="#fig-iiod-process-screenshot"><span class="std std-numref">Figure 12</span></a> below.
+<a class="reference internal" href="#fig-iiod-process-screenshot"><span class="std std-numref">Figure 11</span></a> below.
 (Note that this is the login screen for an ADALM2000 - it’s all the same.)</p>
 <p>And the red line relates this process back to the handy little diagram from
 <a class="reference internal" href="../../software/libiio/index.html#libiio"><span class="std std-ref">Libiio</span></a> (We will be recycling that diagram - a lot.)</p>
@@ -910,7 +945,7 @@ include the text “iiod””. You should see a process running as shown in
 <span id="fig-iiod-process-screenshot"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iiod_process_screenshot.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iiod_process_screenshot.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iiod_process_screenshot.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 12 </span><span class="caption-text">IIOD process</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 11 </span><span class="caption-text">IIOD process</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>The other piece is libiio on the remote host. LibIIO can be obtained from:
@@ -932,7 +967,7 @@ Linux / Mac machine! <em>(How cool is that?)</em></p>
 <span id="fig-iio-info-local-remote"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iio_info_local_remote.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iio_info_local_remote.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/iio_info_local_remote.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 13 </span><span class="caption-text">iio_info run locally and remotely</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 12 </span><span class="caption-text">iio_info run locally and remotely</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>NOW you’ve got all the pieces for some fun hacking - you can write software
@@ -1034,7 +1069,7 @@ on as you would on any other machine, supplying a password if necessary</p>
 <span id="fig-rpi-wifi-login"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/rpi_wifi_login.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/rpi_wifi_login.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/rpi_wifi_login.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 14 </span><span class="caption-text">WiFi logon</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 13 </span><span class="caption-text">WiFi logon</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Now it’s (almost) trivial to grab data from the ADXL345 used in this tutorial,
@@ -1124,12 +1159,12 @@ available from <a class="icon link reference external" href="https://winscp.net/
 <p>VNC is a remote desktop application, and Kuiper Linux optionally runs a VNC
 server. There are several clients available; RealVNC works well and is
 available at <a class="icon link reference external" href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank">RealVNC Viewer</a>.
-A screenshot of VNC logged into the Raspberry Pi is shown in <a class="reference internal" href="#fig-rpi-vnc"><span class="std std-numref">Figure 15</span></a></p>
+A screenshot of VNC logged into the Raspberry Pi is shown in <a class="reference internal" href="#fig-rpi-vnc"><span class="std std-numref">Figure 14</span></a></p>
 <figure class="align-center" id="id19">
 <span id="fig-rpi-vnc"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/rpi_vnc.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/rpi_vnc.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/rpi_vnc.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 15 </span><span class="caption-text">VNC desktop</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 14 </span><span class="caption-text">VNC desktop</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -1161,22 +1196,22 @@ connection, it’s obviously NOT your WiFi adapter. If you’re using a
 USB-Ethernet adapter (a super convenient option sometimes), plugging and
 unplugging the adapter, and seeing which disappears. Open the adapter’s
 configuration (right-click, “Properties”) and configure the IPV4 properties as
-shown in <a class="reference internal" href="#fig-static-ip-host"><span class="std std-numref">Figure 16</span></a> below.
+shown in <a class="reference internal" href="#fig-static-ip-host"><span class="std std-numref">Figure 15</span></a> below.
 Make sure the last octet in the IP address is DIFFERENT from that set on the Raspberry Pig</p>
 <figure class="align-center" id="id20">
 <span id="fig-static-ip-host"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/static_ip_host.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/static_ip_host.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/static_ip_host.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 16 </span><span class="caption-text">Setting Up Static IP on Windows Host</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 15 </span><span class="caption-text">Setting Up Static IP on Windows Host</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Finally, open a command prompt, and ping your Raspberry Pi as shown in
-<a class="reference internal" href="#fig-ping-rpi"><span class="std std-numref">Figure 17</span></a>:</p>
+<a class="reference internal" href="#fig-ping-rpi"><span class="std std-numref">Figure 16</span></a>:</p>
 <figure class="align-center" id="id21">
 <span id="fig-ping-rpi"></span><a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/ping_rpi.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/ping_rpi.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/learning/converter_connectivity_tutorial/ping_rpi.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 17 </span><span class="caption-text">Pinging the Headless Pi</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 16 </span><span class="caption-text">Pinging the Headless Pi</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>If you get a reply, you’re all set! You can now log into the Raspberry Pi using
