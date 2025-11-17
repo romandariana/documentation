@@ -472,27 +472,54 @@ debugger</a>.</p>
 <section id="setup-a-jtag-connection">
 <h2>Setup a JTAG connection<a class="headerlink" href="#setup-a-jtag-connection" title="Link to this heading"></a></h2>
 <p>Build and install the ADI fork of OpenOCD:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/analogdevicesinc/openocd</span>
-<span class="go">./bootstrap</span>
-<span class="go">./configure</span>
-<span class="go">make -j$(nproc)</span>
+<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~$
 </pre></div>
 </div>
-<p>Run <code class="docutils literal notranslate"><span class="pre">openocd</span></code> with either <code class="docutils literal notranslate"><span class="pre">ice1000.cfg</span></code> or <code class="docutils literal notranslate"><span class="pre">ice2000.cfg</span></code> and one of the
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/analogdevicesinc/openocd
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>openocd
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./bootstrap
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./configure
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</pre></div>
+</div>
+<div class="clear-left"></div></div></div><p>Run <code class="docutils literal notranslate"><span class="pre">openocd</span></code> with either <code class="docutils literal notranslate"><span class="pre">ice1000.cfg</span></code> or <code class="docutils literal notranslate"><span class="pre">ice2000.cfg</span></code> and one of the
 following configs:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">adspsc58x.cfg</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">adspsc59x_a55.cfg</span></code></p></li>
 </ul>
 <p>For example, for the ICE-1000 and ADZS-SC589-EZLITE run the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">src/openocd -f ice1000.cfg \</span>
-<span class="go">    -f adspsc58x.cfg \</span>
-<span class="go">    --search tcl/ \</span>
-<span class="go">    --search tcl/interface/ \</span>
-<span class="go">    --search tcl/target/</span>
+<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
 </pre></div>
 </div>
-</section>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>src/openocd<span class="w"> </span>-f<span class="w"> </span>ice1000.cfg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-f<span class="w"> </span>adspsc58x.cfg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--search<span class="w"> </span>tcl/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--search<span class="w"> </span>tcl/interface/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--search<span class="w"> </span>tcl/target/
+</pre></div>
+</div>
+<div class="clear-left"></div></div></div></section>
 <section id="boot-u-boot-proper">
 <h2>Boot U-Boot Proper<a class="headerlink" href="#boot-u-boot-proper" title="Link to this heading"></a></h2>
 <p>In another terminal either <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the extracted release archive or the
