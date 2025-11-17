@@ -4,17 +4,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content="The ADALM-PLUTO Active Learning Module (PlutoSDR) Buy is an easy to use tool available from Analog Devices Inc. (ADI) that can be used to introduce fundamentals of Software Defined Radio (SDR) or Radio Frequency (RF) or Communications as advanced topics in electrical engineering in a self or instructor lead setting. The PlutoSDR allows students to better understand the real-world RF around them, and is applicable for all students, at all levels, from all backgrounds. Early learning in a hands-on manner with the PlutoSDR will ensure a solid foundation for students to build on, as they pursue science, technology, or engineering degrees." name="description" />
+<meta content="ADSP evaluation boards do not ship with pre-installed software. The chips also do not support booting directly from SD cards. Therefore the evaluation boards need to be bootstrapped over JTAG using a ADI ICE-1000 or ICE-2000 JTAG debugger." name="description" />
 
-    <title>ADALM-PLUTO &#8212; System Level Documentation  documentation</title>
+    <title>Getting started &#8212; System Level Documentation  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=31a9e0ba" />
     <script async="async" src="../../_static/app.umd.js?v=3a4867e9"></script>
     <link rel="icon" href="../../_static/icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="For Developers" href="devs/index.html" />
-    <link rel="prev" title="USB OTG – HOST function Support" href="../pluto-m2k/usb_otg_host.html" />
+    <link rel="next" title="Linux drivers" href="../../linux/drivers/index.html" />
+    <link rel="prev" title="Digital Signal Processors (ADSP)" href="index.html" />
    
   
   
@@ -94,8 +94,9 @@
         </div>
         <nav>
           <ul>
-<li><a class="reference internal" href="#">ADALM-PLUTO</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#">Getting started</a><ul>
+<li><a class="reference internal" href="#setup-a-jtag-connection">Setup a JTAG connection</a></li>
+<li><a class="reference internal" href="#boot-u-boot-proper">Boot U-Boot Proper</a></li>
 </ul>
 </li>
 </ul>
@@ -125,13 +126,13 @@ Content on this topic
 <div class="toc-tree">
   <html>
   <body><p class="caption" role="heading"><span class="caption-text">Product Categories</span></p>
-<ul>
-<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1"/><div class="collapse"><a class="reference internal" href="../../products/adsp/index.html">Digital Signal Processors (ADSP)</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../products/adsp/setup.html">Getting started</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1" checked=""/><div class="collapse"><a class="reference internal" href="index.html">Digital Signal Processors (ADSP)</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../products/adsp/index.html#upstream-forks">Upstream forks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../products/adsp/index.html#adi-repositories">ADI repositories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#upstream-forks">Upstream forks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#adi-repositories">ADI repositories</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Kuiper &amp; Linux Kernel</span></p>
 <ul>
@@ -211,45 +212,45 @@ Content on this topic
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Devices</span></p>
-<ul class="current">
-<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-9" id="toctree-collapse-9"/><div class="collapse"><a class="reference internal" href="../m2k/index.html">ADALM2000</a><label for="toctree-collapse-9"><div class="icon"></div></label></div><ul>
-<li class="toctree-l2"><a class="reference internal" href="../m2k/devs/index.html">For Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../m2k/users/index.html">For End Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../m2k/help_support.html">Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../m2k/labview.html">Using With LabVIEW</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../m2k/matlab.html">Using with MATLAB</a></li>
+<ul>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-9" id="toctree-collapse-9"/><div class="collapse"><a class="reference internal" href="../../tools/m2k/index.html">ADALM2000</a><label for="toctree-collapse-9"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/m2k/devs/index.html">For Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/m2k/users/index.html">For End Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/m2k/help_support.html">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/m2k/labview.html">Using With LabVIEW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/m2k/matlab.html">Using with MATLAB</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-10" id="toctree-collapse-10"/><div class="collapse"><a class="reference internal" href="../pluto-m2k/index.html">Common PLUTO&amp;M2K</a><label for="toctree-collapse-10"><div class="icon"></div></label></div><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pluto-m2k/building_the_image.html">Building the Firmware Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pluto-m2k/drivers.html">Installing Drivers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pluto-m2k/firmware.html">Firmware Updates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pluto-m2k/obtaining_the_sources.html">Obtaining the Build Sources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pluto-m2k/reboot.html">Rebooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pluto-m2k/usb_otg_host.html">USB OTG – HOST function Support</a></li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-10" id="toctree-collapse-10"/><div class="collapse"><a class="reference internal" href="../../tools/pluto-m2k/index.html">Common PLUTO&amp;M2K</a><label for="toctree-collapse-10"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto-m2k/building_the_image.html">Building the Firmware Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto-m2k/drivers.html">Installing Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto-m2k/firmware.html">Firmware Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto-m2k/obtaining_the_sources.html">Obtaining the Build Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto-m2k/reboot.html">Rebooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto-m2k/usb_otg_host.html">USB OTG – HOST function Support</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11" id="toctree-collapse-11" checked=""/><div class="collapse"><a class="current reference internal" href="#">ADALM-PLUTO</a><label for="toctree-collapse-11"><div class="icon"></div></label></div><ul>
-<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11-1" id="toctree-collapse-11-1"/><div class="collapse"><a class="reference internal" href="devs/index.html">For Developers</a><label for="toctree-collapse-11-1"><div class="icon"></div></label></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="devs/usb_otg.html">USB OTG</a></li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11" id="toctree-collapse-11"/><div class="collapse"><a class="reference internal" href="../../tools/pluto/index.html">ADALM-PLUTO</a><label for="toctree-collapse-11"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11-1" id="toctree-collapse-11-1"/><div class="collapse"><a class="reference internal" href="../../tools/pluto/devs/index.html">For Developers</a><label for="toctree-collapse-11-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tools/pluto/devs/usb_otg.html">USB OTG</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11-2" id="toctree-collapse-11-2"/><div class="collapse"><a class="reference internal" href="hacking/index.html">For Hackers</a><label for="toctree-collapse-11-2"><div class="icon"></div></label></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="hacking/hardware.html">ADALM-PLUTO Hardware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hacking/listening_to_yourself.html">Self Reception</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hacking/power_amp.html">Controlling External Devices</a></li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11-2" id="toctree-collapse-11-2"/><div class="collapse"><a class="reference internal" href="../../tools/pluto/hacking/index.html">For Hackers</a><label for="toctree-collapse-11-2"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tools/pluto/hacking/hardware.html">ADALM-PLUTO Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tools/pluto/hacking/listening_to_yourself.html">Self Reception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tools/pluto/hacking/power_amp.html">Controlling External Devices</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11-3" id="toctree-collapse-11-3"/><div class="collapse"><a class="reference internal" href="users/index.html">For End Users</a><label for="toctree-collapse-11-3"><div class="icon"></div></label></div><ul>
-<li class="toctree-l3"><a class="reference internal" href="users/antennas.html">Antennas</a></li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-11-3" id="toctree-collapse-11-3"/><div class="collapse"><a class="reference internal" href="../../tools/pluto/users/index.html">For End Users</a><label for="toctree-collapse-11-3"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tools/pluto/users/antennas.html">Antennas</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="help_support.html">Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prerequisites.html">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transceiver_transferring_data.html">Controlling the transceiver and transferring data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto/help_support.html">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto/prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tools/pluto/transceiver_transferring_data.html">Controlling the transceiver and transferring data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../uartjtag/index.html">ADALM-UARTJTAG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/uartjtag/index.html">ADALM-UARTJTAG</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps &amp; Solutions</span></p>
 <ul>
@@ -458,130 +459,93 @@ Content on this topic
       <div class="documentwrapper">
         <div class="bodywrapper" id="top-anchor">
           <div class="body-header">
-  <nav class="breadcrumb empty"><ol></ol></nav>
+  <nav class="breadcrumb"><ol><li><a href="index.html">Digital Signal Processors (ADSP)</a></li></ol></nav>
 </div>
           <div class="body" role="main">
             
-  <section id="adalm-pluto">
-<span id="pluto"></span><h1>ADALM-PLUTO<a class="headerlink" href="#adalm-pluto" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
+  <section id="getting-started">
+<span id="adsp-setup"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>ADSP evaluation boards do not ship with pre-installed software. The chips also
+do not support booting directly from SD cards. Therefore the evaluation boards
+need to be bootstrapped over JTAG using a <a class="icon link reference external" href="https://www.analog.com/en/resources/evaluation-hardware-and-software/evaluation-boards-kits/emulators.html" target="_blank">ADI ICE-1000 or ICE-2000 JTAG
+debugger</a>.</p>
+<section id="setup-a-jtag-connection">
+<h2>Setup a JTAG connection<a class="headerlink" href="#setup-a-jtag-connection" title="Link to this heading"></a></h2>
+<p>Build and install the ADI fork of OpenOCD:</p>
+<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~$
+</pre></div>
 </div>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/pluto_in_hand.png"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/pluto_in_hand.png" class="align-right" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/tools/pluto/pluto_in_hand.png" style="width: 250px;" />
-</a>
-<p>The <a class="icon adi reference external" href="https://www.analog.com/ADALM-PLUTO" target="_blank">ADALM-PLUTO</a> Active Learning Module (PlutoSDR)
-<a class="icon link reference external" href="https://shoppingcart.analog.com/AddModel.aspx?locale=en&amp;ACTION=BUY_BUNDLES&amp;modelNbr=ADALM-PLUTO" target="_blank">Buy</a>
-is an easy to use tool available from Analog Devices
-Inc. (ADI) that can be used to introduce fundamentals of
-<a class="icon link reference external" href="https://en.wikipedia.org/wiki/Software-defined_radio" target="_blank">Software Defined Radio (SDR)</a> or
-<a class="icon link reference external" href="https://en.wikipedia.org/wiki/Radio_frequency" target="_blank">Radio Frequency (RF)</a> or
-<a class="icon link reference external" href="https://en.wikipedia.org/wiki/Communication_theory" target="_blank">Communications</a> as
-advanced topics in electrical engineering in a self or instructor lead setting.
-The PlutoSDR allows students to better understand the real-world RF around them,
-and is applicable for all students, at all levels, from all backgrounds. Early
-learning in a hands-on manner with the PlutoSDR will ensure a solid foundation
-for students to build on, as they pursue science, technology, or engineering
-degrees.</p>
-<p>The PlutoSDR Active Learning Module is a tool that closes the relationship
-between theory and practical radio frequency activities of the user. It provides
-a personal portable lab that, when used with a host, can augment the learning
-that takes place in the classroom. A variety of software packages such as MATLAB
-or Simulink provide an innovative graphical user interface (GUI), allowing
-intuitive usage and minimizing the learning curve, enabling students to learn
-faster, work smarter, and explore more!</p>
-<p>The <a class="icon adi reference external" href="https://www.analog.com/ADALM-PLUTO" target="_blank">ADALM-PLUTO</a> Active Learning Module is a learning tool
-for everyone.</p>
-<p>Based on the <a class="icon adi reference external" href="https://www.analog.com/AD9363" target="_blank">AD9363</a>, it offers one receive channel and one
-transmit channel which can be operated in full duplex, capable of generating or
-measuring RF analog signals from 325 to 3800 MHz, at up to 61.44 Mega Samples
-per Second (MSPS) with a 20 MHz bandwidth. The PlutoSDR is completely
-self-contained, fits nicely in a shirt pocket or backpack, and is entirely USB
-powered with the default firmware. With support for OS X™, Windows™, and Linux™,
-it allows exploration and understanding of RF systems no matter where the user
-is or when.</p>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>PlutoSDR is a self-contained RF lab in your hand. It’s more than the combination
-of a few parts, but to understand the capabilities of the module, you must
-understand the fundamental operation of each part inside the module. Depending
-on who you are, and what you want to do, you may have different needs, different
-wants, and will use different software. It’s expected that many people will stop
-when they solve their immediate problem and don’t want to go any deeper into the
-stack. Before digging into the documentation, check out the module
-<a class="reference internal" href="prerequisites.html#pluto-prerequisites"><span class="std std-ref">prerequisites</span></a>, and try to think about how you will
-use the ADALM-PLUTO.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>PlutoSDR will populate as a Mass Storage Device when plugged into a
-computer. The presented storage device contains a getting started guide
-(info.html), configuration control for your device (config.txt), and licensing
-information (LICENSE.html).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/analogdevicesinc/openocd
+</pre></div>
 </div>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="users/index.html#pluto-users"><span class="std std-ref">PlutoSDR Users &amp; students</span></a></p>
-<ul class="simple">
-<li><p>PlutoSDR users normally interact with RF signals with
-<a class="icon link reference external" href="https://www.mathworks.com/hardware-support/adalm-pluto-radio.html" target="_blank">MATLAB, Simulink</a>,
-<a class="icon dokuwiki reference external" href="https://wiki.analog.com/resources/tools-software/linux-software/gnuradio" target="_blank">GNU Radio</a> or
-<a class="reference internal" href="transceiver_transferring_data.html#pluto-transceiver-transferring-data"><span class="std std-ref">custom C, C++</span></a>,
-<a class="icon git reference external" href="https://github.com/analogdevicesinc/libiio/tree/main/bindings/csharp/examples/ExampleProgram.cs" target="_blank">C#</a>,
-or <a class="reference internal" href="../../software/pyadi-iio/index.html#pyadi-iio"><span class="std std-ref">Python environment</span></a> on a
-host (x86) Windows, Linux or Mac or embedded Linux platform
-(<a class="icon link reference external" href="https://www.raspberrypi.org/" target="_blank">Raspberry Pi</a>,
-<a class="icon link reference external" href="http://beagleboard.org/" target="_blank">Beaglebone</a>,
-<a class="icon link reference external" href="http://www.96boards.org/" target="_blank">96boards.org</a>, insert your favorite embedded
-Linux platform) over USB.</p></li>
-<li><p>If you want to see how to <a class="reference internal" href="../../software/iio-oscilloscope/index.html#iio-oscilloscope"><span class="std std-ref">generate or capture RF waveforms</span></a>,
-this is the place.</p></li>
-<li><p>Everyone should read this section, as it describes the device, and
-describes how to get the drivers and host software installed properly.</p></li>
-<li><p>Most users should find all the information they need in this section.</p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="devs/index.html#pluto-devs"><span class="std std-ref">HDL and Embedded Software Resources</span></a>:</p>
-<ul class="simple">
-<li><p>This material is for those who normally write custom software or HDL (for
-the FPGA) that runs directly on the PlutoSDR. This may put the PlutoSDR in
-different modes, and support different external USB devices (including LAN
-(via USB), or WiFi (via USB)), extending the capabilities of the device.
-This includes all the information to compile HDL projects, compile
-kernels, change to custom USB PID/VID and/or run custom user space
-applications. For example, you could set up:</p>
-<ul>
-<li><p>a standalone airplane tracking station which communicates to the
-internet via Wifi or LAN.</p></li>
-<li><p>a mobile terminal to emulate someone else’s keyboard.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="hacking/index.html#pluto-hacking"><span class="std std-ref">PCB and Layout Resources</span></a>:</p>
-<ul class="simple">
-<li><p>This section may be useful for those taking the PCB out of the case and
-making hardware modifications, or connecting GPIO to different devices, or
-attempting to synchronize multiple PlutoSDRs together. Since this is
-pretty wide open, we don’t have any examples of this - but we do provide
-the info needed, including all the schematics and layout.</p></li>
-</ul>
-</li>
-</ol>
-<p>It’s expected that most people will work their way down through each section,
-reading and skimming most of the content. The content is in a constant state of
-improvement, so if you do have a question, please ask at
-<a class="icon ez reference external" href="https://ez.analog.com/community/university-program" target="_blank">EngineerZone</a>,
-or check the <a class="reference internal" href="help_support.html#pluto-help-support"><span class="std std-ref">help and support</span></a> page.</p>
-<div><div class="esd-warning docutils container">
-<div class="icon"></div><p>All the products described on this page include ESD (electrostatic discharge) sensitive devices. Electrostatic charges as high as 4000V readily accumulate on the human body or test equipment and can discharge without detection.
-Although the boards feature ESD protection circuitry, permanent damage may occur on devices subjected to high-energy electrostatic discharges. Therefore, proper ESD precautions are recommended to avoid performance degradation or loss of functionality. This includes removing static charge on external equipment, cables, or antennas before connecting to the device. </p>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~$
+</pre></div>
 </div>
-</div></section>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>openocd
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./bootstrap
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./configure
+</pre></div>
+</div>
+<div class="clear-left"></div></div><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</pre></div>
+</div>
+<div class="clear-left"></div></div></div><p>Run <code class="docutils literal notranslate"><span class="pre">openocd</span></code> with either <code class="docutils literal notranslate"><span class="pre">ice1000.cfg</span></code> or <code class="docutils literal notranslate"><span class="pre">ice2000.cfg</span></code> and one of the
+following configs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">adspsc58x.cfg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adspsc59x_a55.cfg</span></code></p></li>
+</ul>
+<p>For example, for the ICE-1000 and ADZS-SC589-EZLITE run the following:</p>
+<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/openocd$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>src/openocd<span class="w"> </span>-f<span class="w"> </span>ice1000.cfg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-f<span class="w"> </span>adspsc58x.cfg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--search<span class="w"> </span>tcl/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--search<span class="w"> </span>tcl/interface/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--search<span class="w"> </span>tcl/target/
+</pre></div>
+</div>
+<div class="clear-left"></div></div></div></section>
+<section id="boot-u-boot-proper">
+<h2>Boot U-Boot Proper<a class="headerlink" href="#boot-u-boot-proper" title="Link to this heading"></a></h2>
+<p>In another terminal either <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the extracted release archive or the
+appropriate build output directory when building from source. Then load and run
+the two U-Boot stages using <code class="docutils literal notranslate"><span class="pre">gdb</span></code>. Note that Debian and Ubuntu ship
+multi-architecture GDB support in a separate package.</p>
+<p>After loading U-Boot SPL wait 2-3 seconds to allow SPL to complete execution
+before interrupting it with <code class="docutils literal notranslate"><span class="pre">^C</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y gdb-multiarch</span>
+<span class="go">gdb-multiarch</span>
+<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">load u-boot-spl</span>
+<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">c</span>
+<span class="go">^C</span>
+<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">load u-boot</span>
+<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">c</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
           </div>
               <div class="related">
                 &nbsp;
-    <a href="../pluto-m2k/usb_otg_host.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">USB OTG – HOST function Support</a>
-    <a href="devs/index.html" title="Next document (Alt+Shift+RightArrow)" class="next">For Developers</a>
+    <a href="index.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Digital Signal Processors (ADSP)</a>
+    <a href="../../linux/drivers/index.html" title="Next document (Alt+Shift+RightArrow)" class="next">Linux drivers</a>
               </div>
           
         </div>
