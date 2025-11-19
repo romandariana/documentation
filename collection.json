@@ -20,6 +20,33 @@
                 "workshop"
             ]
         },
+        "EVAL-AD4050/AD4052-ARDZ": {
+            "docname": "documentation/solutions/reference-designs/ad4052-ardz/index",
+            "description": "",
+            "include": {
+                "documentation": {
+                    "solutions/reference-designs/ad4052-ardz": {
+                        "name": "User guide"
+                    }
+                },
+                "hdl": {
+                    "projects/ad4052_ardz": {
+                        "name": "HDL Project (ad4052_ardz)"
+                    }
+                },
+                "no-OS": {
+                    "drivers/adc/ad405x": {
+                        "name": "no-OS driver (ad405x)"
+                    }
+                }
+            },
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/ad4052-ardz/eval-angle.png",
+            "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
+            "label": [
+                "eval",
+                "user-guide"
+            ]
+        },
         "EVAL-ADXL355-PMDZ": {
             "docname": "documentation/solutions/reference-designs/adxl355-pmdz/index",
             "description": "",
@@ -45,33 +72,6 @@
             },
             "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/adxl355-pmdz/eval-angle.png",
             "subtitle": "Evaluating the ADXL355 Low-Noise, Low-Drift, Low-Power, 3-Axis MEMS Accelerometers",
-            "label": [
-                "eval",
-                "user-guide"
-            ]
-        },
-        "EVAL-AD4050/AD4052-ARDZ": {
-            "docname": "documentation/solutions/reference-designs/ad4052-ardz/index",
-            "description": "",
-            "include": {
-                "documentation": {
-                    "solutions/reference-designs/ad4052-ardz": {
-                        "name": "User guide"
-                    }
-                },
-                "hdl": {
-                    "projects/ad4052_ardz": {
-                        "name": "HDL Project (ad4052_ardz)"
-                    }
-                },
-                "no-OS": {
-                    "drivers/adc/ad405x": {
-                        "name": "no-OS driver (ad405x)"
-                    }
-                }
-            },
-            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/ad4052-ardz/eval-angle.png",
-            "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
             "label": [
                 "eval",
                 "user-guide"
