@@ -53,7 +53,6 @@ build output directory. Then start GDB and run the following command with
 using the script
 :download:`u-boot.gdb <u-boot.gdb>` to load and run both U-Boot stages. 
 
-
 .. shell:: sh
 
     $gdb-multiarch -x path/to/u-boot.gdb
