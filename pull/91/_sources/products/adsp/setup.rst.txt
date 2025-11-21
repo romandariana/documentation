@@ -50,8 +50,14 @@ To boot U-Boot SPL and U-Boot Proper using GDB install
 
 In the terminal, ``cd`` into the extracted release archive or the appropriate
 build output directory. Then start GDB and run the following command with
-using the script
-:download:`u-boot.gdb <u-boot.gdb>` to load and run both U-Boot stages. 
+using the script:
+
+.. ADMONITION:: Download
+
+   :download:`u-boot.gdb <u-boot.gdb>` 
+
+
+to load and run both U-Boot stages.  
 
 .. shell:: sh
 
