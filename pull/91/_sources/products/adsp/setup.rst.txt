@@ -49,28 +49,12 @@ To debug both U-Boot SPL and U-Boot proper using GDB, one need to install
     sudo apt-get install -y gdb-multiarch
 
 In the terminal, ``cd`` into the extracted release archive or the appropriate
-build output directory. Then start GDB and run the following commands to load
-and run both U-Boot stages.
+build output directory. Then start GDB and run the following command with
+using the :download:`u-boot.gdb <u-boot.gdb>` file to load and run both U-Boot stages. 
 
 .. code-block:: console
 
-    gdb-multiarch
-    (gdb) load u-boot-spl
-    (gdb) set pagination off
-    (gdb) file u-boot-spl
-    (gdb) target remote :3333
-    (gdb) tbreak board_init_r
-    (gdb) load
-    (gdb) continue
-    (gdb) load u-boot
-    (gdb) continue
-
-To automate this, we can save the commands above into a file
- ``debug-uboot.gdb`` and launch GDB with:
-
-.. code-block:: console
-
-    gdb-multiarch -x debug-uboot.gdb
+    gdb-multiarch -x path/to/u-boot.gdb
 
 Boot Linux
 ----------
@@ -85,4 +69,4 @@ In the console of U-Boot, we can load images as:
 .. code-block:: console
 
     => dhcp
-    => wget ${<memory-addr>} <host-ip-addr>:/<path-to-image>
+    => wget ${fdt_addr_r} <host-ip-addr>:/<path-to-image>

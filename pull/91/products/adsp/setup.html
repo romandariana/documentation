@@ -528,25 +528,9 @@ following configs:</p>
 </pre></div>
 </div>
 <p>In the terminal, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the extracted release archive or the appropriate
-build output directory. Then start GDB and run the following commands to load
-and run both U-Boot stages.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">gdb-multiarch</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">load u-boot-spl</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">set pagination off</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">file u-boot-spl</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">target remote :3333</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">tbreak board_init_r</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">load</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">continue</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">load u-boot</span>
-<span class="gp gp-VirtualEnv">(gdb)</span> <span class="go">continue</span>
-</pre></div>
-</div>
-<dl class="simple">
-<dt>To automate this, we can save the commands above into a file</dt><dd><p><code class="docutils literal notranslate"><span class="pre">debug-uboot.gdb</span></code> and launch GDB with:</p>
-</dd>
-</dl>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">gdb-multiarch -x debug-uboot.gdb</span>
+build output directory. Then start GDB and run the following command with
+using the <code class="xref download docutils literal notranslate"><span class="pre">u-boot.gdb</span></code> file to load and run both U-Boot stages.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">gdb-multiarch -x path/to/u-boot.gdb</span>
 </pre></div>
 </div>
 </section>
@@ -560,7 +544,7 @@ server (e.g. <code class="docutils literal notranslate"><span class="pre">python
 .. code-block:: console</p>
 <blockquote>
 <div><p>=&gt; dhcp
-=&gt; wget ${&lt;memory-addr&gt;} &lt;host-ip-addr&gt;:/&lt;path-to-image&gt;</p>
+=&gt; wget ${fdt_addr_r} &lt;host-ip-addr&gt;:/&lt;path-to-image&gt;</p>
 </div></blockquote>
 </section>
 </section>
