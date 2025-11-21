@@ -1,4 +1,3 @@
-load u-boot-spl
 set pagination off
 file u-boot-spl
 target remote :3333

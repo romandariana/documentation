@@ -50,7 +50,7 @@ To debug both U-Boot SPL and U-Boot proper using GDB, one need to install
 
 In the terminal, ``cd`` into the extracted release archive or the appropriate
 build output directory. Then start GDB and run the following command with
-using the :download:`u-boot.gdb <u-boot.gdb>` file to load and run both U-Boot stages. 
+using the :download:`u-boot.gdb <u-boot.gdb>` script to load and run both U-Boot stages. 
 
 .. code-block:: console
 
