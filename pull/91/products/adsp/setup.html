@@ -524,14 +524,20 @@ following configs:</p>
 <h2>Boot U-Boot Proper<a class="headerlink" href="#boot-u-boot-proper" title="Link to this heading"></a></h2>
 <p>To boot U-Boot SPL and U-Boot Proper using GDB install
 <code class="docutils literal notranslate"><span class="pre">gdb-multiarch</span></code> on Debian or Ubuntu systems:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y gdb-multiarch</span>
+<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~$
 </pre></div>
 </div>
-<p>In the terminal, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the extracted release archive or the appropriate
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>gdb-multiarch
+</pre></div>
+</div>
+<div class="clear-left"></div></div></div><p>In the terminal, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the extracted release archive or the appropriate
 build output directory. Then start GDB and run the following command with
 using the script
 <code class="xref download docutils literal notranslate"><span class="pre">u-boot.gdb</span></code> to load and run both U-Boot stages.</p>
-<div class="code-shell"><div><div class="no-select highlight-text notranslate"><div class="highlight"><pre><span></span>gdb-multiarch -x path/to/u-boot.gdb
+<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~$
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gdb-multiarch<span class="w"> </span>-x<span class="w"> </span>path/to/u-boot.gdb
 </pre></div>
 </div>
 <div class="clear-left"></div></div></div></section>
@@ -542,11 +548,11 @@ is possible to load and boot Linux.</p>
 <p>In a new terminal <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the extracted release archive and run a web
 server (e.g. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">http.server</span></code>).</p>
 <p>In the console of U-Boot, we can load images as:</p>
-<div class="code-shell"><div><div class="no-select highlight-text notranslate"><div class="highlight"><pre><span></span>=&gt; dhcp
-=&gt; wget ${fdt_addr_r} &lt;host-ip-addr&gt;:/&lt;path-to-image&gt;
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">=&gt; dhcp</span>
+<span class="go">=&gt; wget ${fdt_addr_r} &lt;host-ip-addr&gt;:/&lt;path-to-image&gt;</span>
 </pre></div>
 </div>
-<div class="clear-left"></div></div></div></section>
+</section>
 </section>
 
 

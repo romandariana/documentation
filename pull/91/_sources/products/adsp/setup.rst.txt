@@ -44,9 +44,9 @@ Boot U-Boot Proper
 To boot U-Boot SPL and U-Boot Proper using GDB install
 ``gdb-multiarch`` on Debian or Ubuntu systems:
 
-.. code-block:: console
+.. shell:: sh
 
-    sudo apt-get install -y gdb-multiarch
+    $sudo apt-get install -y gdb-multiarch
 
 In the terminal, ``cd`` into the extracted release archive or the appropriate
 build output directory. Then start GDB and run the following command with
@@ -56,7 +56,7 @@ using the script
 
 .. shell:: sh
 
-    gdb-multiarch -x path/to/u-boot.gdb
+    $gdb-multiarch -x path/to/u-boot.gdb
 
 Boot Linux
 ----------
@@ -69,7 +69,7 @@ server (e.g. ``python -m http.server``).
 
 In the console of U-Boot, we can load images as:
 
-.. shell:: sh
+.. code-block:: console
 
     => dhcp
     => wget ${fdt_addr_r} <host-ip-addr>:/<path-to-image>
