@@ -486,20 +486,25 @@ Content on this topic
             
   <section id="software-configuration-and-setup">
 <h1>Software Configuration and Setup<a class="headerlink" href="#software-configuration-and-setup" title="Link to this heading"></a></h1>
-<p>This section provides guidance on configuring and running the software components of the High-Performance Analog Meets AI demonstration.</p>
+<p>This section provides guidance on configuring and running the software
+components of the High-Performance Analog Meets AI demonstration.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>The demonstration consists of two main software components:</p>
 <ol class="arabic simple">
-<li><p><strong>Holoscan Modulation Classification Application</strong> - A real-time AI-powered modulation classification system built with NVIDIA Holoscan SDK</p></li>
-<li><p><strong>Data Visualization Dashboard</strong> - A Python-based Dash application for monitoring and analyzing classification results</p></li>
+<li><p><strong>Holoscan Modulation Classification Application</strong> - A real-time AI-powered
+modulation classification system built with NVIDIA Holoscan SDK</p></li>
+<li><p><strong>Data Visualization Dashboard</strong> - A Python-based Dash application for
+monitoring and analyzing classification results</p></li>
 </ol>
 </section>
 <section id="holoscan-modulation-classification-application">
 <h2>Holoscan Modulation Classification Application<a class="headerlink" href="#holoscan-modulation-classification-application" title="Link to this heading"></a></h2>
 <section id="description">
 <h3>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
-<p>This application performs real-time modulation classification on incoming data using MATLAB-generated CUDA code. It processes signals from ADRV9009 devices and classifies them into one of eight modulation schemes:</p>
+<p>This application performs real-time modulation classification on incoming data
+using MATLAB-generated CUDA code. It processes signals from ADRV9009 devices
+and classifies them into one of eight modulation schemes:</p>
 <ul class="simple">
 <li><p>BPSK (Binary Phase Shift Keying)</p></li>
 <li><p>QPSK (Quadrature Phase Shift Keying)</p></li>
@@ -520,7 +525,13 @@ Content on this topic
 </ul>
 </dd>
 </dl>
-<p>There are 5 operators (each with its own Python binding) that can read/write IIO attributes, read/write IIO buffers and configure the initial setup for a device/system. This demonstration uses the buffer read operator in order to read from the 2 ADRV9009 devices. After that, the matlab module (that needs to be compiled beforehand) will call the classification function that returns the modulation and confidence level. This will be printed to the output file from where the python dash app will read and display the information.</p>
+<p>There are 5 operators (each with its own Python binding) that can read/write
+IIO attributes, read/write IIO buffers and configure the initial setup for a
+device/system. This demonstration uses the buffer read operator in order to
+read from the 2 ADRV9009 devices. After that, the matlab module (that needs to
+be compiled beforehand) will call the classification function that returns the
+modulation and confidence level. This will be printed to the output file from
+where the python dash app will read and display the information.</p>
 </section>
 <section id="configuration">
 <h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
