@@ -1,10 +1,6 @@
 Embedded Baremetal
 ==================
 
-.. note::
-
-   This is a work in progress.
-
 Introduction
 ~~~~~~~~~~~~
 
@@ -232,63 +228,304 @@ The stack preserves its functionality, because of the way things are built, no n
 Hands-on activity
 ~~~~~~~~~~~~~~~~~
 
-.. TODO IN PROGRESS
-
 By the end of this workshop, you will learn:
 
-**Activities**
+* How to set up a no-OS development environment on Linux
+* How to build and flash firmware to MAX78000FTHR
+* How to read sensor data via SPI from ADXL355 accelerometer
+* How to convert raw register values to meaningful units
+* How to expose devices through IIO for PC application interaction
 
-**Pre-requisites**
+Materials
++++++++++
 
-**Hands-on activity 1**
+* MAX78000FTHR evaluation board
+* EVAL-ADXL355-PMDZ accelerometer module
+* Jumper wires (6 connections required)
+* Raspberry Pi 5 or Linux PC as development workstation
+* USB cable for MAX78000FTHR connection
 
-*Materials*
+Pre-requisites
+++++++++++++++
 
-*Hardware setup*
+The workshop environment can be set up on a Raspberry Pi 5 or any Linux PC.
+Clone the workshop repository and run the setup script:
 
-Steps
+.. shell::
 
-**Hands-on activity 2**
+   ~
+   $git clone https://github.com/romandariana/workshop_baremetal
+   $cd workshop_baremetal
+   $chmod +x setup.sh
+   $./setup.sh
 
-*Theory of operation*
+After setup completes, configure the environment variables:
 
-Steps:
+.. shell::
 
-*Results*
+   ~
+   $export MAXIM_LIBRARIES=~/workshop_baremetal/MAX78000SDK/Libraries
+   $export PLATFORM=maxim
+   $export TARGET=max78000
+
+.. note::
+
+   Add these exports to your ``~/.bashrc`` to make them persistent across
+   terminal sessions.
+
+The setup creates the following directory structure:
+
+.. code-block:: text
+
+   ~/workshop_baremetal/
+   ├── setup.sh
+   ├── ai8x-synthesis/
+   ├── MAX78000SDK/
+   │   └── Libraries/
+   └── no-OS/
+       └── projects/
+           └── workshop/
+
+Hardware setup
+++++++++++++++
+
+Connect the EVAL-ADXL355-PMDZ to the MAX78000FTHR using 6 jumper wires
+according to the following pin correspondence:
+
+.. list-table:: SPI Pin Connections
+   :header-rows: 1
+   :class: bold-header
+
+   * - Function
+     - MAX78000FTHR Pin
+     - ADXL355 Pin
+   * - Power (3.3V)
+     - 3V3
+     - VDD
+   * - Ground
+     - GND
+     - GND
+   * - Chip Select
+     - P0_4 (SS0)
+     - CS
+   * - MOSI
+     - P0_5
+     - MOSI
+   * - MISO
+     - P0_6
+     - MISO
+   * - Clock
+     - P0_7 (SCK)
+     - SCLK
+
+.. warning::
+
+   Double-check connections before powering on. Incorrect wiring may damage
+   the hardware.
+
+Demo 1: Hello World UART
+++++++++++++++++++++++++
+
+This first example demonstrates basic UART communication. The firmware prints
+"Hello World" messages to the serial console, confirming that the development
+environment is correctly configured.
+
+Navigate to the workshop project directory:
+
+.. shell::
+
+   ~
+   $cd ~/workshop_baremetal/no-OS/projects/workshop
+
+Clean any previous build artifacts and build the first example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_1
+
+Flash the firmware to the MAX78000FTHR:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make EXAMPLE=example_1 run
+
+Open a new terminal and start the serial monitor:
+
+.. shell::
+
+   ~
+   $picocom -b 57600 /dev/ttyACM0
+
+You should see "Hello World" messages printed to the console.
+
+.. note::
+
+   Press ``Ctrl+A`` followed by ``Ctrl+X`` to exit picocom.
+
+Demo 2: Temperature reading
++++++++++++++++++++++++++++
+
+This example reads the temperature from the ADXL355's internal temperature
+sensor and displays raw register values.
+
+Build and flash the second example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_2
+   $make EXAMPLE=example_2 run
+
+Monitor the serial output:
+
+.. shell::
+
+   ~
+   $picocom -b 57600 /dev/ttyACM0
+
+The output displays raw temperature values read from the ADXL355 registers.
+
+*Temperature conversion formula*
+
+To convert the raw temperature value to degrees Celsius, use:
+
+.. code-block:: text
+
+   TEMPERATURE = (RAW * OFFSET_DIV + OFFSET) * SCALE_FACTOR
+                 / (OFFSET_DIV * SCALE_FACTOR_DIV)
+
+Where the constants are defined in the ADXL355 driver:
+
+* ``OFFSET``: Temperature offset from datasheet
+* ``OFFSET_DIV``: Offset divisor
+* ``SCALE_FACTOR``: Temperature scale factor
+* ``SCALE_FACTOR_DIV``: Scale factor divisor
+
+Demo 3: Raw-to-readable conversion
+++++++++++++++++++++++++++++++++++
+
+This example extends Demo 2 by converting raw accelerometer values to
+human-readable units (g-force).
+
+Build and flash the third example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_3
+   $make EXAMPLE=example_3 run
+
+Monitor the serial output:
+
+.. shell::
+
+   ~
+   $picocom -b 57600 /dev/ttyACM0
+
+The output now shows acceleration values in meaningful units for X, Y, and Z
+axes.
+
+*Acceleration conversion formula*
+
+To convert raw acceleration values to g-force:
+
+.. code-block:: text
+
+   ACCELERATION = RAW * SCALE_FACTOR_MUL / SCALE_FACTOR_DIV
+
+The scale factors depend on the configured measurement range of the ADXL355.
 
 **Challenge**
 
-**Hands-on activity 3**
+Modify the code to also display the converted temperature value alongside
+the acceleration data. Use the temperature formula from Demo 2.
 
-*Materials*
+Demo 4: IIO Accelerometer Game
+++++++++++++++++++++++++++++++
 
-*Theory of operation*
+This final example exposes the ADXL355 as an IIO device, allowing it to be
+accessed from PC applications like IIO Oscilloscope. A simple game
+demonstrates real-time accelerometer interaction.
 
-*Hardware setup*
+Build and flash the fourth example:
 
-Steps
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_4
+   $make EXAMPLE=example_4 run
+
+*IIO device interaction*
+
+With the IIO-enabled firmware running, you can use libiio tools or
+IIO Oscilloscope to interact with the accelerometer:
+
+.. shell::
+
+   ~
+   $iio_info -u serial:/dev/ttyACM0,57600
+
+This lists the available IIO devices and their attributes.
+
+*The accelerometer game*
+
+Launch IIO Oscilloscope and connect to the serial backend. The game uses
+the accelerometer tilt to control on-screen elements, demonstrating how
+IIO enables seamless hardware-software integration.
 
 **Challenge**
 
-Slide Deck, booklet and additional materials
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Explore the IIO attributes exposed by the ADXL355. Try reading and writing
+different attributes using ``iio_attr`` command-line tool:
+
+.. shell::
+
+   ~
+   $iio_attr -u serial:/dev/ttyACM0,57600 -d adxl355 sampling_frequency
+
+Slide Deck and Booklet
+~~~~~~~~~~~~~~~~~~~~~~
 
 Since this tutorial is also designed to be presented as a live, hands-on
 workshop, a slide deck is provided here:
 
 .. admonition:: Download
 
-   :download:`Emebdded Software Slide Deck <No-OS Workshop 2025.pdf>`
+   :download:`Embedded Baremetal Slide Deck <baremetal.pdf>`
 
 A complete booklet of the hands-on activity is also provided, as a companion to
 following the tutorial yourself:
 
 .. admonition:: Download
 
-  :download:`Embedded Software Booklet <No-OS Booklet.pdf>`
+   :download:`Embedded Baremetal Booklet <baremetal_booklet.pdf>`
 
 Takeaways
 ~~~~~~~~~
+
+* **no-OS simplifies embedded development**: The framework provides
+  platform-agnostic drivers, eliminating the need to rewrite code for different
+  microcontrollers.
+
+* **Standardized driver structure**: All no-OS drivers follow a consistent
+  pattern with ``init()``, ``remove()``, and device-specific functions, making
+  it easy to learn and use new drivers.
+
+* **IIO bridges embedded and PC worlds**: By exposing devices as IIO endpoints,
+  baremetal firmware can seamlessly integrate with powerful PC applications
+  like IIO Oscilloscope, MATLAB, and Python scripts.
+
+* **Rapid prototyping**: The combination of evaluation boards, reference
+  projects, and build system enables quick bring-up and experimentation.
+
+* **Open source advantage**: With ADI-BSD licensing, no-OS code can be freely
+  used, modified, and integrated into commercial products.
 
 Resources
 ~~~~~~~~~
