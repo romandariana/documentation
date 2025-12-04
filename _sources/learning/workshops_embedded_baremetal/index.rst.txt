@@ -1,0 +1,547 @@
+Embedded Baremetal
+==================
+
+Introduction
+~~~~~~~~~~~~
+
+This workshop is designed to explore the fascinating world of baremetal programming, where you’ll learn to operate software that runs directly on the hardware.
+We’ll start by understanding what baremetal programming is and why it’s important.
+Through interactive demonstrations and hands-on activities, you’ll gain practical experience and see how these concepts apply to real-world projects. Let’s dive in and start our journey into the world of embedded systems!
+
+Theoretical content
+~~~~~~~~~~~~~~~~~~~
+
+- Baremetal Background
+- What is no-OS
+- no-OS Device Drivers
+- No-OS API and Platforms
+- No-OS Projects
+- IIO Concepts
+- ADXL355 part
+- NO-OS Device Drivers Takeaways
+- Hands-on Activity
+
+**Baremetal Background**
+
+Traditionally, industry chip manufacturers would sell ICs without accompanying software:
+
+- Chip
+
+- Datasheet
+
+- Pseudocode with an initialization sequence and/or sequence of data acquisition
+
+Complex parts require complex software.
+
+ICs are everywhere.
+
+.. grid::
+   :widths: 50% 50%
+
+   .. image:: noos.png
+      :width: 300
+      :alt: no os
+
+   .. image:: noos1.png
+      :width: 300
+      :alt: no os
+
+ADI addressed this issue and started providing software for its parts as well.
+
+There is a market advantage in selling parts with accompanying software.
+
+Baremetal projects deliverables 10 years ago consisted of:
+
+- A .zip file containing the driver files
+- A .zip file containing a project
+
+.. figure:: noos10.png
+   :align: center
+   :width: 300
+
+   Old Drivers structure
+
+What ADI tried to do back then was to write an ADI driver for an ADI part, provided that we were selling the evaluation board with ADI part on it
+The communication driver would be specific for each microcontroller or system board we would use: Maxim, Microchip, STM, etc
+The structure was mainly containing buffers instantiations and functions calling
+The users would have to fill-in the code with their specific functions
+
+The initial approach had two targets:
+
+- Provide bare-metal ADI drivers for ADI parts to users
+- Leverage the driver code in a reference project running on hardware
+
+`Advantages`
+
+Driver code was MCU independent
+
+`Disadvantages`
+
+- Customer responsibility to port reference project on a different MCU
+- .zip file distribution led to no version control and code duplication
+
+`Evolution provided`
+
+- Provide a way for reference projects to run on multiple hardware combinations
+- Provide a build system that generates binaries and run them on hardware
+- Expose parts as IIO devices to PC applications
+- Improve code quality
+
+**What is No-OS**
+
+- A software framework for embedded bare-metal development
+- Open-source
+- ADI-BSD license
+- Free
+- Large collection of platform agnostic device drivers for ADI parts
+- Significant collection of reference projects leveraging ADI evaluation boards
+- Reference projects can run on a wide range of hardware
+- Provides IIO enabled devices, making them accessible to PC applications that use libiio
+
+**What is a No-OS device driver**
+
+No-OS device driver provides a software interface to hardware devices.
+Software application can access hardware functionality without knowing in detail how the driver operates: register map, bit fields, are directly handled by the driver, as well as communication interface specific sequences and timings
+
+- A piece of code implemented in C, in a .c and .h pair, stored under /drivers on repo
+
+- Its programming interface is directly called by the application code
+
+.. figure:: api.png
+   :align: center
+   :width: 400
+
+- Defines its own descriptor structures and init_param
+
+.. figure:: struct.png
+   :align: center
+   :width: 400
+
+- Contains minimum init() and remove() functions -  take as parameter the specific init_param structure
+
+Puts the devide into the desired state
+Allocates memory
+Provides the descriptor for being called in other driver function calls, the remove functions frees the resources allocated by the init()
+
+.. figure:: init.png
+   :align: center
+   :width: 400
+
+
+- Performs no-OS API calls, does not perform platform specific function calls, it’s platform agnostic
+
+.. figure:: api1.png
+   :align: center
+   :width: 400
+
+- Software application can access hardware functionality without knowing in detail how the device operates
+
+
+.. figure:: no-os-stack.png
+   :align: center
+   :width: 300
+
+   No-OS Software Stack
+
+**No-OS Platforms**
+
+Platform drivers – represent an implementations of peripheral related no-OS API on a specific platform
+Platform drivers use vendor HAL - Hardware Abstraction Layer
+No-OS platform drivers are implementations of peripheral no-OS API on a particular platform.
+
+No-OS modularity allow it to run a lot of its code on different platforms like:
+
+- Xilinx (Zynq7000, ZynqMP, Microblaze)
+- Maxim (32650, 32655, 32660, 32670, 78000), ADuCM (3029)
+- STM32 (almost any)
+- RaspberryPi Pico
+- Mbed
+
+.. figure:: platform.png
+   :align: center
+   :width: 600
+
+   No-OS Platform Drivers
+
+**No-OS Projects**
+
+A project is basically an application that can be built, run and debugged on hardware
+
+Specifications:
+
+- Located under projects/
+- It has a main() function
+- It uses drivers/ and drivers/platforms directories
+- It uses no-OS API
+- It uses various libraries
+- User interaction – serial, iio-oscilloscope
+- makefiles
+
+Project hardware typically is made of:
+
+- An evaluation board
+- A carrier board
+
+No-OS projects are used for
+
+- ADI parts evaluation
+- Starting development based on a no-OS project
+
+**IIO Concepts**
+
+What is IIO – is a framework in the Linux kernel designed for devices such as adcs, dacs, etc..
+There is a tree concept inside kernel, there is the context concept which is specific to a board and has a set of drivers
+Context has a backend associated with it, it can be local or remote
+Is has an attribute associated with it – give various descriptions of the board: name, version, etc.
+Underneath the context comes the device, specific to the board and has also attributes, along with debug attributes – components you normally don’t interact with and require extra configuration or settings – ex. Advanced adc settings
+Each device has two components - buffer and channel – buffer is associated with data
+Channel represents the number of paths for signal to be acquired/generated
+
+The Linux Industrial I/O (IIO)  subsystem is intended to provide  support for devices that, in some  sense, are analog-to-digital or digital-  to-analog converters
+Devices that fall into this category are:
+- ADCs
+- DACs
+- Accelerometers, gyros, IMUs
+- Capacitance-to-Digital converters  (CDCs)
+- Pressure, temperature, and light  sensors, etc.
+- RF Transceivers (like the AD9361 /  AD9364 / AD9371 / ADRV9009)
+- It can be used on ADCs ranging from a  1MSPS SoC ADC to >5 GSPS ADCs
+
+.. _fig-iio:
+
+.. figure:: iio.png
+   :align: center
+   :width: 500
+
+`Libiio`
+
+It’s written in C, but has bindings in Python, C++, etc.
+All the high-level apps that talk to libiio are built on top of the stack, 
+The stack preserves its functionality, because of the way things are built, no need to change it, for becoming compatible to use with for ex GNU, Matlab, etc.
+
+.. _fig-libiio:
+
+.. figure:: libiio.png
+   :align: center
+   :width: 500
+
+Hands-on activity
+~~~~~~~~~~~~~~~~~
+
+By the end of this workshop, you will learn:
+
+* How to set up a no-OS development environment on Linux
+* How to build and flash firmware to MAX78000FTHR
+* How to read sensor data via SPI from ADXL355 accelerometer
+* How to convert raw register values to meaningful units
+* How to expose devices through IIO for PC application interaction
+
+Materials
++++++++++
+
+* MAX78000FTHR evaluation board
+* EVAL-ADXL355-PMDZ accelerometer module
+* Jumper wires (6 connections required)
+* Raspberry Pi 5 or Linux PC as development workstation
+* USB cable for MAX78000FTHR connection
+
+Pre-requisites
+++++++++++++++
+
+The workshop environment can be set up on a Raspberry Pi 5 or any Linux PC.
+Clone the workshop repository and run the setup script:
+
+.. shell::
+
+   ~
+   $git clone https://github.com/romandariana/workshop_baremetal
+   $cd workshop_baremetal
+   $chmod +x setup.sh
+   $./setup.sh
+
+After setup completes, configure the environment variables:
+
+.. shell::
+
+   ~
+   $export MAXIM_LIBRARIES=~/workshop_baremetal/MAX78000SDK/Libraries
+   $export PLATFORM=maxim
+   $export TARGET=max78000
+
+.. note::
+
+   Add these exports to your ``~/.bashrc`` to make them persistent across
+   terminal sessions.
+
+The setup creates the following directory structure:
+
+.. code-block:: text
+
+   ~/workshop_baremetal/
+   ├── setup.sh
+   ├── ai8x-synthesis/
+   ├── MAX78000SDK/
+   │   └── Libraries/
+   └── no-OS/
+       └── projects/
+           └── workshop/
+
+Hardware setup
+++++++++++++++
+
+Connect the EVAL-ADXL355-PMDZ to the MAX78000FTHR using 6 jumper wires
+according to the following pin correspondence:
+
+.. list-table:: SPI Pin Connections
+   :header-rows: 1
+   :class: bold-header
+
+   * - Function
+     - MAX78000FTHR Pin
+     - ADXL355 Pin
+   * - Power (3.3V)
+     - 3V3
+     - VDD
+   * - Ground
+     - GND
+     - GND
+   * - Chip Select
+     - P0_4 (SS0)
+     - CS
+   * - MOSI
+     - P0_5
+     - MOSI
+   * - MISO
+     - P0_6
+     - MISO
+   * - Clock
+     - P0_7 (SCK)
+     - SCLK
+
+.. warning::
+
+   Double-check connections before powering on. Incorrect wiring may damage
+   the hardware.
+
+Demo 1: Hello World UART
+++++++++++++++++++++++++
+
+This first example demonstrates basic UART communication. The firmware prints
+"Hello World" messages to the serial console, confirming that the development
+environment is correctly configured.
+
+Navigate to the workshop project directory:
+
+.. shell::
+
+   ~
+   $cd ~/workshop_baremetal/no-OS/projects/workshop
+
+Clean any previous build artifacts and build the first example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_1
+
+Flash the firmware to the MAX78000FTHR:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make EXAMPLE=example_1 run
+
+Open a new terminal and start the serial monitor:
+
+.. shell::
+
+   ~
+   $picocom -b 57600 /dev/ttyACM0
+
+You should see "Hello World" messages printed to the console.
+
+.. note::
+
+   Press ``Ctrl+A`` followed by ``Ctrl+X`` to exit picocom.
+
+Demo 2: Temperature reading
++++++++++++++++++++++++++++
+
+This example reads the temperature from the ADXL355's internal temperature
+sensor and displays raw register values.
+
+Build and flash the second example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_2
+   $make EXAMPLE=example_2 run
+
+Monitor the serial output:
+
+.. shell::
+
+   ~
+   $picocom -b 57600 /dev/ttyACM0
+
+The output displays raw temperature values read from the ADXL355 registers.
+
+*Temperature conversion formula*
+
+To convert the raw temperature value to degrees Celsius, use:
+
+.. code-block:: text
+
+   TEMPERATURE = (RAW * OFFSET_DIV + OFFSET) * SCALE_FACTOR
+                 / (OFFSET_DIV * SCALE_FACTOR_DIV)
+
+Where the constants are defined in the ADXL355 driver:
+
+* ``OFFSET``: Temperature offset from datasheet
+* ``OFFSET_DIV``: Offset divisor
+* ``SCALE_FACTOR``: Temperature scale factor
+* ``SCALE_FACTOR_DIV``: Scale factor divisor
+
+Demo 3: Raw-to-readable conversion
+++++++++++++++++++++++++++++++++++
+
+This example extends Demo 2 by converting raw accelerometer values to
+human-readable units (g-force).
+
+Build and flash the third example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_3
+   $make EXAMPLE=example_3 run
+
+Monitor the serial output:
+
+.. shell::
+
+   ~
+   $picocom -b 57600 /dev/ttyACM0
+
+The output now shows acceleration values in meaningful units for X, Y, and Z
+axes.
+
+*Acceleration conversion formula*
+
+To convert raw acceleration values to g-force:
+
+.. code-block:: text
+
+   ACCELERATION = RAW * SCALE_FACTOR_MUL / SCALE_FACTOR_DIV
+
+The scale factors depend on the configured measurement range of the ADXL355.
+
+**Challenge**
+
+Modify the code to also display the converted temperature value alongside
+the acceleration data. Use the temperature formula from Demo 2.
+
+Demo 4: IIO Accelerometer Game
+++++++++++++++++++++++++++++++
+
+This final example exposes the ADXL355 as an IIO device, allowing it to be
+accessed from PC applications like IIO Oscilloscope. A simple game
+demonstrates real-time accelerometer interaction.
+
+Build and flash the fourth example:
+
+.. shell::
+
+   ~/workshop_baremetal/no-OS/projects/workshop
+   $make reset
+   $make EXAMPLE=example_4
+   $make EXAMPLE=example_4 run
+
+*IIO device interaction*
+
+With the IIO-enabled firmware running, you can use libiio tools or
+IIO Oscilloscope to interact with the accelerometer:
+
+.. shell::
+
+   ~
+   $iio_info -u serial:/dev/ttyACM0,57600
+
+This lists the available IIO devices and their attributes.
+
+*The accelerometer game*
+
+Launch IIO Oscilloscope and connect to the serial backend. The game uses
+the accelerometer tilt to control on-screen elements, demonstrating how
+IIO enables seamless hardware-software integration.
+
+**Challenge**
+
+Explore the IIO attributes exposed by the ADXL355. Try reading and writing
+different attributes using ``iio_attr`` command-line tool:
+
+.. shell::
+
+   ~
+   $iio_attr -u serial:/dev/ttyACM0,57600 -d adxl355 sampling_frequency
+
+Slide Deck and Booklet
+~~~~~~~~~~~~~~~~~~~~~~
+
+Since this tutorial is also designed to be presented as a live, hands-on
+workshop, a slide deck is provided here:
+
+.. admonition:: Download
+
+   :download:`Embedded Baremetal Slide Deck <baremetal.pdf>`
+
+A complete booklet of the hands-on activity is also provided, as a companion to
+following the tutorial yourself:
+
+.. admonition:: Download
+
+   :download:`Embedded Baremetal Booklet <baremetal_booklet.pdf>`
+
+Takeaways
+~~~~~~~~~
+
+* **no-OS simplifies embedded development**: The framework provides
+  platform-agnostic drivers, eliminating the need to rewrite code for different
+  microcontrollers.
+
+* **Standardized driver structure**: All no-OS drivers follow a consistent
+  pattern with ``init()``, ``remove()``, and device-specific functions, making
+  it easy to learn and use new drivers.
+
+* **IIO bridges embedded and PC worlds**: By exposing devices as IIO endpoints,
+  baremetal firmware can seamlessly integrate with powerful PC applications
+  like IIO Oscilloscope, MATLAB, and Python scripts.
+
+* **Rapid prototyping**: The combination of evaluation boards, reference
+  projects, and build system enables quick bring-up and experimentation.
+
+* **Open source advantage**: With ADI-BSD licensing, no-OS code can be freely
+  used, modified, and integrated into commercial products.
+
+Resources
+~~~~~~~~~
+
+No-OS Wiki:
+
+* :external+no-OS:doc:`index`
+* :dokuwiki:`no-OS API <resources/no-os/api>`
+* :git-no-OS:`/`
+* :adi:`en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html`
+
+*Specific hardware resources*
+
+:dokuwiki:`resources/eval/user-guides/eval-adxl355-pmdz/no-os-setup?s[]=no&s[]=os#adxl355_driver`
+
+*Inspiration*
+
+* https://www.pcbtrain.co.uk/
+* https://res.cloudinary.com/
