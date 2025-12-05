@@ -2,12 +2,12 @@ DEMO High-Performance Analog Meets AI
 ===============================================================================
 
 Extracting data from high-performance, high-data-rate analog signal chains for
-AI model training and real-time inference presents significant challenges due
-to the complexity of interfaces, processing, and integration requirements.
-Analog Devices addresses these challenges by providing a comprehensive,
-open-source data extraction and integration software stack, which ensures
-seamless connectivity between advanced signal chains and high-performance
-compute platforms.
+AI model training and real-time inference presents significant challenges due to
+the complexity of interfaces, processing, and integration requirements. Analog
+Devices addresses these challenges by providing a comprehensive, open-source
+data extraction and integration software stack, which ensures seamless
+connectivity between advanced signal chains and high-performance compute
+platforms.
 
 Resources
 -------------------------------------------------------------------------------
@@ -27,19 +27,18 @@ Block diagram
 Demo description
 -------------------------------------------------------------------------------
 
-This demo illustrates an AI-based multi-channel RF modulation scheme
-recognition workflow for signal intelligence applications. Four AD-JUPITER-EBZ
-systems are used to generate RF signals with different modulation schemes
-across a total of eight channels. The signals are then digitized by two
-ADRV9009-ZU11EG SoMs, which stream the raw IQ data to a host PC via 10Gb
-Ethernet links. The AI model, derived from a MathWorks reference design, is
-deployed on the NVIDIA GPU hosted in the PC. The NVIDIA Holoscan AI
-infrastructure manages the efficient transfer of data from the network
-interfaces into GPU memory, where the AI model is executed. By combining ADI’s
-high-performance data extraction infrastructure with MathWorks development
-tools and NVIDIA deployment frameworks, the system enables efficient AI
-application development and real-time execution for advanced signal
-intelligence tasks.
+This demo illustrates an AI-based multi-channel RF modulation scheme recognition
+workflow for signal intelligence applications. Four AD-JUPITER-EBZ systems are
+used to generate RF signals with different modulation schemes across a total of
+eight channels. The signals are then digitized by two ADRV9009-ZU11EG SoMs,
+which stream the raw IQ data to a host PC via 10Gb Ethernet links. The AI model,
+derived from a MathWorks reference design, is deployed on the NVIDIA GPU hosted
+in the PC. The NVIDIA Holoscan AI infrastructure manages the efficient transfer
+of data from the network interfaces into GPU memory, where the AI model is
+executed. By combining ADI’s high-performance data extraction infrastructure
+with MathWorks development tools and NVIDIA deployment frameworks, the system
+enables efficient AI application development and real-time execution for
+advanced signal intelligence tasks.
 
 .. figure:: demo_description.svg
    :align: center
@@ -58,11 +57,11 @@ Key capabilities include:
 
 #. High-Performance Data Extraction
 
-   * Supports real-time acquisition of high-bandwidth RF data from
-     multi-channel signal chains.
+   * Supports real-time acquisition of high-bandwidth RF data from multi-channel
+     signal chains.
    * Seamlessly bridges physical interfaces, FPGA-based logic, and low-level
-     software drivers to enable reliable data transfer from ADI RF front ends
-     to edge processors.
+     software drivers to enable reliable data transfer from ADI RF front ends to
+     edge processors.
    * Flexible connectivity options, including Ethernet, PCIe, USB, and UART,
      allow integration with a wide range of compute platforms.
 
@@ -118,20 +117,26 @@ multi-channel RF modulation recognition demo:
      - Quantity
      - Notes
    * - :dokuwiki:`Jupiter SDR <resources/eval/user-guides/jupiter-sdr>`
-     - Versatile 2 x RxTx software-defined-radio platform based on ADRV9002 and Xilinx Zynq UltraScale+ MPSoC.
-       Generates RF signals with configurable modulation schemes.
+     - Versatile 2 x RxTx software-defined-radio platform based on ADRV9002 and
+       Xilinx Zynq UltraScale+ MPSoC. Generates RF signals with configurable
+       modulation schemes.
      - 4
      - Used to generate 8-channel RF input for AI recognition.
-   * - :dokuwiki:`ADRV9009-ZU11EG RF-SOM <resources/eval/user-guides/adrv9009-zu11eg>`
-     - RF System-on-Module with dual ADRV9009 wideband transceivers. Performs high-speed digitization and streaming of IQ data to the host.
+   * - :dokuwiki:`ADRV9009-ZU11EG RF-SOM
+       <resources/eval/user-guides/adrv9009-zu11eg>`
+     - RF System-on-Module with dual ADRV9009 wideband transceivers. Performs
+       high-speed digitization and streaming of IQ data to the host.
      - 2
      - Provides synchronized multi-channel data acquisition.
-   * - :dokuwiki:`AD-SYNCHRONA14-EBZ <resources/eval/user-guides/ad-synchrona14-ebz>`
-     - Clock synchronization and distribution board based on AD9545 and HMC7044. Ensures accurate multi-channel phase alignment.
+   * - :dokuwiki:`AD-SYNCHRONA14-EBZ
+       <resources/eval/user-guides/ad-synchrona14-ebz>`
+     - Clock synchronization and distribution board based on AD9545 and HMC7044.
+       Ensures accurate multi-channel phase alignment.
      - 1
      - Synchronizes all RF signal paths and data capture timing.
    * - NVIDIA IGX Orin platform
-     - High-performance computing system with NVIDIA GPU acceleration. Runs Holoscan AI infrastructure and the AI modulation recognition model.
+     - High-performance computing system with NVIDIA GPU acceleration. Runs
+       Holoscan AI infrastructure and the AI modulation recognition model.
      - 1
      - Requires 10Gb Ethernet connectivity.
    * - SMA Cables
@@ -139,7 +144,8 @@ multi-channel RF modulation recognition demo:
      - 8
      - High-quality coaxial cables recommended for minimal signal loss.
    * - 100G QSFP28 Active Optical Cable
-     - Provides high-speed data connection between the RF-SOM and the host compute platform.
+     - Provides high-speed data connection between the RF-SOM and the host
+       compute platform.
      - 1
      - Supports low-latency, high-bandwidth Ethernet link.
    * - Network switch with at least 4 PoE ports
@@ -153,7 +159,8 @@ SD Card Configuration
 - For the Jupiter SDR platform, the boot files are generated using the Using
   Kuiper Image:
 
-  :external+adi-kuiper-gen:ref:`Writing the Image to an SD Card <use-kuiper-image>`
+  :external+adi-kuiper-gen:ref:`Writing the Image to an SD Card
+  <use-kuiper-image>`
 
 - For the ADRV9009-ZU11EG, begin by checking out the HDL branch, then navigate
   to the **adrv2crr_fmc** directory.
@@ -163,7 +170,8 @@ Run the following command to enable Corundum support and build the design:
 boot files: boot.bin, device tree, and uImage by following the steps:
 
 - BOOT.BIN: :external+hdl:ref:`Build the boot image BOOT.BIN <build_boot_bin>`
-- Devicetree: :dokuwiki:`Building the Zynq Linux kernel and devicetrees from source <resources/tools-software/linux-build/generic/zynq?s%5b%5d=devicetree>`
+- Devicetree: :dokuwiki:`Building the Zynq Linux kernel and devicetrees from
+  source <resources/tools-software/linux-build/generic/zynq?s%5b%5d=devicetree>`
 
 Capture in Data Using Scopy2.0
 -------------------------------------------------------------------------------

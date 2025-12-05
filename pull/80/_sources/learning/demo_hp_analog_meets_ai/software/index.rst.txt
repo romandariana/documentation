@@ -21,8 +21,8 @@ Description
 ~~~~~~~~~~~
 
 This application performs real-time modulation classification on incoming data
-using MATLAB-generated CUDA code. It processes signals from ADRV9009 devices
-and classifies them into one of eight modulation schemes:
+using MATLAB-generated CUDA code. It processes signals from ADRV9009 devices and
+classifies them into one of eight modulation schemes:
 
 - BPSK (Binary Phase Shift Keying)
 - QPSK (Quadrature Phase Shift Keying)
@@ -37,14 +37,16 @@ Key Components
 ~~~~~~~~~~~~~~
 
 **Holohub application**: The Holohub application and IIO operators
-   - Example applications: https://github.com/nvidia-holoscan/holohub/tree/main/applications/iio
-   - Generic operators: https://github.com/nvidia-holoscan/holohub/tree/main/operators/iio_controller
+   - Example applications:
+     https://github.com/nvidia-holoscan/holohub/tree/main/applications/iio
+   - Generic operators:
+     https://github.com/nvidia-holoscan/holohub/tree/main/operators/iio_controller
 
-There are 5 operators (each with its own Python binding) that can read/write
-IIO attributes, read/write IIO buffers and configure the initial setup for a
-device/system. This demonstration uses the buffer read operator in order to
-read from the 2 ADRV9009 devices. After that, the matlab module (that needs to
-be compiled beforehand) will call the classification function that returns the
+There are 5 operators (each with its own Python binding) that can read/write IIO
+attributes, read/write IIO buffers and configure the initial setup for a
+device/system. This demonstration uses the buffer read operator in order to read
+from the 2 ADRV9009 devices. After that, the matlab module (that needs to be
+compiled beforehand) will call the classification function that returns the
 modulation and confidence level. This will be printed to the output file from
 where the python dash app will read and display the information.
 
@@ -57,11 +59,12 @@ Configuration
 
    .. code-block:: cpp
 
-      // Configure IIO buffer read for Talise device at IP 10.43.1.10
-      auto iio_rx_1 = make_operator<ops::IIOBufferRead>("iio_rx_1",
-                                        Arg("ctx") = std::string("ip:10.43.1.10"),
-                                        Arg("dev") = std::string("axi-adrv9009-rx-hpc"),
-                                        // ... other parameters
+      // Configure IIO buffer read for Talise device at IP 10.43.1.10 auto
+      iio_rx_1 = make_operator<ops::IIOBufferRead>("iio_rx_1",
+                                        Arg("ctx") =
+                                        std::string("ip:10.43.1.10"), Arg("dev")
+                                        = std::string("axi-adrv9009-rx-hpc"), //
+                                        ... other parameters
 
 2. **Output Configuration**
 
@@ -79,10 +82,8 @@ Configuration
    .. code-block:: cpp
 
       std::vector<std::string> channel_names = {
-          "voltage0_i", "voltage0_q",
-          "voltage1_i", "voltage1_q",
-          "voltage2_i", "voltage2_q",
-          "voltage3_i", "voltage3_q"
+          "voltage0_i", "voltage0_q", "voltage1_i", "voltage1_q", "voltage2_i",
+          "voltage2_q", "voltage3_i", "voltage3_q"
       };
 
 Building and Running
@@ -92,15 +93,13 @@ Building and Running
 
    .. shell::
 
-      ~/holohub
-      $build iio
+      ~/holohub $build iio
 
 2. **Run the Application**
 
    .. shell::
 
-      ~/holohub
-      $run iio
+      ~/holohub $run iio
 
 The application will:
 
@@ -176,8 +175,10 @@ Configuration
 
    .. code-block:: python
 
-      file_path = '/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results.txt'
-      file_path1 = '/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results1.txt'
+      file_path =
+      '/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results.txt'
+      file_path1 =
+      '/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results1.txt'
 
 2. **SDR Configuration**
 
@@ -186,11 +187,13 @@ Configuration
    .. code-block:: python
 
       sdr = adi.adrv9002(uri="ip:192.168.0.15")
-      sdr.write_stream_profile("lte_40_lvds_api_68_14_10.stream", "lte_40_lvds_api_68_14_10.json")
+      sdr.write_stream_profile("lte_40_lvds_api_68_14_10.stream",
+      "lte_40_lvds_api_68_14_10.json")
 
 3. **Modulated Data**
 
-   Ensure modulated data files are available in the ``modulated_data/`` directory:
+   Ensure modulated data files are available in the ``modulated_data/``
+   directory:
 
    - mod_BPSK.mat
    - mod_QPSK.mat
@@ -224,8 +227,8 @@ Usage Workflow
 
 1. **Select Modulation**: Use the dropdown to choose a specific modulation or
    select "Random" for automatic switching
-2. **Monitor Classification**: Observe real-time classification results for
-   both ADRV9009 devices
+2. **Monitor Classification**: Observe real-time classification results for both
+   ADRV9009 devices
 3. **Analyze Performance**: Review confusion matrices and accuracy metrics
 4. **Examine Signals**: Study constellation diagrams and time-domain waveforms
 

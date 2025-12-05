@@ -503,8 +503,8 @@ monitoring and analyzing classification results</p></li>
 <section id="description">
 <h3>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
 <p>This application performs real-time modulation classification on incoming data
-using MATLAB-generated CUDA code. It processes signals from ADRV9009 devices
-and classifies them into one of eight modulation schemes:</p>
+using MATLAB-generated CUDA code. It processes signals from ADRV9009 devices and
+classifies them into one of eight modulation schemes:</p>
 <ul class="simple">
 <li><p>BPSK (Binary Phase Shift Keying)</p></li>
 <li><p>QPSK (Quadrature Phase Shift Keying)</p></li>
@@ -520,16 +520,18 @@ and classifies them into one of eight modulation schemes:</p>
 <h3>Key Components<a class="headerlink" href="#key-components" title="Link to this heading"></a></h3>
 <dl class="simple">
 <dt><strong>Holohub application</strong>: The Holohub application and IIO operators</dt><dd><ul class="simple">
-<li><p>Example applications: <a class="icon link reference external" href="https://github.com/nvidia-holoscan/holohub/tree/main/applications/iio" target="_blank">https://github.com/nvidia-holoscan/holohub/tree/main/applications/iio</a></p></li>
-<li><p>Generic operators: <a class="icon link reference external" href="https://github.com/nvidia-holoscan/holohub/tree/main/operators/iio_controller" target="_blank">https://github.com/nvidia-holoscan/holohub/tree/main/operators/iio_controller</a></p></li>
+<li><p>Example applications:
+<a class="icon link reference external" href="https://github.com/nvidia-holoscan/holohub/tree/main/applications/iio" target="_blank">https://github.com/nvidia-holoscan/holohub/tree/main/applications/iio</a></p></li>
+<li><p>Generic operators:
+<a class="icon link reference external" href="https://github.com/nvidia-holoscan/holohub/tree/main/operators/iio_controller" target="_blank">https://github.com/nvidia-holoscan/holohub/tree/main/operators/iio_controller</a></p></li>
 </ul>
 </dd>
 </dl>
-<p>There are 5 operators (each with its own Python binding) that can read/write
-IIO attributes, read/write IIO buffers and configure the initial setup for a
-device/system. This demonstration uses the buffer read operator in order to
-read from the 2 ADRV9009 devices. After that, the matlab module (that needs to
-be compiled beforehand) will call the classification function that returns the
+<p>There are 5 operators (each with its own Python binding) that can read/write IIO
+attributes, read/write IIO buffers and configure the initial setup for a
+device/system. This demonstration uses the buffer read operator in order to read
+from the 2 ADRV9009 devices. After that, the matlab module (that needs to be
+compiled beforehand) will call the classification function that returns the
 modulation and confidence level. This will be printed to the output file from
 where the python dash app will read and display the information.</p>
 </section>
@@ -538,11 +540,12 @@ where the python dash app will read and display the information.</p>
 <ol class="arabic">
 <li><p><strong>Network Configuration</strong></p>
 <p>Update IP addresses in main.cpp for your ADRV9009 devices:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configure IIO buffer read for Talise device at IP 10.43.1.10</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">iio_rx_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_operator</span><span class="o">&lt;</span><span class="n">ops</span><span class="o">::</span><span class="n">IIOBufferRead</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;iio_rx_1&quot;</span><span class="p">,</span>
-<span class="w">                                  </span><span class="n">Arg</span><span class="p">(</span><span class="s">&quot;ctx&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;ip:10.43.1.10&quot;</span><span class="p">),</span>
-<span class="w">                                  </span><span class="n">Arg</span><span class="p">(</span><span class="s">&quot;dev&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;axi-adrv9009-rx-hpc&quot;</span><span class="p">),</span>
-<span class="w">                                  </span><span class="c1">// ... other parameters</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configure IIO buffer read for Talise device at IP 10.43.1.10 auto</span>
+<span class="n">iio_rx_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_operator</span><span class="o">&lt;</span><span class="n">ops</span><span class="o">::</span><span class="n">IIOBufferRead</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;iio_rx_1&quot;</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Arg</span><span class="p">(</span><span class="s">&quot;ctx&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;ip:10.43.1.10&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Arg</span><span class="p">(</span><span class="s">&quot;dev&quot;</span><span class="p">)</span>
+<span class="w">                                  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;axi-adrv9009-rx-hpc&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">//</span>
+<span class="w">                                  </span><span class="p">...</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">parameters</span>
 </pre></div>
 </div>
 </li>
@@ -556,10 +559,8 @@ where the python dash app will read and display the information.</p>
 <li><p><strong>Channel Configuration</strong></p>
 <p>The application is configured for 8 channels (4 I/Q pairs):</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">channel_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s">&quot;voltage0_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage0_q&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;voltage1_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage1_q&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;voltage2_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage2_q&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;voltage3_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage3_q&quot;</span>
+<span class="w">    </span><span class="s">&quot;voltage0_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage0_q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage1_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage1_q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage2_i&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;voltage2_q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage3_i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;voltage3_q&quot;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -570,21 +571,9 @@ where the python dash app will read and display the information.</p>
 <h3>Building and Running<a class="headerlink" href="#building-and-running" title="Link to this heading"></a></h3>
 <ol class="arabic">
 <li><p><strong>Build the Application</strong></p>
-<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/holohub$
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build<span class="w"> </span>iio
-</pre></div>
-</div>
-<div class="clear-left"></div></div></div></li>
+<div class="code-shell"></div></li>
 <li><p><strong>Run the Application</strong></p>
-<div class="code-shell"><div><div class="no-select float-left highlight-default notranslate"><div class="highlight"><pre><span></span>~/holohub$
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run<span class="w"> </span>iio
-</pre></div>
-</div>
-<div class="clear-left"></div></div></div></li>
+<div class="code-shell"></div></li>
 </ol>
 <p>The application will:</p>
 <ul class="simple">
@@ -662,20 +651,24 @@ analyzing the modulation classification results in real-time. It features:</p>
 <ol class="arabic">
 <li><p><strong>File Paths</strong></p>
 <p>Update file paths to match your Holoscan output location:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results.txt&#39;</span>
-<span class="n">file_path1</span> <span class="o">=</span> <span class="s1">&#39;/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results1.txt&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span>
+<span class="s1">&#39;/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results.txt&#39;</span>
+<span class="n">file_path1</span> <span class="o">=</span>
+<span class="s1">&#39;/home/analog/git/holohub/build/matlab_classify_modulator/modulation_results1.txt&#39;</span>
 </pre></div>
 </div>
 </li>
 <li><p><strong>SDR Configuration</strong></p>
 <p>Configure SDR devices with appropriate IP addresses and stream profiles:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sdr</span> <span class="o">=</span> <span class="n">adi</span><span class="o">.</span><span class="n">adrv9002</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;ip:192.168.0.15&quot;</span><span class="p">)</span>
-<span class="n">sdr</span><span class="o">.</span><span class="n">write_stream_profile</span><span class="p">(</span><span class="s2">&quot;lte_40_lvds_api_68_14_10.stream&quot;</span><span class="p">,</span> <span class="s2">&quot;lte_40_lvds_api_68_14_10.json&quot;</span><span class="p">)</span>
+<span class="n">sdr</span><span class="o">.</span><span class="n">write_stream_profile</span><span class="p">(</span><span class="s2">&quot;lte_40_lvds_api_68_14_10.stream&quot;</span><span class="p">,</span>
+<span class="s2">&quot;lte_40_lvds_api_68_14_10.json&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p><strong>Modulated Data</strong></p>
-<p>Ensure modulated data files are available in the <code class="docutils literal notranslate"><span class="pre">modulated_data/</span></code> directory:</p>
+<p>Ensure modulated data files are available in the <code class="docutils literal notranslate"><span class="pre">modulated_data/</span></code>
+directory:</p>
 <ul class="simple">
 <li><p>mod_BPSK.mat</p></li>
 <li><p>mod_QPSK.mat</p></li>
@@ -714,8 +707,8 @@ generating output files.</p>
 <ol class="arabic simple">
 <li><p><strong>Select Modulation</strong>: Use the dropdown to choose a specific modulation or
 select “Random” for automatic switching</p></li>
-<li><p><strong>Monitor Classification</strong>: Observe real-time classification results for
-both ADRV9009 devices</p></li>
+<li><p><strong>Monitor Classification</strong>: Observe real-time classification results for both
+ADRV9009 devices</p></li>
 <li><p><strong>Analyze Performance</strong>: Review confusion matrices and accuracy metrics</p></li>
 <li><p><strong>Examine Signals</strong>: Study constellation diagrams and time-domain waveforms</p></li>
 </ol>
