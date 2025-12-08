@@ -323,7 +323,7 @@ You should see "Hello World" messages printed to the console.
 
 .. _fig-example_1_picocom:
 
-.. figure:: images/example_1_picocom.png
+.. figure:: images/example1.png
    :align: center
    :width: 500
 
