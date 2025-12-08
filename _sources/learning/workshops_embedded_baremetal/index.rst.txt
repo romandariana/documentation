@@ -625,13 +625,13 @@ Takeaways
 Resources
 ~~~~~~~~~
 
-No-OS Wiki:
+*No-OS*
 
 :external+no-OS:doc:`index`
 
 :git-no-OS:`/`
 
-:git-no-OS:`EVAL-ADXL355-PMDZ no-OS projects <eval-adxl355-pmdz>`
+:git-no-OS:`EVAL-ADXL355-PMDZ no-OS projects <projects/eval-adxl355-pmdz>`
 
 :adi:`en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html`
 
@@ -639,7 +639,7 @@ No-OS Wiki:
 
 :adi:`EVAL-ADXL355-PMDZ Product Page <EVAL-ADXL355-PMDZ>`
 
-:adi:`ADXL355 Product Page <ADXL355>`
+:adi:`MAX78000FTHR Product Page <max78000fthr>`
 
 *Inspiration*
 
