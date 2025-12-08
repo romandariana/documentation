@@ -284,45 +284,8 @@ The setup creates the following directory structure:
        └── projects/
            └── workshop/
 
-Hardware setup
-++++++++++++++
-
-Connect the EVAL-ADXL355-PMDZ to the MAX78000FTHR using 6 jumper wires
-according to the following pin correspondence:
-
-.. list-table:: SPI Pin Connections
-   :header-rows: 1
-   :class: bold-header
-
-   * - Function
-     - MAX78000FTHR Pin
-     - ADXL355 Pin
-   * - Power (3.3V)
-     - 3V3
-     - VDD
-   * - Ground
-     - GND
-     - GND
-   * - Chip Select
-     - P0_4 (SS0)
-     - CS
-   * - MOSI
-     - P0_5
-     - MOSI
-   * - MISO
-     - P0_6
-     - MISO
-   * - Clock
-     - P0_7 (SCK)
-     - SCLK
-
-.. warning::
-
-   Double-check connections before powering on. Incorrect wiring may damage
-   the hardware.
-
-Demo 1: Hello World UART
-++++++++++++++++++++++++
+Example 1: Hello World UART
++++++++++++++++++++++++++++
 
 This first example demonstrates basic UART communication. The firmware prints
 "Hello World" messages to the serial console, confirming that the development
@@ -341,8 +304,8 @@ Clean any previous build artifacts and build the first example:
    make reset
    make EXAMPLE=example_1
 
-Make sure the MAX78000FTHR is connected to one of your workstation's USB ports
-through an USB cable.
+Connect the MAX78000FTHR to one of your workstation's USB ports through an USB
+cable.
 
 Flash the firmware to the MAX78000FTHR:
 
@@ -358,6 +321,8 @@ Open a new terminal and start the serial monitor:
 
 You should see "Hello World" messages printed to the console.
 
+.. _fig-example_1_picocom:
+
 .. figure:: images/example_1_picocom.png
    :align: center
    :width: 500
@@ -366,8 +331,8 @@ You should see "Hello World" messages printed to the console.
 
    Press ``Ctrl+A`` followed by ``Ctrl+X`` to exit picocom.
 
-Demo 2: Temperature reading
-+++++++++++++++++++++++++++
+Example 2: Temperature reading
+++++++++++++++++++++++++++++++
 
 This example reads the temperature from the ADXL355's internal temperature
 sensor and displays raw register values.
@@ -404,10 +369,10 @@ Where the constants are defined in the ADXL355 driver:
 * ``SCALE_FACTOR``: Temperature scale factor
 * ``SCALE_FACTOR_DIV``: Scale factor divisor
 
-Demo 3: Raw-to-readable conversion
-++++++++++++++++++++++++++++++++++
+Example 3: Raw-to-readable conversion
++++++++++++++++++++++++++++++++++++++
 
-This example extends Demo 2 by converting raw accelerometer values to
+This example extends Example 2 by converting raw accelerometer values to
 human-readable units (g-force).
 
 Build and flash the third example:
@@ -440,10 +405,10 @@ The scale factors depend on the configured measurement range of the ADXL355.
 **Challenge**
 
 Modify the code to also display the converted temperature value alongside
-the acceleration data. Use the temperature formula from Demo 2.
+the acceleration data. Use the temperature formula from Example 2.
 
-Demo 4: IIO Accelerometer Game
-++++++++++++++++++++++++++++++
+Example 4: IIO Accelerometer Game
++++++++++++++++++++++++++++++++++
 
 This final example exposes the ADXL355 as an IIO device, allowing it to be
 accessed from PC applications like IIO Oscilloscope. A simple game

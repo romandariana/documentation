@@ -100,11 +100,10 @@
 <li><a class="reference internal" href="#hands-on-activity">Hands-on activity</a><ul>
 <li><a class="reference internal" href="#materials">Materials</a></li>
 <li><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
-<li><a class="reference internal" href="#hardware-setup">Hardware setup</a></li>
-<li><a class="reference internal" href="#demo-1-hello-world-uart">Demo 1: Hello World UART</a></li>
-<li><a class="reference internal" href="#demo-2-temperature-reading">Demo 2: Temperature reading</a></li>
-<li><a class="reference internal" href="#demo-3-raw-to-readable-conversion">Demo 3: Raw-to-readable conversion</a></li>
-<li><a class="reference internal" href="#demo-4-iio-accelerometer-game">Demo 4: IIO Accelerometer Game</a></li>
+<li><a class="reference internal" href="#example-1-hello-world-uart">Example 1: Hello World UART</a></li>
+<li><a class="reference internal" href="#example-2-temperature-reading">Example 2: Temperature reading</a></li>
+<li><a class="reference internal" href="#example-3-raw-to-readable-conversion">Example 3: Raw-to-readable conversion</a></li>
+<li><a class="reference internal" href="#example-4-iio-accelerometer-game">Example 4: IIO Accelerometer Game</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#slide-deck-and-booklet">Slide Deck and Booklet</a></li>
@@ -726,55 +725,8 @@ terminal sessions.</p>
 </pre></div>
 </div>
 </section>
-<section id="hardware-setup">
-<h3>Hardware setup<a class="headerlink" href="#hardware-setup" title="Link to this heading"></a></h3>
-<p>Connect the EVAL-ADXL355-PMDZ to the MAX78000FTHR using 6 jumper wires
-according to the following pin correspondence:</p>
-<div class="table-wrapper bold-header docutils container" id="id4">
-<table class="bold-header docutils align-default" id="id4">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">SPI Pin Connections</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
-<thead>
-<tr class="row-odd"><th class="head"><p>Function</p></th>
-<th class="head"><p>MAX78000FTHR Pin</p></th>
-<th class="head"><p>ADXL355 Pin</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Power (3.3V)</p></td>
-<td><p>3V3</p></td>
-<td><p>VDD</p></td>
-</tr>
-<tr class="row-odd"><td><p>Ground</p></td>
-<td><p>GND</p></td>
-<td><p>GND</p></td>
-</tr>
-<tr class="row-even"><td><p>Chip Select</p></td>
-<td><p>P0_4 (SS0)</p></td>
-<td><p>CS</p></td>
-</tr>
-<tr class="row-odd"><td><p>MOSI</p></td>
-<td><p>P0_5</p></td>
-<td><p>MOSI</p></td>
-</tr>
-<tr class="row-even"><td><p>MISO</p></td>
-<td><p>P0_6</p></td>
-<td><p>MISO</p></td>
-</tr>
-<tr class="row-odd"><td><p>Clock</p></td>
-<td><p>P0_7 (SCK)</p></td>
-<td><p>SCLK</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Double-check connections before powering on. Incorrect wiring may damage
-the hardware.</p>
-</div>
-</section>
-<section id="demo-1-hello-world-uart">
-<h3>Demo 1: Hello World UART<a class="headerlink" href="#demo-1-hello-world-uart" title="Link to this heading"></a></h3>
+<section id="example-1-hello-world-uart">
+<h3>Example 1: Hello World UART<a class="headerlink" href="#example-1-hello-world-uart" title="Link to this heading"></a></h3>
 <p>This first example demonstrates basic UART communication. The firmware prints
 “Hello World” messages to the serial console, confirming that the development
 environment is correctly configured.</p>
@@ -787,8 +739,8 @@ environment is correctly configured.</p>
 make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_1
 </pre></div>
 </div>
-<p>Make sure the MAX78000FTHR is connected to one of your workstation’s USB ports
-through an USB cable.</p>
+<p>Connect the MAX78000FTHR to one of your workstation’s USB ports through an USB
+cable.</p>
 <p>Flash the firmware to the MAX78000FTHR:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_1<span class="w"> </span>run
 </pre></div>
@@ -798,7 +750,7 @@ through an USB cable.</p>
 </pre></div>
 </div>
 <p>You should see “Hello World” messages printed to the console.</p>
-<figure class="align-center">
+<figure class="align-center" id="fig-example-1-picocom">
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example_1_picocom.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example_1_picocom.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example_1_picocom.png" width="500" />
 </a>
 </figure>
@@ -807,8 +759,8 @@ through an USB cable.</p>
 <p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+A</span></code> followed by <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code> to exit picocom.</p>
 </div>
 </section>
-<section id="demo-2-temperature-reading">
-<h3>Demo 2: Temperature reading<a class="headerlink" href="#demo-2-temperature-reading" title="Link to this heading"></a></h3>
+<section id="example-2-temperature-reading">
+<h3>Example 2: Temperature reading<a class="headerlink" href="#example-2-temperature-reading" title="Link to this heading"></a></h3>
 <p>This example reads the temperature from the ADXL355’s internal temperature
 sensor and displays raw register values.</p>
 <p>Build and flash the second example:</p>
@@ -836,9 +788,9 @@ make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</sp
 <li><p><code class="docutils literal notranslate"><span class="pre">SCALE_FACTOR_DIV</span></code>: Scale factor divisor</p></li>
 </ul>
 </section>
-<section id="demo-3-raw-to-readable-conversion">
-<h3>Demo 3: Raw-to-readable conversion<a class="headerlink" href="#demo-3-raw-to-readable-conversion" title="Link to this heading"></a></h3>
-<p>This example extends Demo 2 by converting raw accelerometer values to
+<section id="example-3-raw-to-readable-conversion">
+<h3>Example 3: Raw-to-readable conversion<a class="headerlink" href="#example-3-raw-to-readable-conversion" title="Link to this heading"></a></h3>
+<p>This example extends Example 2 by converting raw accelerometer values to
 human-readable units (g-force).</p>
 <p>Build and flash the third example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>reset
@@ -860,10 +812,10 @@ axes.</p>
 <p>The scale factors depend on the configured measurement range of the ADXL355.</p>
 <p><strong>Challenge</strong></p>
 <p>Modify the code to also display the converted temperature value alongside
-the acceleration data. Use the temperature formula from Demo 2.</p>
+the acceleration data. Use the temperature formula from Example 2.</p>
 </section>
-<section id="demo-4-iio-accelerometer-game">
-<h3>Demo 4: IIO Accelerometer Game<a class="headerlink" href="#demo-4-iio-accelerometer-game" title="Link to this heading"></a></h3>
+<section id="example-4-iio-accelerometer-game">
+<h3>Example 4: IIO Accelerometer Game<a class="headerlink" href="#example-4-iio-accelerometer-game" title="Link to this heading"></a></h3>
 <p>This final example exposes the ADXL355 as an IIO device, allowing it to be
 accessed from PC applications like IIO Oscilloscope. A simple game
 demonstrates real-time accelerometer interaction.</p>
