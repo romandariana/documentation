@@ -974,13 +974,20 @@ Example: <code class="docutils literal notranslate"><span class="pre">(int64_t)A
 </section>
 <section id="example-4-iio-accelerometer-game">
 <h3>Example 4: IIO Accelerometer Game<a class="headerlink" href="#example-4-iio-accelerometer-game" title="Link to this heading"></a></h3>
-<p>This final example exposes the ADXL355 as an IIO device, allowing it to be
-accessed from PC applications like IIO Oscilloscope. A simple game
-demonstrates real-time accelerometer interaction.</p>
-<p>Build and flash the iio example:</p>
+<p>This example consists of an accelerometer-enabled game that lets you place
+components on a circuit by physically tilting the accelerometer.</p>
+<p>Close the terminal running picocom.</p>
+<p>Make sure you are in the <code class="docutils literal notranslate"><span class="pre">~/workshop_baremetal/no-OS/projects/workshop</span></code>
+directory and reset the workspace:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>reset
-make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>iio_example
-make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>iio_example<span class="w"> </span>run
+</pre></div>
+</div>
+<p>Build the IIO_EXAMPLE of this project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>iio_example
+</pre></div>
+</div>
+<p>Program the board:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>iio_example<span class="w"> </span>run
 </pre></div>
 </div>
 <p>Change the directory and run the game:</p>
@@ -988,6 +995,14 @@ make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</sp
 python3<span class="w"> </span>play.py
 </pre></div>
 </div>
+<p>Notice the graphical interface:</p>
+<figure class="align-center" id="fig-game">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/game.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/game.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/game.png" width="500" />
+</a>
+</figure>
+<p>Move the accelerometer board around and observe the output. Be careful not to
+disconnect the wires.</p>
+<p>Let’s see if you can beat the game!</p>
 </section>
 </section>
 <section id="slide-deck-and-booklet">

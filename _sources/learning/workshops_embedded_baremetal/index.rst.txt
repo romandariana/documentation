@@ -540,16 +540,28 @@ The raw values from the formulas can be found in the source file under the name
 Example 4: IIO Accelerometer Game
 +++++++++++++++++++++++++++++++++
 
-This final example exposes the ADXL355 as an IIO device, allowing it to be
-accessed from PC applications like IIO Oscilloscope. A simple game
-demonstrates real-time accelerometer interaction.
+This example consists of an accelerometer-enabled game that lets you place
+components on a circuit by physically tilting the accelerometer.
 
-Build and flash the iio example:
+Close the terminal running picocom.
+
+Make sure you are in the ``~/workshop_baremetal/no-OS/projects/workshop``
+directory and reset the workspace:
 
 .. code-block:: bash
 
    make reset
+
+Build the IIO_EXAMPLE of this project:
+
+.. code-block:: bash
+
    make EXAMPLE=iio_example
+
+Program the board:
+
+.. code-block:: bash
+
    make EXAMPLE=iio_example run
 
 Change the directory and run the game:
@@ -558,6 +570,19 @@ Change the directory and run the game:
 
    cd ~/workshop_baremetal/play
    python3 play.py
+
+Notice the graphical interface:
+
+.. _fig-game:
+
+.. figure:: images/game.png
+   :align: center
+   :width: 500
+
+Move the accelerometer board around and observe the output. Be careful not to
+disconnect the wires.
+
+Let's see if you can beat the game!
 
 Slide Deck and Booklet
 ~~~~~~~~~~~~~~~~~~~~~~
