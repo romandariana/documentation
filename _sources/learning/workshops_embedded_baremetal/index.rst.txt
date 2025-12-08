@@ -328,7 +328,7 @@ This first example demonstrates basic UART communication. The firmware prints
 "Hello World" messages to the serial console, confirming that the development
 environment is correctly configured.
 
-Navigate to the workshop project directory:
+Open a terminal and navigate to the workshop project directory:
 
 .. code-block:: bash
 
@@ -341,6 +341,9 @@ Clean any previous build artifacts and build the first example:
    make reset
    make EXAMPLE=example_1
 
+Make sure the MAX78000FTHR is connected to one of your workstation's USB ports
+through an USB cable.
+
 Flash the firmware to the MAX78000FTHR:
 
 .. code-block:: bash
@@ -351,9 +354,13 @@ Open a new terminal and start the serial monitor:
 
 .. code-block:: bash
 
-   $picocom -b 57600 /dev/ttyACM0
+   picocom -b 57600 /dev/ttyACM0
 
 You should see "Hello World" messages printed to the console.
+
+.. figure:: images/example_1_picocom.png
+   :align: center
+   :width: 500
 
 .. note::
 

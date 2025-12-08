@@ -778,7 +778,7 @@ the hardware.</p>
 <p>This first example demonstrates basic UART communication. The firmware prints
 “Hello World” messages to the serial console, confirming that the development
 environment is correctly configured.</p>
-<p>Navigate to the workshop project directory:</p>
+<p>Open a terminal and navigate to the workshop project directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/workshop_baremetal/no-OS/projects/workshop
 </pre></div>
 </div>
@@ -787,15 +787,21 @@ environment is correctly configured.</p>
 make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_1
 </pre></div>
 </div>
+<p>Make sure the MAX78000FTHR is connected to one of your workstation’s USB ports
+through an USB cable.</p>
 <p>Flash the firmware to the MAX78000FTHR:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_1<span class="w"> </span>run
 </pre></div>
 </div>
 <p>Open a new terminal and start the serial monitor:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$picocom</span><span class="w"> </span>-b<span class="w"> </span><span class="m">57600</span><span class="w"> </span>/dev/ttyACM0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>picocom<span class="w"> </span>-b<span class="w"> </span><span class="m">57600</span><span class="w"> </span>/dev/ttyACM0
 </pre></div>
 </div>
 <p>You should see “Hello World” messages printed to the console.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example_1_picocom.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example_1_picocom.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example_1_picocom.png" width="500" />
+</a>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+A</span></code> followed by <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code> to exit picocom.</p>
