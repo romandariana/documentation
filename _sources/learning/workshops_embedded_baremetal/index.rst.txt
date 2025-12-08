@@ -472,14 +472,15 @@ Resources
 
 No-OS Wiki:
 
-* :external+no-OS:doc:`index`
-* :dokuwiki:`no-OS API <resources/no-os/api>`
-* :git-no-OS:`/`
-* :adi:`en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html`
+:external+no-OS:doc:`index`
+:git-no-OS:`/`
+:git-no-OS:`EVAL-ADXL355-PMDZ no-OS projects <eval-adxl355-pmdz>`
+:adi:`en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html`
 
 *Specific hardware resources*
 
-:dokuwiki:`resources/eval/user-guides/eval-adxl355-pmdz/no-os-setup?s[]=no&s[]=os#adxl355_driver`
+:adi:`EVAL-ADXL355-PMDZ Product Page <EVAL-ADXL355-PMDZ>`
+:adi:`ADXL355 Product Page <ADXL355>`
 
 *Inspiration*
 
