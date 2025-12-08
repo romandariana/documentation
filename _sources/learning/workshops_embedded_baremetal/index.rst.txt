@@ -38,11 +38,11 @@ ICs are everywhere.
 .. grid::
    :widths: 50% 50%
 
-   .. image:: noos.png
+   .. image:: images/noos.png
       :width: 300
       :alt: no os
 
-   .. image:: noos1.png
+   .. image:: images/noos1.png
       :width: 300
       :alt: no os
 
@@ -55,7 +55,7 @@ Baremetal projects deliverables 10 years ago consisted of:
 - A .zip file containing the driver files
 - A .zip file containing a project
 
-.. figure:: noos10.png
+.. figure:: images/noos10.png
    :align: center
    :width: 300
 
@@ -107,13 +107,13 @@ Software application can access hardware functionality without knowing in detail
 
 - Its programming interface is directly called by the application code
 
-.. figure:: api.png
+.. figure:: images/api.png
    :align: center
    :width: 400
 
 - Defines its own descriptor structures and init_param
 
-.. figure:: struct.png
+.. figure:: images/struct.png
    :align: center
    :width: 400
 
@@ -123,21 +123,21 @@ Puts the devide into the desired state
 Allocates memory
 Provides the descriptor for being called in other driver function calls, the remove functions frees the resources allocated by the init()
 
-.. figure:: init.png
+.. figure:: images/init.png
    :align: center
    :width: 400
 
 
 - Performs no-OS API calls, does not perform platform specific function calls, it’s platform agnostic
 
-.. figure:: api1.png
+.. figure:: images/api1.png
    :align: center
    :width: 400
 
 - Software application can access hardware functionality without knowing in detail how the device operates
 
 
-.. figure:: no-os-stack.png
+.. figure:: images/no-os-stack.png
    :align: center
    :width: 300
 
@@ -157,7 +157,7 @@ No-OS modularity allow it to run a lot of its code on different platforms like:
 - RaspberryPi Pico
 - Mbed
 
-.. figure:: platform.png
+.. figure:: images/platform.png
    :align: center
    :width: 600
 
@@ -209,7 +209,7 @@ Devices that fall into this category are:
 
 .. _fig-iio:
 
-.. figure:: iio.png
+.. figure:: images/iio.png
    :align: center
    :width: 500
 
@@ -221,7 +221,7 @@ The stack preserves its functionality, because of the way things are built, no n
 
 .. _fig-libiio:
 
-.. figure:: libiio.png
+.. figure:: images/libiio.png
    :align: center
    :width: 500
 
@@ -251,22 +251,20 @@ Pre-requisites
 The workshop environment can be set up on a Raspberry Pi 5 or any Linux PC.
 Clone the workshop repository and run the setup script:
 
-.. shell::
+.. code-block:: bash
 
-   ~
-   $git clone https://github.com/romandariana/workshop_baremetal
-   $cd workshop_baremetal
-   $chmod +x setup.sh
-   $./setup.sh
+   git clone https://github.com/romandariana/workshop_baremetal
+   cd workshop_baremetal
+   chmod +x setup.sh
+   ./setup.sh
 
 After setup completes, configure the environment variables:
 
-.. shell::
+.. code-block:: bash
 
-   ~
-   $export MAXIM_LIBRARIES=~/workshop_baremetal/MAX78000SDK/Libraries
-   $export PLATFORM=maxim
-   $export TARGET=max78000
+   export MAXIM_LIBRARIES=~/workshop_baremetal/MAX78000SDK/Libraries
+   export PLATFORM=maxim
+   export TARGET=max78000
 
 .. note::
 
@@ -332,31 +330,27 @@ environment is correctly configured.
 
 Navigate to the workshop project directory:
 
-.. shell::
+.. code-block:: bash
 
-   ~
-   $cd ~/workshop_baremetal/no-OS/projects/workshop
+   cd ~/workshop_baremetal/no-OS/projects/workshop
 
 Clean any previous build artifacts and build the first example:
 
-.. shell::
+.. code-block:: bash
 
-   ~/workshop_baremetal/no-OS/projects/workshop
-   $make reset
-   $make EXAMPLE=example_1
+   make reset
+   make EXAMPLE=example_1
 
 Flash the firmware to the MAX78000FTHR:
 
-.. shell::
+.. code-block:: bash
 
-   ~/workshop_baremetal/no-OS/projects/workshop
-   $make EXAMPLE=example_1 run
+   make EXAMPLE=example_1 run
 
 Open a new terminal and start the serial monitor:
 
-.. shell::
+.. code-block:: bash
 
-   ~
    $picocom -b 57600 /dev/ttyACM0
 
 You should see "Hello World" messages printed to the console.
@@ -373,19 +367,17 @@ sensor and displays raw register values.
 
 Build and flash the second example:
 
-.. shell::
+.. code-block:: bash
 
-   ~/workshop_baremetal/no-OS/projects/workshop
-   $make reset
-   $make EXAMPLE=example_2
-   $make EXAMPLE=example_2 run
+   make reset
+   make EXAMPLE=example_2
+   make EXAMPLE=example_2 run
 
 Monitor the serial output:
 
-.. shell::
+.. code-block:: bash
 
-   ~
-   $picocom -b 57600 /dev/ttyACM0
+   picocom -b 57600 /dev/ttyACM0
 
 The output displays raw temperature values read from the ADXL355 registers.
 
@@ -413,19 +405,17 @@ human-readable units (g-force).
 
 Build and flash the third example:
 
-.. shell::
+.. code-block:: bash
 
-   ~/workshop_baremetal/no-OS/projects/workshop
-   $make reset
-   $make EXAMPLE=example_3
-   $make EXAMPLE=example_3 run
+   make reset
+   make EXAMPLE=example_3
+   make EXAMPLE=example_3 run
 
 Monitor the serial output:
 
-.. shell::
+.. code-block:: bash
 
-   ~
-   $picocom -b 57600 /dev/ttyACM0
+   picocom -b 57600 /dev/ttyACM0
 
 The output now shows acceleration values in meaningful units for X, Y, and Z
 axes.
@@ -452,42 +442,20 @@ This final example exposes the ADXL355 as an IIO device, allowing it to be
 accessed from PC applications like IIO Oscilloscope. A simple game
 demonstrates real-time accelerometer interaction.
 
-Build and flash the fourth example:
+Build and flash the iio example:
 
-.. shell::
+.. code-block:: bash
 
-   ~/workshop_baremetal/no-OS/projects/workshop
-   $make reset
-   $make EXAMPLE=example_4
-   $make EXAMPLE=example_4 run
+   make reset
+   make EXAMPLE=iio_example
+   make EXAMPLE=iio_example run
 
-*IIO device interaction*
+Change the directory and run the game:
 
-With the IIO-enabled firmware running, you can use libiio tools or
-IIO Oscilloscope to interact with the accelerometer:
+.. code-block:: bash
 
-.. shell::
-
-   ~
-   $iio_info -u serial:/dev/ttyACM0,57600
-
-This lists the available IIO devices and their attributes.
-
-*The accelerometer game*
-
-Launch IIO Oscilloscope and connect to the serial backend. The game uses
-the accelerometer tilt to control on-screen elements, demonstrating how
-IIO enables seamless hardware-software integration.
-
-**Challenge**
-
-Explore the IIO attributes exposed by the ADXL355. Try reading and writing
-different attributes using ``iio_attr`` command-line tool:
-
-.. shell::
-
-   ~
-   $iio_attr -u serial:/dev/ttyACM0,57600 -d adxl355 sampling_frequency
+   cd ~/workshop_baremetal/play
+   python3 play.py
 
 Slide Deck and Booklet
 ~~~~~~~~~~~~~~~~~~~~~~
