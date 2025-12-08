@@ -321,7 +321,7 @@ Open a new terminal and start the serial monitor:
 
 You should see "Hello World" messages printed to the console.
 
-.. _fig-example_1_picocom:
+.. _fig-example1:
 
 .. figure:: images/example1.png
    :align: center
@@ -334,40 +334,95 @@ You should see "Hello World" messages printed to the console.
 Example 2: Temperature reading
 ++++++++++++++++++++++++++++++
 
-This example reads the temperature from the ADXL355's internal temperature
-sensor and displays raw register values.
+For this example, we connect an accelerometer to the microcontroller board using
+the provided wires. The scope of this example is to read the temperature from
+the accelerometer.
 
-Build and flash the second example:
+Disconnect the MAX78000FTHR from your workstation's USB port.
+
+Connect the EVAL-ADXL355-PMDZ to MAX78000FTHR using the information below:
+
+.. figure:: images/max78000fthr-pinout.png
+   :align: center
+   :width: 600
+
+   MAX78000FTHR Pinout
+
+.. list-table:: Pin correspondence table
+   :header-rows: 1
+   :widths: 30 40 30
+
+   * - MAX78000FTHR
+     - Signal
+     - EVAL-ADXL355-PMDZ
+   * - 3V3
+     - Digital power
+     - 6 or 12
+   * - GND
+     - Digital ground
+     - 5 or 11
+   * - P0_11/SS0
+     - SPI Chip Select
+     - 1
+   * - P0_5/MOSI
+     - SPI Master Out Slave In
+     - 2
+   * - P0_6/MISO
+     - SPI Master In Slave Out
+     - 3
+   * - P0_7/SCK
+     - SPI Serial Clock
+     - 4
+
+Make sure all 6 wires from the pin correspondence table are connected.
+
+You may now plug in the MAX78000FTHR into one of the workstation's USB ports
+using the USB cable.
+
+The accelerometer has an internal temperature sensor. This example makes use of
+this by reading it and displaying temperature values onto the serial terminal.
+
+Clean any previous build artifacts and build the second example:
 
 .. code-block:: bash
 
    make reset
    make EXAMPLE=example_2
-   make EXAMPLE=example_2 run
 
-Monitor the serial output:
+Make sure you have an active terminal running picocom then load the example:
 
 .. code-block:: bash
 
-   picocom -b 57600 /dev/ttyACM0
+   make EXAMPLE=example_2 run
 
-The output displays raw temperature values read from the ADXL355 registers.
+Observe the output being printed every second.
 
-*Temperature conversion formula*
+.. _fig-example2:
 
-To convert the raw temperature value to degrees Celsius, use:
+.. figure:: images/example2.png
+   :align: center
+   :width: 500
 
-.. code-block:: text
+**Challenge**
 
-   TEMPERATURE = (RAW * OFFSET_DIV + OFFSET) * SCALE_FACTOR
-                 / (OFFSET_DIV * SCALE_FACTOR_DIV)
+Change the current format of the printed temperature from millidegrees to
+degrees.
 
-Where the constants are defined in the ADXL355 driver:
+**Example**
 
-* ``OFFSET``: Temperature offset from datasheet
-* ``OFFSET_DIV``: Offset divisor
-* ``SCALE_FACTOR``: Temperature scale factor
-* ``SCALE_FACTOR_DIV``: Scale factor divisor
+The current format is: 24668.050838350 millidegrees.
+
+The new format should be 24.66 degrees.
+
+**Hint**
+
+You need to modify example_2.c and then reset, rebuild and reload the program
+onto the board. The recommended way to do this is to open the no-OS folder using
+your favorite editor and search for example_2.c file.
+
+.. code-block:: bash
+
+   code ~/workshop_baremetal/no-OS
 
 Example 3: Raw-to-readable conversion
 +++++++++++++++++++++++++++++++++++++

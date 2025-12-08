@@ -750,7 +750,7 @@ cable.</p>
 </pre></div>
 </div>
 <p>You should see “Hello World” messages printed to the console.</p>
-<figure class="align-center" id="fig-example-1-picocom">
+<figure class="align-center" id="fig-example1">
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example1.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example1.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example1.png" width="500" />
 </a>
 </figure>
@@ -761,32 +761,92 @@ cable.</p>
 </section>
 <section id="example-2-temperature-reading">
 <h3>Example 2: Temperature reading<a class="headerlink" href="#example-2-temperature-reading" title="Link to this heading"></a></h3>
-<p>This example reads the temperature from the ADXL355’s internal temperature
-sensor and displays raw register values.</p>
-<p>Build and flash the second example:</p>
+<p>For this example, we connect an accelerometer to the microcontroller board using
+the provided wires. The scope of this example is to read the temperature from
+the accelerometer.</p>
+<p>Disconnect the MAX78000FTHR from your workstation’s USB port.</p>
+<p>Connect the EVAL-ADXL355-PMDZ to MAX78000FTHR using the information below:</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/max78000fthr-pinout.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/max78000fthr-pinout.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/max78000fthr-pinout.png" width="600" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 4 </span><span class="caption-text">MAX78000FTHR Pinout</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="table-wrapper colwidths-given docutils container" id="id5">
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Pin correspondence table</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 40.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>MAX78000FTHR</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>EVAL-ADXL355-PMDZ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3V3</p></td>
+<td><p>Digital power</p></td>
+<td><p>6 or 12</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>Digital ground</p></td>
+<td><p>5 or 11</p></td>
+</tr>
+<tr class="row-even"><td><p>P0_11/SS0</p></td>
+<td><p>SPI Chip Select</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>P0_5/MOSI</p></td>
+<td><p>SPI Master Out Slave In</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>P0_6/MISO</p></td>
+<td><p>SPI Master In Slave Out</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>P0_7/SCK</p></td>
+<td><p>SPI Serial Clock</p></td>
+<td><p>4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Make sure all 6 wires from the pin correspondence table are connected.</p>
+<p>You may now plug in the MAX78000FTHR into one of the workstation’s USB ports
+using the USB cable.</p>
+<p>The accelerometer has an internal temperature sensor. This example makes use of
+this by reading it and displaying temperature values onto the serial terminal.</p>
+<p>Clean any previous build artifacts and build the second example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>reset
 make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_2
-make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_2<span class="w"> </span>run
 </pre></div>
 </div>
-<p>Monitor the serial output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>picocom<span class="w"> </span>-b<span class="w"> </span><span class="m">57600</span><span class="w"> </span>/dev/ttyACM0
+<p>Make sure you have an active terminal running picocom then load the example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_2<span class="w"> </span>run
 </pre></div>
 </div>
-<p>The output displays raw temperature values read from the ADXL355 registers.</p>
-<p><em>Temperature conversion formula</em></p>
-<p>To convert the raw temperature value to degrees Celsius, use:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TEMPERATURE = (RAW * OFFSET_DIV + OFFSET) * SCALE_FACTOR
-              / (OFFSET_DIV * SCALE_FACTOR_DIV)
+<p>Observe the output being printed every second.</p>
+<figure class="align-center" id="fig-example2">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example2.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example2.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example2.png" width="500" />
+</a>
+</figure>
+<p><strong>Challenge</strong></p>
+<p>Change the current format of the printed temperature from millidegrees to
+degrees.</p>
+<p><strong>Example</strong></p>
+<p>The current format is: 24668.050838350 millidegrees.</p>
+<p>The new format should be 24.66 degrees.</p>
+<p><strong>Hint</strong></p>
+<p>You need to modify example_2.c and then reset, rebuild and reload the program
+onto the board. The recommended way to do this is to open the no-OS folder using
+your favorite editor and search for example_2.c file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>~/workshop_baremetal/no-OS
 </pre></div>
 </div>
-<p>Where the constants are defined in the ADXL355 driver:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OFFSET</span></code>: Temperature offset from datasheet</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OFFSET_DIV</span></code>: Offset divisor</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SCALE_FACTOR</span></code>: Temperature scale factor</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SCALE_FACTOR_DIV</span></code>: Scale factor divisor</p></li>
-</ul>
 </section>
 <section id="example-3-raw-to-readable-conversion">
 <h3>Example 3: Raw-to-readable conversion<a class="headerlink" href="#example-3-raw-to-readable-conversion" title="Link to this heading"></a></h3>
