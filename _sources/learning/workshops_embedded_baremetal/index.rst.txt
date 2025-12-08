@@ -427,10 +427,11 @@ your favorite editor and search for example_2.c file.
 Example 3: Raw-to-readable conversion
 +++++++++++++++++++++++++++++++++++++
 
-This example extends Example 2 by converting raw accelerometer values to
-human-readable units (g-force).
+Read temperature and the acceleration values from ADXL355 and convert the data
+from raw values into user readable values.
 
-Build and flash the third example:
+Make sure you have an active terminal running picocom, then build and flash the
+third example:
 
 .. code-block:: bash
 
@@ -438,29 +439,103 @@ Build and flash the third example:
    make EXAMPLE=example_3
    make EXAMPLE=example_3 run
 
-Monitor the serial output:
+Notice the output displayed:
 
-.. code-block:: bash
+.. _fig-example3:
 
-   picocom -b 57600 /dev/ttyACM0
-
-The output now shows acceleration values in meaningful units for X, Y, and Z
-axes.
-
-*Acceleration conversion formula*
-
-To convert raw acceleration values to g-force:
-
-.. code-block:: text
-
-   ACCELERATION = RAW * SCALE_FACTOR_MUL / SCALE_FACTOR_DIV
-
-The scale factors depend on the configured measurement range of the ADXL355.
+.. figure:: images/example3.png
+   :align: center
+   :width: 500
 
 **Challenge**
 
-Modify the code to also display the converted temperature value alongside
-the acceleration data. Use the temperature formula from Example 2.
+Compute the temperature and the accelerations using the raw values.
+
+**Hint**
+
+For temperature you need to compute the temp_dividend and temp_divisor.
+
+For accelerometer values you need to compute the x_dividend, y_dividend,
+z_dividend and accel_divisor.
+
+You need to modify example_3.c and then reset, rebuild and reload the program
+onto the board. The recommended way to do this is to open the no-OS folder using
+your favorite editor and search for example_3.c file.
+
+.. code-block:: bash
+
+   code ~/workshop_baremetal/no-OS
+
+The formula for the temperature:
+
+.. math::
+
+   TEMPERATURE = (RAW + OFFSET) \cdot SCALE
+
+.. math::
+
+   TEMPERATURE = \left(RAW + \frac{OFFSET}{OFFSET\_DIV}\right) \cdot \frac{SCALE\_FACTOR}{SCALE\_FACTOR\_DIV}
+
+.. math::
+
+   TEMPERATURE = \frac{(RAW \cdot OFFSET\_DIV + OFFSET) \cdot SCALE\_FACTOR}{OFFSET\_DIV \cdot SCALE\_FACTOR\_DIV}
+
+The formula for the acceleration:
+
+.. math::
+
+   ACCELERATION = RAW \cdot SCALE
+
+.. math::
+
+   ACCELERATION = \frac{RAW \cdot SCALE\_FACTOR\_MUL}{SCALE\_FACTOR\_DIV}
+
+.. list-table:: Parameter correspondence table
+   :header-rows: 1
+   :widths: 50 50
+
+   * - PARAMETER
+     - VALUE
+   * - TEMPERATURE OFFSET
+     - -2111.25
+   * - TEMPERATURE SCALE
+     - -110.497238
+   * - ACCELERATION SCALE
+     - 0.00003824593
+
+.. list-table:: Macro correspondence table
+   :header-rows: 1
+   :widths: 50 50
+
+   * - MACRO
+     - VALUE
+   * - ADXL355_TEMP_OFFSET
+     - -211125
+   * - ADXL355_TEMP_OFFSET_DIV
+     - 100
+   * - ADXL355_TEMP_SCALE_FACTOR
+     - -110497238
+   * - ADXL355_TEMP_SCALE_FACTOR_DIV
+     - 1000000
+   * - ADXL355_ACC_SCALE_FACTOR_MUL
+     - 38245
+   * - ADXL355_ACC_SCALE_FACTOR_DIV
+     - 1000000000
+
+To compute the temperature and the accelerations you can use either the macros
+or their values from the above table. The ``ADXL355_TEMP`` macros correspond to
+the temperature values, and the ``ADXL355_ACC`` macros correspond to the
+acceleration values.
+
+The raw values from the formulas can be found in the source file under the name
+``raw_<temp, x, y, z>``.
+
+.. note::
+
+   For the division to be correct, the dividend must be represented on twice
+   the number of bits the divisor is represented on, so you need to cast
+   explicitly one parameter of the dividend to ``int64_t``.
+   Example: ``(int64_t)ADXL355_TEMP_SCALE_FACTOR``.
 
 Example 4: IIO Accelerometer Game
 +++++++++++++++++++++++++++++++++
@@ -528,13 +603,17 @@ Resources
 No-OS Wiki:
 
 :external+no-OS:doc:`index`
+
 :git-no-OS:`/`
+
 :git-no-OS:`EVAL-ADXL355-PMDZ no-OS projects <eval-adxl355-pmdz>`
+
 :adi:`en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html`
 
 *Specific hardware resources*
 
 :adi:`EVAL-ADXL355-PMDZ Product Page <EVAL-ADXL355-PMDZ>`
+
 :adi:`ADXL355 Product Page <ADXL355>`
 
 *Inspiration*

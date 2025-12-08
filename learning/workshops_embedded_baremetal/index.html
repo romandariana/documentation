@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="../../_static/app.min.css?v=31a9e0ba" />
     <script async="async" src="../../_static/app.umd.js?v=3a4867e9"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="../../_static/icon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -850,29 +851,126 @@ your favorite editor and search for example_2.c file.</p>
 </section>
 <section id="example-3-raw-to-readable-conversion">
 <h3>Example 3: Raw-to-readable conversion<a class="headerlink" href="#example-3-raw-to-readable-conversion" title="Link to this heading"></a></h3>
-<p>This example extends Example 2 by converting raw accelerometer values to
-human-readable units (g-force).</p>
-<p>Build and flash the third example:</p>
+<p>Read temperature and the acceleration values from ADXL355 and convert the data
+from raw values into user readable values.</p>
+<p>Make sure you have an active terminal running picocom, then build and flash the
+third example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>reset
 make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_3
 make<span class="w"> </span><span class="nv">EXAMPLE</span><span class="o">=</span>example_3<span class="w"> </span>run
 </pre></div>
 </div>
-<p>Monitor the serial output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>picocom<span class="w"> </span>-b<span class="w"> </span><span class="m">57600</span><span class="w"> </span>/dev/ttyACM0
-</pre></div>
-</div>
-<p>The output now shows acceleration values in meaningful units for X, Y, and Z
-axes.</p>
-<p><em>Acceleration conversion formula</em></p>
-<p>To convert raw acceleration values to g-force:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ACCELERATION = RAW * SCALE_FACTOR_MUL / SCALE_FACTOR_DIV
-</pre></div>
-</div>
-<p>The scale factors depend on the configured measurement range of the ADXL355.</p>
+<p>Notice the output displayed:</p>
+<figure class="align-center" id="fig-example3">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example3.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example3.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/example3.png" width="500" />
+</a>
+</figure>
 <p><strong>Challenge</strong></p>
-<p>Modify the code to also display the converted temperature value alongside
-the acceleration data. Use the temperature formula from Example 2.</p>
+<p>Compute the temperature and the accelerations using the raw values.</p>
+<p><strong>Hint</strong></p>
+<p>For temperature you need to compute the temp_dividend and temp_divisor.</p>
+<p>For accelerometer values you need to compute the x_dividend, y_dividend,
+z_dividend and accel_divisor.</p>
+<p>You need to modify example_3.c and then reset, rebuild and reload the program
+onto the board. The recommended way to do this is to open the no-OS folder using
+your favorite editor and search for example_3.c file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>~/workshop_baremetal/no-OS
+</pre></div>
+</div>
+<p>The formula for the temperature:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[TEMPERATURE = (RAW + OFFSET) \cdot SCALE\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[TEMPERATURE = \left(RAW + \frac{OFFSET}{OFFSET\_DIV}\right) \cdot \frac{SCALE\_FACTOR}{SCALE\_FACTOR\_DIV}\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[TEMPERATURE = \frac{(RAW \cdot OFFSET\_DIV + OFFSET) \cdot SCALE\_FACTOR}{OFFSET\_DIV \cdot SCALE\_FACTOR\_DIV}\]</div>
+</div>
+<p>The formula for the acceleration:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ACCELERATION = RAW \cdot SCALE\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ACCELERATION = \frac{RAW \cdot SCALE\_FACTOR\_MUL}{SCALE\_FACTOR\_DIV}\]</div>
+</div>
+<div class="table-wrapper colwidths-given docutils container" id="id6">
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Parameter correspondence table</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>PARAMETER</p></th>
+<th class="head"><p>VALUE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEMPERATURE OFFSET</p></td>
+<td><p>-2111.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEMPERATURE SCALE</p></td>
+<td><p>-110.497238</p></td>
+</tr>
+<tr class="row-even"><td><p>ACCELERATION SCALE</p></td>
+<td><p>0.00003824593</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper colwidths-given docutils container" id="id7">
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Macro correspondence table</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>MACRO</p></th>
+<th class="head"><p>VALUE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ADXL355_TEMP_OFFSET</p></td>
+<td><p>-211125</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADXL355_TEMP_OFFSET_DIV</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><td><p>ADXL355_TEMP_SCALE_FACTOR</p></td>
+<td><p>-110497238</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADXL355_TEMP_SCALE_FACTOR_DIV</p></td>
+<td><p>1000000</p></td>
+</tr>
+<tr class="row-even"><td><p>ADXL355_ACC_SCALE_FACTOR_MUL</p></td>
+<td><p>38245</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADXL355_ACC_SCALE_FACTOR_DIV</p></td>
+<td><p>1000000000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To compute the temperature and the accelerations you can use either the macros
+or their values from the above table. The <code class="docutils literal notranslate"><span class="pre">ADXL355_TEMP</span></code> macros correspond to
+the temperature values, and the <code class="docutils literal notranslate"><span class="pre">ADXL355_ACC</span></code> macros correspond to the
+acceleration values.</p>
+<p>The raw values from the formulas can be found in the source file under the name
+<code class="docutils literal notranslate"><span class="pre">raw_&lt;temp,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z&gt;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the division to be correct, the dividend must be represented on twice
+the number of bits the divisor is represented on, so you need to cast
+explicitly one parameter of the dividend to <code class="docutils literal notranslate"><span class="pre">int64_t</span></code>.
+Example: <code class="docutils literal notranslate"><span class="pre">(int64_t)ADXL355_TEMP_SCALE_FACTOR</span></code>.</p>
+</div>
 </section>
 <section id="example-4-iio-accelerometer-game">
 <h3>Example 4: IIO Accelerometer Game<a class="headerlink" href="#example-4-iio-accelerometer-game" title="Link to this heading"></a></h3>
@@ -928,13 +1026,13 @@ used, modified, and integrated into commercial products.</p></li>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
 <p>No-OS Wiki:</p>
-<p><a class="icon link reference external" href="https://analogdevicesinc.github.io/no-OS/index.html" target="_blank" title="(in no-OS)"><span>no-OS's documentation</span></a>
-<a class="icon git reference external" href="https://github.com/analogdevicesinc/no-OS/tree/main/" target="_blank">ADI no-OS repository</a>
-<a class="icon git reference external" href="https://github.com/analogdevicesinc/no-OS/tree/main/eval-adxl355-pmdz" target="_blank">EVAL-ADXL355-PMDZ no-OS projects</a>
-<a class="icon adi reference external" href="https://www.analog.com/en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html" target="_blank">en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html</a></p>
+<p><a class="icon link reference external" href="https://analogdevicesinc.github.io/no-OS/index.html" target="_blank" title="(in no-OS)"><span>no-OS's documentation</span></a></p>
+<p><a class="icon git reference external" href="https://github.com/analogdevicesinc/no-OS/tree/main/" target="_blank">ADI no-OS repository</a></p>
+<p><a class="icon git reference external" href="https://github.com/analogdevicesinc/no-OS/tree/main/eval-adxl355-pmdz" target="_blank">EVAL-ADXL355-PMDZ no-OS projects</a></p>
+<p><a class="icon adi reference external" href="https://www.analog.com/en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html" target="_blank">en/analog-dialogue/articles/understanding-and-using-the-no-os-and-platform-drivers.html</a></p>
 <p><em>Specific hardware resources</em></p>
-<p><a class="icon adi reference external" href="https://www.analog.com/EVAL-ADXL355-PMDZ" target="_blank">EVAL-ADXL355-PMDZ Product Page</a>
-<a class="icon adi reference external" href="https://www.analog.com/ADXL355" target="_blank">ADXL355 Product Page</a></p>
+<p><a class="icon adi reference external" href="https://www.analog.com/EVAL-ADXL355-PMDZ" target="_blank">EVAL-ADXL355-PMDZ Product Page</a></p>
+<p><a class="icon adi reference external" href="https://www.analog.com/ADXL355" target="_blank">ADXL355 Product Page</a></p>
 <p><em>Inspiration</em></p>
 <ul class="simple">
 <li><p><a class="icon link reference external" href="https://www.pcbtrain.co.uk/" target="_blank">https://www.pcbtrain.co.uk/</a></p></li>
