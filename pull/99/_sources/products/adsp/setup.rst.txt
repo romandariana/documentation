@@ -11,7 +11,7 @@ debugger <en/resources/evaluation-hardware-and-software/evaluation-boards-kits/e
 Download a binary release
 -------------------------
 
-Navigate to the :git-br2-external:`br2-external releases page <releases/>` and
+Navigate to the :git-br2-external:`br2-external releases page <releases+>` and
 download the appropriate `images-*.tar.xz` release archive.
 
 Setup a JTAG connection
