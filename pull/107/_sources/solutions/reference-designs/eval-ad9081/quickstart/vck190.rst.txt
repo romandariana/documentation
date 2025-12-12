@@ -76,10 +76,10 @@ Follow the steps in this order, to avoid damaging the components:
 
 
 #. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the
-   FPGA carrier FMC+ FMCP1 socket
+   VCK190 FMCP1 socket
 #. Connect USB UART J207 (Type-C USB) to your host PC
 #. Insert SD card with ADI Kuiper image into socket J302
-#. Insert System Controller SD card into socket J206
+#. Insert System Controller micro SD card into socket J206
 #. Configure ACAP for SD boot (mode SW1[4:1] switch in the position
    **OFF,OFF,OFF,ON** as seen in the below picture)
 
@@ -112,7 +112,7 @@ Follow the steps in this order, to avoid damaging the components:
       :width: 1000
 
 #. On the ACAP UART interface console, reboot the system. After reboot,
-   ad9081 devices should be present.
+   AD9081 devices should be present.
 
    .. note::
 
@@ -872,8 +872,8 @@ To reboot the system, run:
 
 .. include:: ../../common/using-iio-osc.rst
 
-About the IIO devices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 ..
+   About the IIO devices
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
    TBD

@@ -73,8 +73,8 @@ and the DAC channels on the evaluation board, using SMA cables.
 Follow the steps in this order, to avoid damaging the components:
 
 #. Connect the SMA cables ADC0-DAC0, ADC1-DAC1, ADC2-DAC2, ADC3-DAC3
-#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the
-   FPGA carrier **HPC1** FMC1 socket
+#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the ZCU102
+   **HPC1** FMC1 socket
 #. Insert SD card into the SD card socket on the FPGA
 #. Configure :xilinx:`ZCU102` for SD card boot mode (mode SW6[4:1] switch in
    the position **OFF,OFF,OFF,ON** as seen in the below picture)
@@ -1081,8 +1081,8 @@ Creating the setup
 
 Follow the steps in this order, to avoid damaging the components:
 
-#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the
-   FPGA carrier **HPC1** FMC1 socket
+#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the ZCU102
+   **HPC1** FMC1 socket
 #. Configure :xilinx:`ZCU102` for JTAG boot mode (mode SW6[4:1] switch in
    the position **ON,ON,ON,ON**)
 #. Connect USB UART J83 (Micro USB) to your host PC

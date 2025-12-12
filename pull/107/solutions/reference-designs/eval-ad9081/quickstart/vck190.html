@@ -110,7 +110,6 @@
 <li><a class="reference internal" href="#adi-iio-oscilloscope">ADI IIO Oscilloscope</a><ul>
 <li><a class="reference internal" href="#remote">Remote</a></li>
 <li><a class="reference internal" href="#locally">Locally</a></li>
-<li><a class="reference internal" href="#about-the-iio-devices">About the IIO devices</a></li>
 </ul>
 </li>
 </ul>
@@ -557,10 +556,10 @@ details at <a class="icon link reference external" href="https://analogdevicesin
 <p>Follow the steps in this order, to avoid damaging the components:</p>
 <ol class="arabic">
 <li><p>Connect the <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9081" target="_blank">EVAL-AD9081</a> / <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9082" target="_blank">EVAL-AD9082</a> FMC board to the
-FPGA carrier FMC+ FMCP1 socket</p></li>
+VCK190 FMCP1 socket</p></li>
 <li><p>Connect USB UART J207 (Type-C USB) to your host PC</p></li>
 <li><p>Insert SD card with ADI Kuiper image into socket J302</p></li>
-<li><p>Insert System Controller SD card into socket J206</p></li>
+<li><p>Insert System Controller micro SD card into socket J206</p></li>
 <li><p>Configure ACAP for SD boot (mode SW1[4:1] switch in the position
 <strong>OFF,OFF,OFF,ON</strong> as seen in the below picture)</p>
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/ad9081_doc_review/docs/solutions/reference-designs/images/vck190_sw1.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/ad9081_doc_review/docs/solutions/reference-designs/images/vck190_sw1.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/ad9081_doc_review/docs/solutions/reference-designs/images/vck190_sw1.jpg" width="200" />
@@ -588,7 +587,7 @@ Go to this web address to set VADJ_FMC to 1.5V;</p>
 </a>
 </li>
 <li><p>On the ACAP UART interface console, reboot the system. After reboot,
-ad9081 devices should be present.</p>
+AD9081 devices should be present.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Versal-based carriers (<a class="icon link reference external" href="https://www.xilinx.com/VCK190" target="_blank">VCK190</a>) might not boot with released image.</p>
@@ -1377,9 +1376,6 @@ be found out with a command from the previous section of this documentation.</p>
 <p>Going to the top left corner icon (the menu icon), search for IIO Oscilloscope.
 Opening it will automatically connect to the setup and you can use the
 application.</p>
-</section>
-<section id="about-the-iio-devices">
-<h4>About the IIO devices<a class="headerlink" href="#about-the-iio-devices" title="Link to this heading"></a></h4>
 </section>
 </section>
 </section>

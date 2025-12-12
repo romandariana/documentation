@@ -97,7 +97,7 @@ Table of contents
       #. Using the :ref:`VCK190 & VPK180/Versal <ad9081 quickstart vck190>`
       #. Using the :ref:`VCU118/ Virtex UltraScale+ <ad9081 quickstart vcu118>`
       #. Using the :ref:`ZC706/ Zynq-7000 SoC <ad9081 quickstart zc706>`
-      #. Using the :ref:`ZCU102/Zynq UltraScale MP SoC <ad9081 quickstart zcu102>`
+      #. Using the :ref:`ZCU102/Zynq UltraScale+ MP SoC <ad9081 quickstart zcu102>`
 
 
    #. Configure an SD Card with :external+adi-kuiper-gen:doc:`Kuiper <index>`

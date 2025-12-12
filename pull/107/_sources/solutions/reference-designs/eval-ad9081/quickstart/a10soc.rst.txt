@@ -135,8 +135,8 @@ and the DAC channels on the evaluation board, using SMA cables.
 Follow the steps in this order, to avoid damaging the components:
 
 #. Connect the SMA cables ADC0-DAC0, ADC1-DAC1, ADC2-DAC2, ADC3-DAC3
-#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the
-   FPGA carrier **HPC1** FMCA (J29) socket
+#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the A10SOC
+   **HPC1** FMCA (J29) socket
 #. Both the HPS (J26) and FPGA (J27) memory module must be installed on the
    A10SoC
 #. Insert microSD card into the card socket on the FPGA
@@ -683,7 +683,8 @@ To reboot the system, run:
 
 .. include:: ../../common/using-iio-osc.rst
 
-About the IIO devices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ..
+   About the IIO devices
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
    TBD

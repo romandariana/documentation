@@ -73,8 +73,8 @@ and the DAC channels on the evaluation board, using SMA cables.
 Follow the steps in this order, to avoid damaging the components:
 
 #. Connect the SMA cables ADC0-DAC0, ADC1-DAC1, ADC2-DAC2, ADC3-DAC3
-#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the
-   FPGA carrier **HPC** FMC socket
+#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the ZC706
+   **HPC** FMC socket
 #. Insert SD card into the SD card socket on the FPGA
 #. Configure :xilinx:`ZC706`` for SD card boot mode (Set the jumpers:
    The main one is: SW11 - Big Blue Switch in the middle, which controls the
@@ -700,10 +700,10 @@ To reboot the system, run:
 
 .. include:: ../../common/using-iio-osc.rst
 
-About the IIO devices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 ..
+   About the IIO devices
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
    TBD
 
 Using no-OS as software
@@ -754,8 +754,8 @@ Creating the setup
 
 Follow the steps in this order, to avoid damaging the components:
 
-#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the
-   FPGA carrier **HPC** FMC socket
+#. Connect the :adi:`EVAL-AD9081` / :adi:`EVAL-AD9082` FMC board to the ZC706
+   **HPC** FMC socket
 #. Configure :xilinx:`ZC706`` for SD card boot mode (Set the jumpers:
    The main one is: SW11 - Big Blue Switch in the middle, which controls the
    Boot Mode, it needs to be set: **1: Up, 2: Up, 3: Up, 4: Up, 5: Down**.
@@ -777,6 +777,7 @@ connected to the proper ttyUSB or COM port:
 
       Xilinx Zynq First Stage Boot Loader
 
-      TBD
+..
+    TBD
 
 .. include:: ../../common/using-iio-osc.rst
