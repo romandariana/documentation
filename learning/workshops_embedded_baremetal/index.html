@@ -100,7 +100,12 @@
 <li><a class="reference internal" href="#theoretical-content">Theoretical content</a></li>
 <li><a class="reference internal" href="#hands-on-activity">Hands-on activity</a><ul>
 <li><a class="reference internal" href="#materials">Materials</a></li>
-<li><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li><a class="reference internal" href="#pre-requisites">Pre-requisites</a><ul>
+<li><a class="reference internal" href="#option-1-pre-built-kuiper-image-recommended">Option 1: Pre-built Kuiper Image (Recommended)</a></li>
+<li><a class="reference internal" href="#option-2-manual-setup">Option 2: Manual Setup</a></li>
+<li><a class="reference internal" href="#environment-configuration">Environment Configuration</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#example-1-hello-world-uart">Example 1: Hello World UART</a></li>
 <li><a class="reference internal" href="#example-2-temperature-reading">Example 2: Temperature reading</a></li>
 <li><a class="reference internal" href="#example-3-raw-to-readable-conversion">Example 3: Raw-to-readable conversion</a></li>
@@ -435,6 +440,10 @@ Content on this topic
 <p class="caption" role="heading"><span class="caption-text">Learning</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-14" id="toctree-collapse-14" checked=""/><div class="collapse"><a class="reference internal" href="../index.html">Learning! Tutorials, Workshops, Etc</a><label for="toctree-collapse-14"><div class="icon"></div></label></div><ul class="current">
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-14-1" id="toctree-collapse-14-1"/><div class="collapse"><a class="reference internal" href="../demo_hp_analog_meets_ai/index.html">DEMO High-Performance Analog Meets AI</a><label for="toctree-collapse-14-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demo_hp_analog_meets_ai/software/index.html">Software Configuration and Setup</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_prec_adc/index.html">Precision ADC Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../converter_connectivity_tutorial/index.html">Converter Connectivity Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sw_infrastructure/index.html">Software Infrastructure for designing with ADCs, DACs, and Sensors</a></li>
@@ -517,11 +526,11 @@ Through interactive demonstrations and hands-on activities, you’ll gain practi
 <li><p>A .zip file containing the driver files</p></li>
 <li><p>A .zip file containing a project</p></li>
 </ul>
-<figure class="align-center" id="id1">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/noos10.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/noos10.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/noos10.png" width="300" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 1 </span><span class="caption-text">Old Drivers structure</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 1 </span><span class="caption-text">Old Drivers structure</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>What ADI tried to do back then was to write an ADI driver for an ADI part, provided that we were selling the evaluation board with ADI part on it
@@ -596,11 +605,11 @@ Provides the descriptor for being called in other driver function calls, the rem
 <ul class="simple">
 <li><p>Software application can access hardware functionality without knowing in detail how the device operates</p></li>
 </ul>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/no-os-stack.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/no-os-stack.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/no-os-stack.png" width="300" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 2 </span><span class="caption-text">No-OS Software Stack</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 2 </span><span class="caption-text">No-OS Software Stack</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>No-OS Platforms</strong></p>
@@ -615,11 +624,11 @@ No-OS platform drivers are implementations of peripheral no-OS API on a particul
 <li><p>RaspberryPi Pico</p></li>
 <li><p>Mbed</p></li>
 </ul>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/platform.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/platform.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/platform.png" width="600" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 3 </span><span class="caption-text">No-OS Platform Drivers</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+<p><span class="caption-number">Figure 3 </span><span class="caption-text">No-OS Platform Drivers</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>No-OS Projects</strong></p>
@@ -673,6 +682,17 @@ The stack preserves its functionality, because of the way things are built, no n
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/libiio.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/libiio.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/libiio.png" width="500" />
 </a>
 </figure>
+<p><strong>ADXL355 Part</strong></p>
+<p>The ADXL355 is a Low Noise, Low Drift, Low Power, 3-Axis MEMS Accelerometer.</p>
+<p>Features:</p>
+<ul class="simple">
+<li><p>Digital SPI and I2C interfaces supported</p></li>
+<li><p>20-bit ADC</p></li>
+<li><p>Data interpolation routine for synchronous sampling</p></li>
+<li><p>Programmable high- and low-pass digital filters</p></li>
+<li><p>0 g offset vs. temperature (all axes): 0.15 mg/°C maximum</p></li>
+<li><p>V<sub>SUPPLY</sub> with internal regulators: 2.25 V to 3.6 V</p></li>
+</ul>
 </section>
 <section id="hands-on-activity">
 <h2>Hands-on activity<a class="headerlink" href="#hands-on-activity" title="Link to this heading"></a></h2>
@@ -696,24 +716,40 @@ The stack preserves its functionality, because of the way things are built, no n
 </section>
 <section id="pre-requisites">
 <h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading"></a></h3>
-<p>The workshop environment can be set up on a Raspberry Pi 5 or any Linux PC.
-Clone the workshop repository and run the setup script:</p>
+<p>The workshop environment can be set up using one of two methods. Choose the
+option that best fits your situation:</p>
+<ul class="simple">
+<li><p><strong>Option 1: Pre-built Kuiper Image</strong> - Recommended for live workshops and
+quick setup. Everything is pre-installed and ready to use.</p></li>
+<li><p><strong>Option 2: Manual Setup</strong> - For self-paced learning on your own Linux
+machine or when you want to understand the full setup process.</p></li>
+</ul>
+<section id="option-1-pre-built-kuiper-image-recommended">
+<h4>Option 1: Pre-built Kuiper Image (Recommended)<a class="headerlink" href="#option-1-pre-built-kuiper-image-recommended" title="Link to this heading"></a></h4>
+<p>Use the pre-configured ADI Kuiper image with all tools and dependencies
+pre-installed. This is the fastest way to get started.</p>
+<ol class="arabic">
+<li><p>Download the workshop image from:</p>
+<p><a class="icon link reference external" href="https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_pi5.zip" target="_blank">https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_pi5.zip</a></p>
+</li>
+<li><p>Unzip the downloaded file to extract the image.</p></li>
+<li><p>Write the image to an SD card by following the
+<a class="icon link reference external" href="https://analogdevicesinc.github.io/adi-kuiper-gen/use-kuiper-image.html#use-kuiper-image" target="_blank" title="(in Kuiper latest)"><span class="xref std std-ref">Writing the Image to an SD Card</span></a> guide.</p></li>
+<li><p>Insert the SD card into your Raspberry Pi 5 and power it on.</p></li>
+</ol>
+<p>Once the Raspberry Pi 5 boots, the environment is ready. Skip to
+<a class="reference internal" href="#environment-configuration"><span class="std std-ref">Environment Configuration</span></a> to configure the environment variables.</p>
+</section>
+<section id="option-2-manual-setup">
+<h4>Option 2: Manual Setup<a class="headerlink" href="#option-2-manual-setup" title="Link to this heading"></a></h4>
+<p>Set up the environment manually on a Raspberry Pi 5 or any Linux PC. This
+option is useful for self-paced learning or development.</p>
+<p>Clone the workshop repository and run the setup script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/romandariana/workshop_baremetal
 <span class="nb">cd</span><span class="w"> </span>workshop_baremetal
 chmod<span class="w"> </span>+x<span class="w"> </span>setup.sh
 ./setup.sh
 </pre></div>
-</div>
-<p>After setup completes, configure the environment variables:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MAXIM_LIBRARIES</span><span class="o">=</span>~/workshop_baremetal/MAX78000SDK/Libraries
-<span class="nb">export</span><span class="w"> </span><span class="nv">PLATFORM</span><span class="o">=</span>maxim
-<span class="nb">export</span><span class="w"> </span><span class="nv">TARGET</span><span class="o">=</span>max78000
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Add these exports to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> to make them persistent across
-terminal sessions.</p>
 </div>
 <p>The setup creates the following directory structure:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>~/workshop_baremetal/
@@ -726,6 +762,21 @@ terminal sessions.</p>
         └── workshop/
 </pre></div>
 </div>
+</section>
+<section id="environment-configuration">
+<span id="id1"></span><h4>Environment Configuration<a class="headerlink" href="#environment-configuration" title="Link to this heading"></a></h4>
+<p>After completing either setup option, configure the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MAXIM_LIBRARIES</span><span class="o">=</span>~/workshop_baremetal/MAX78000SDK/Libraries
+<span class="nb">export</span><span class="w"> </span><span class="nv">PLATFORM</span><span class="o">=</span>maxim
+<span class="nb">export</span><span class="w"> </span><span class="nv">TARGET</span><span class="o">=</span>max78000
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Add these exports to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> to make them persistent across
+terminal sessions.</p>
+</div>
+</section>
 </section>
 <section id="example-1-hello-world-uart">
 <h3>Example 1: Hello World UART<a class="headerlink" href="#example-1-hello-world-uart" title="Link to this heading"></a></h3>
@@ -768,12 +819,9 @@ the provided wires. The scope of this example is to read the temperature from
 the accelerometer.</p>
 <p>Disconnect the MAX78000FTHR from your workstation’s USB port.</p>
 <p>Connect the EVAL-ADXL355-PMDZ to MAX78000FTHR using the information below:</p>
-<figure class="align-center" id="id4">
+<figure class="align-center">
 <a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/max78000fthr-pinout.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/max78000fthr-pinout.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_baremetal/images/max78000fthr-pinout.png" width="600" />
 </a>
-<figcaption>
-<p><span class="caption-number">Figure 4 </span><span class="caption-text">MAX78000FTHR Pinout</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
-</figcaption>
 </figure>
 <div class="table-wrapper colwidths-given docutils container" id="id5">
 <table class="docutils align-default" id="id5">

@@ -222,29 +222,78 @@ Pre-requisites
 - ``mv``: moves a file from one location to another, rename a file with or
   without moving it
 
-.. note::
+Workshop Preparation
+++++++++++++++++++++
 
-   The ``#`` sign indicates that the terminal is ready to accept commands.
-   Make sure NOT to include it in the command you are typing.
+This workshop requires two SD cards with pre-configured Kuiper images:
 
-**Workshop Preparation**
+- One for the **Raspberry Pi 5** (development workstation)
+- One for the **CoraZ7S** (target board)
 
-Make sure the Raspberry Pi 5 in front of you is booted and connected to the
-monitor, mouse, and keyboard. The monitor should show the ADI-KUIPER-LINUX
-desktop.
+Preparing the Raspberry Pi 5 SD Card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hardware setup for CoraZ7S
-++++++++++++++++++++++++++
+1. Download the Raspberry Pi 5 workshop image from:
 
-1. Insert the SD card prepared in the SD port of CoraZ7S.
+   https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_pi5.zip
+
+2. Unzip the downloaded file to extract the image.
+
+3. Write the image to an SD card by following the
+   :external+adi-kuiper-gen:ref:`Writing the Image to an SD Card
+   <use-kuiper-image>` guide.
+
+Preparing the CoraZ7S SD Card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Download the CoraZ7S workshop image from:
+
+   https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_cora.zip
+
+2. Unzip the downloaded file to extract the image.
+
+3. Write the image to a second SD card by following the
+   `Writing the image to an SD card <https://analogdevicesinc.github.io/adi-kuiper-gen/use-kuiper-image.html#writing-the-image-to-an-sd-card>`_
+   guide.
+
+Once both SD cards are prepared, proceed to the hardware setup below.
+
+Hardware Setup
+++++++++++++++
+
+**Raspberry Pi 5 (Workstation)**
+
+Insert the Raspberry Pi 5 SD card and power on the board. Make sure it is
+connected to the monitor, mouse, and keyboard. The monitor should show the
+ADI-KUIPER-LINUX desktop.
+
+**CoraZ7S (Target Board)**
+
+1. Insert the CoraZ7S SD card in the SD port of CoraZ7S.
+
+.. figure:: images/cora_sd_card.png
+   :align: center
+   :width: 400
 
 2. Connect the ADXL355 to the JA port of the CoraZ7S board.
 
+.. figure:: images/cora_adxl.png
+   :align: center
+   :width: 400
+
 3. Connect the UART port of the CoraZ7S to a USB port of your Raspberry Pi 5
-   using the USB cable received.
+   using the USB cable.
+
+.. figure:: images/cora_usb.png
+   :align: center
+   :width: 400
 
 4. Connect the Ethernet port of the CoraZ7S to the Ethernet port of your
    Raspberry Pi 5.
+
+.. figure:: images/cora_ethernet.png
+   :align: center
+   :width: 400
 
 CoraZ7S Environment Exploration
 +++++++++++++++++++++++++++++++
@@ -301,17 +350,8 @@ At this point you should see this in your terminal:
 You are now connected to the CoraZ7S. Every command you run from this point
 forward will be executed on the CoraZ7S, not your workstation.
 
-Exercise 1: Turn on a LED and make it blink with a heartbeat rhythm
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**Setup**
-
-a. Connect the ADXL355 to the JA port of the CORA Z7 board
-b. Connect the Cora Z7 UART port to a USB port of your computer using the USB
-   cable received
-c. Connect the Cora Z7 Ethernet port to the PC Ethernet port
-
-**Procedure**
+Example 1: Turn on a LED and make it blink with a heartbeat rhythm
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 1. Move to the LEDs directory using the command below:
 
@@ -411,10 +451,10 @@ For led1 (green, blinking):
    echo 1000 >> led1_green/delay_off
    echo 500 >> led1_green/delay_on
 
-Exercise 2: Run a script
-++++++++++++++++++++++++
+Example 2: Run a script
++++++++++++++++++++++++
 
-This exercise will demonstrate how to execute a series of commands within a
+This example demonstrates how to execute a series of commands within a
 script, rather than running each command individually in the terminal. You will
 also learn how any Linux script can be turned into a bash command.
 
@@ -433,10 +473,10 @@ also learn how any Linux script can be turned into a bash command.
    mv /leds.sh /usr/local/bin
    leds.sh
 
-Exercise 3: Build a kernel object for ADXL355 driver
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+Example 3: Build a kernel object for ADXL355 driver
+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-This exercise will demonstrate how to create a kernel object for an existing
+This example demonstrates how to create a kernel object for an existing
 driver and load it in such a way that the system recognizes it as part of the
 kernel.
 
@@ -495,8 +535,8 @@ that there is no *adxl355* device found.
 
 7. Check again with ``iio_info`` to see readings from the accelerometer.
 
-Exercise 4: Compute the temperature value from sysfs
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Example 4: Compute the temperature value from sysfs
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The task is allowing you to read the content of attribute files and compute the
 temperature given by the on-board temperature sensor.
@@ -536,8 +576,8 @@ The temperature is computed using the following formula:
 
    echo "($RAW + $OFFSET) * $SCALE" | bc
 
-Exercise 5: Play a Snake game with the accelerometer
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+Example 5: Play a Snake game with the accelerometer
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Using the accelerometer module, you will have the chance to play a little oldie
 but goldie SNAKE game.

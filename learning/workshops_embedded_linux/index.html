@@ -101,13 +101,18 @@
 <li><a class="reference internal" href="#hands-on-activity">Hands-on activity</a><ul>
 <li><a class="reference internal" href="#materials">Materials</a></li>
 <li><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
-<li><a class="reference internal" href="#hardware-setup-for-coraz7s">Hardware setup for CoraZ7S</a></li>
+<li><a class="reference internal" href="#workshop-preparation">Workshop Preparation</a><ul>
+<li><a class="reference internal" href="#preparing-the-raspberry-pi-5-sd-card">Preparing the Raspberry Pi 5 SD Card</a></li>
+<li><a class="reference internal" href="#preparing-the-coraz7s-sd-card">Preparing the CoraZ7S SD Card</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hardware-setup">Hardware Setup</a></li>
 <li><a class="reference internal" href="#coraz7s-environment-exploration">CoraZ7S Environment Exploration</a></li>
-<li><a class="reference internal" href="#exercise-1-turn-on-a-led-and-make-it-blink-with-a-heartbeat-rhythm">Exercise 1: Turn on a LED and make it blink with a heartbeat rhythm</a></li>
-<li><a class="reference internal" href="#exercise-2-run-a-script">Exercise 2: Run a script</a></li>
-<li><a class="reference internal" href="#exercise-3-build-a-kernel-object-for-adxl355-driver">Exercise 3: Build a kernel object for ADXL355 driver</a></li>
-<li><a class="reference internal" href="#exercise-4-compute-the-temperature-value-from-sysfs">Exercise 4: Compute the temperature value from sysfs</a></li>
-<li><a class="reference internal" href="#exercise-5-play-a-snake-game-with-the-accelerometer">Exercise 5: Play a Snake game with the accelerometer</a></li>
+<li><a class="reference internal" href="#example-1-turn-on-a-led-and-make-it-blink-with-a-heartbeat-rhythm">Example 1: Turn on a LED and make it blink with a heartbeat rhythm</a></li>
+<li><a class="reference internal" href="#example-2-run-a-script">Example 2: Run a script</a></li>
+<li><a class="reference internal" href="#example-3-build-a-kernel-object-for-adxl355-driver">Example 3: Build a kernel object for ADXL355 driver</a></li>
+<li><a class="reference internal" href="#example-4-compute-the-temperature-value-from-sysfs">Example 4: Compute the temperature value from sysfs</a></li>
+<li><a class="reference internal" href="#example-5-play-a-snake-game-with-the-accelerometer">Example 5: Play a Snake game with the accelerometer</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#slide-deck-and-booklet">Slide Deck and Booklet</a></li>
@@ -438,6 +443,10 @@ Content on this topic
 <p class="caption" role="heading"><span class="caption-text">Learning</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-14" id="toctree-collapse-14" checked=""/><div class="collapse"><a class="reference internal" href="../index.html">Learning! Tutorials, Workshops, Etc</a><label for="toctree-collapse-14"><div class="icon"></div></label></div><ul class="current">
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-14-1" id="toctree-collapse-14-1"/><div class="collapse"><a class="reference internal" href="../demo_hp_analog_meets_ai/index.html">DEMO High-Performance Analog Meets AI</a><label for="toctree-collapse-14-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../demo_hp_analog_meets_ai/software/index.html">Software Configuration and Setup</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_prec_adc/index.html">Precision ADC Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../converter_connectivity_tutorial/index.html">Converter Connectivity Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sw_infrastructure/index.html">Software Infrastructure for designing with ADCs, DACs, and Sensors</a></li>
@@ -691,26 +700,76 @@ in the terminal</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mv</span></code>: moves a file from one location to another, rename a file with or
 without moving it</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> sign indicates that the terminal is ready to accept commands.
-Make sure NOT to include it in the command you are typing.</p>
-</div>
-<p><strong>Workshop Preparation</strong></p>
-<p>Make sure the Raspberry Pi 5 in front of you is booted and connected to the
-monitor, mouse, and keyboard. The monitor should show the ADI-KUIPER-LINUX
-desktop.</p>
 </section>
-<section id="hardware-setup-for-coraz7s">
-<h3>Hardware setup for CoraZ7S<a class="headerlink" href="#hardware-setup-for-coraz7s" title="Link to this heading"></a></h3>
+<section id="workshop-preparation">
+<h3>Workshop Preparation<a class="headerlink" href="#workshop-preparation" title="Link to this heading"></a></h3>
+<p>This workshop requires two SD cards with pre-configured Kuiper images:</p>
+<ul class="simple">
+<li><p>One for the <strong>Raspberry Pi 5</strong> (development workstation)</p></li>
+<li><p>One for the <strong>CoraZ7S</strong> (target board)</p></li>
+</ul>
+<section id="preparing-the-raspberry-pi-5-sd-card">
+<h4>Preparing the Raspberry Pi 5 SD Card<a class="headerlink" href="#preparing-the-raspberry-pi-5-sd-card" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>Download the Raspberry Pi 5 workshop image from:</p>
+<p><a class="icon link reference external" href="https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_pi5.zip" target="_blank">https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_pi5.zip</a></p>
+</li>
+<li><p>Unzip the downloaded file to extract the image.</p></li>
+<li><p>Write the image to an SD card by following the
+<a class="icon link reference external" href="https://analogdevicesinc.github.io/adi-kuiper-gen/use-kuiper-image.html#use-kuiper-image" target="_blank" title="(in Kuiper latest)"><span class="xref std std-ref">Writing the Image to an SD Card</span></a> guide.</p></li>
+</ol>
+</section>
+<section id="preparing-the-coraz7s-sd-card">
+<h4>Preparing the CoraZ7S SD Card<a class="headerlink" href="#preparing-the-coraz7s-sd-card" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>Download the CoraZ7S workshop image from:</p>
+<p><a class="icon link reference external" href="https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_cora.zip" target="_blank">https://swdownloads.analog.com/cse/kuiper/kuiperv2.0.0/university-workshops/image_cora.zip</a></p>
+</li>
+<li><p>Unzip the downloaded file to extract the image.</p></li>
+<li><p>Write the image to a second SD card by following the
+<a class="icon link reference external" href="https://analogdevicesinc.github.io/adi-kuiper-gen/use-kuiper-image.html#writing-the-image-to-an-sd-card" target="_blank">Writing the image to an SD card</a>
+guide.</p></li>
+</ol>
+<p>Once both SD cards are prepared, proceed to the hardware setup below.</p>
+</section>
+</section>
+<section id="hardware-setup">
+<h3>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Link to this heading"></a></h3>
+<p><strong>Raspberry Pi 5 (Workstation)</strong></p>
+<p>Insert the Raspberry Pi 5 SD card and power on the board. Make sure it is
+connected to the monitor, mouse, and keyboard. The monitor should show the
+ADI-KUIPER-LINUX desktop.</p>
+<p><strong>CoraZ7S (Target Board)</strong></p>
 <ol class="arabic simple">
-<li><p>Insert the SD card prepared in the SD port of CoraZ7S.</p></li>
+<li><p>Insert the CoraZ7S SD card in the SD port of CoraZ7S.</p></li>
+</ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_sd_card.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_sd_card.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_sd_card.png" width="400" />
+</a>
+</figure>
+<ol class="arabic simple" start="2">
 <li><p>Connect the ADXL355 to the JA port of the CoraZ7S board.</p></li>
+</ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_adxl.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_adxl.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_adxl.png" width="400" />
+</a>
+</figure>
+<ol class="arabic simple" start="3">
 <li><p>Connect the UART port of the CoraZ7S to a USB port of your Raspberry Pi 5
-using the USB cable received.</p></li>
+using the USB cable.</p></li>
+</ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_usb.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_usb.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_usb.png" width="400" />
+</a>
+</figure>
+<ol class="arabic simple" start="4">
 <li><p>Connect the Ethernet port of the CoraZ7S to the Ethernet port of your
 Raspberry Pi 5.</p></li>
 </ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_ethernet.png"><img alt="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_ethernet.png" src="https://media.githubusercontent.com/media/romandariana/documentation/main/docs/learning/workshops_embedded_linux/images/cora_ethernet.png" width="400" />
+</a>
+</figure>
 </section>
 <section id="coraz7s-environment-exploration">
 <h3>CoraZ7S Environment Exploration<a class="headerlink" href="#coraz7s-environment-exploration" title="Link to this heading"></a></h3>
@@ -758,16 +817,8 @@ root@workshop-cora:~#
 <p>You are now connected to the CoraZ7S. Every command you run from this point
 forward will be executed on the CoraZ7S, not your workstation.</p>
 </section>
-<section id="exercise-1-turn-on-a-led-and-make-it-blink-with-a-heartbeat-rhythm">
-<h3>Exercise 1: Turn on a LED and make it blink with a heartbeat rhythm<a class="headerlink" href="#exercise-1-turn-on-a-led-and-make-it-blink-with-a-heartbeat-rhythm" title="Link to this heading"></a></h3>
-<p><strong>Setup</strong></p>
-<ol class="loweralpha simple">
-<li><p>Connect the ADXL355 to the JA port of the CORA Z7 board</p></li>
-<li><p>Connect the Cora Z7 UART port to a USB port of your computer using the USB
-cable received</p></li>
-<li><p>Connect the Cora Z7 Ethernet port to the PC Ethernet port</p></li>
-</ol>
-<p><strong>Procedure</strong></p>
+<section id="example-1-turn-on-a-led-and-make-it-blink-with-a-heartbeat-rhythm">
+<h3>Example 1: Turn on a LED and make it blink with a heartbeat rhythm<a class="headerlink" href="#example-1-turn-on-a-led-and-make-it-blink-with-a-heartbeat-rhythm" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Move to the LEDs directory using the command below:</p></li>
 </ol>
@@ -877,9 +928,9 @@ the <em>timer</em> trigger and set <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 </section>
-<section id="exercise-2-run-a-script">
-<h3>Exercise 2: Run a script<a class="headerlink" href="#exercise-2-run-a-script" title="Link to this heading"></a></h3>
-<p>This exercise will demonstrate how to execute a series of commands within a
+<section id="example-2-run-a-script">
+<h3>Example 2: Run a script<a class="headerlink" href="#example-2-run-a-script" title="Link to this heading"></a></h3>
+<p>This example demonstrates how to execute a series of commands within a
 script, rather than running each command individually in the terminal. You will
 also learn how any Linux script can be turned into a bash command.</p>
 <ol class="arabic simple">
@@ -898,9 +949,9 @@ leds.sh
 </pre></div>
 </div>
 </section>
-<section id="exercise-3-build-a-kernel-object-for-adxl355-driver">
-<h3>Exercise 3: Build a kernel object for ADXL355 driver<a class="headerlink" href="#exercise-3-build-a-kernel-object-for-adxl355-driver" title="Link to this heading"></a></h3>
-<p>This exercise will demonstrate how to create a kernel object for an existing
+<section id="example-3-build-a-kernel-object-for-adxl355-driver">
+<h3>Example 3: Build a kernel object for ADXL355 driver<a class="headerlink" href="#example-3-build-a-kernel-object-for-adxl355-driver" title="Link to this heading"></a></h3>
+<p>This example demonstrates how to create a kernel object for an existing
 driver and load it in such a way that the system recognizes it as part of the
 kernel.</p>
 <p>By running the command <code class="docutils literal notranslate"><span class="pre">iio_info</span></code> in the terminal you will see in the output
@@ -958,8 +1009,8 @@ spaces.</p>
 <li><p>Check again with <code class="docutils literal notranslate"><span class="pre">iio_info</span></code> to see readings from the accelerometer.</p></li>
 </ol>
 </section>
-<section id="exercise-4-compute-the-temperature-value-from-sysfs">
-<h3>Exercise 4: Compute the temperature value from sysfs<a class="headerlink" href="#exercise-4-compute-the-temperature-value-from-sysfs" title="Link to this heading"></a></h3>
+<section id="example-4-compute-the-temperature-value-from-sysfs">
+<h3>Example 4: Compute the temperature value from sysfs<a class="headerlink" href="#example-4-compute-the-temperature-value-from-sysfs" title="Link to this heading"></a></h3>
 <p>The task is allowing you to read the content of attribute files and compute the
 temperature given by the on-board temperature sensor.</p>
 <p>The temperature is computed using the following formula:</p>
@@ -996,8 +1047,8 @@ will be in millidegrees Celsius):</p></li>
 </pre></div>
 </div>
 </section>
-<section id="exercise-5-play-a-snake-game-with-the-accelerometer">
-<h3>Exercise 5: Play a Snake game with the accelerometer<a class="headerlink" href="#exercise-5-play-a-snake-game-with-the-accelerometer" title="Link to this heading"></a></h3>
+<section id="example-5-play-a-snake-game-with-the-accelerometer">
+<h3>Example 5: Play a Snake game with the accelerometer<a class="headerlink" href="#example-5-play-a-snake-game-with-the-accelerometer" title="Link to this heading"></a></h3>
 <p>Using the accelerometer module, you will have the chance to play a little oldie
 but goldie SNAKE game.</p>
 <ol class="arabic simple">
