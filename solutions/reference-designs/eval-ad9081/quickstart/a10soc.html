@@ -13,7 +13,7 @@
     <link rel="icon" href="../../../../_static/icon.svg"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="VCK190 Quick start" href="versal.html" />
+    <link rel="next" title="VCK190 Quick start" href="vck190.html" />
     <link rel="prev" title="Quick start guides" href="index.html" />
    
   
@@ -354,8 +354,10 @@ Content on this topic
 <li class="toctree-l3"><a class="reference internal" href="../prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l3 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-12-14-1" id="toctree-collapse-12-14-1" checked=""/><div class="collapse"><a class="reference internal" href="index.html">Quick start guides</a><label for="toctree-collapse-12-14-1"><div class="icon"></div></label></div><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">On A10SoC</a></li>
-<li class="toctree-l4"><a class="reference internal" href="versal.html">On VCK190</a></li>
-<li class="toctree-l4"><a class="reference internal" href="zynqmp.html">On ZCU102</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vck190.html">On VCK190</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zc706.html">On ZC706</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vcu118.html">On VCU118</a></li>
+<li class="toctree-l4"><a class="reference internal" href="zcu102.html">On ZCU102</a></li>
 </ul>
 </li>
 </ul>
@@ -486,15 +488,19 @@ Content on this topic
             
   <section id="arria-10-soc-quick-start">
 <span id="ad9081-quickstart-a10soc"></span><h1>Arria 10 SoC Quick start<a class="headerlink" href="#arria-10-soc-quick-start" title="Link to this heading"></a></h1>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/ad9081_a10soc_setup.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/ad9081_a10soc_setup.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/ad9081_a10soc_setup.jpg" width="800" />
-</a>
 <p>This guide provides quick instructions on how to setup the
 <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9081" target="_blank">EVAL-AD9081</a> on:</p>
 <ul class="simple">
 <li><p><a class="icon link reference external" href="https://www.intel.com/content/www/us/en/products/details/fpga/arria/10.html" target="_blank">Arria 10 SoC</a>
 (Rev. C or later) on FMCA</p></li>
 </ul>
-<div class="admonition warning">
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc.jpg" width="900" />
+</a>
+<div><div class="esd-warning docutils container">
+<div class="icon"></div><p>All the products described on this page include ESD (electrostatic discharge) sensitive devices. Electrostatic charges as high as 4000V readily accumulate on the human body or test equipment and can discharge without detection.
+Although the boards feature ESD protection circuitry, permanent damage may occur on devices subjected to high-energy electrostatic discharges. Therefore, proper ESD precautions are recommended to avoid performance degradation or loss of functionality. This includes removing static charge on external equipment, cables, or antennas before connecting to the device. </p>
+</div>
+</div><div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9082" target="_blank">EVAL-AD9082</a> is not supported on
 <a class="icon link reference external" href="https://www.intel.com/content/www/us/en/products/details/fpga/arria/10.html" target="_blank">Arria 10 SoC</a>!</p>
@@ -547,8 +553,8 @@ sda           8:0    1 14.9G  0 disk
 here:</p>
 <ul class="simple">
 <li><p><a class="icon dokuwiki reference external" href="https://wiki.analog.com/resources/tools-software/linux-build/generic/socfpga" target="_blank">Building the Intel SoC-FPGA kernel and devicetrees from source</a></p></li>
-<li><p><a class="icon link reference external" href="https://analogdevicesinc.github.io/hdl/projects/ad9081_fmca_ebz/index.html#ad9081-fmca-ebz" target="_blank" title="(in HDL)"><span>AD9081/AD9082/AD9986/AD9988 HDL project</span></a> build documentation. More HDL build details at
-<a class="icon link reference external" href="https://analogdevicesinc.github.io/hdl/user_guide/build_hdl.html#build-hdl" target="_blank" title="(in HDL)"><span>Build an HDL project</span></a>.</p></li>
+<li><p><a class="icon link reference external" href="https://analogdevicesinc.github.io/hdl/projects/ad9081_fmca_ebz/index.html#ad9081-fmca-ebz" target="_blank" title="(in HDL)"><span>AD9081/AD9082/AD9986/AD9988 HDL project</span></a> build documentation. More HDL build
+details at <a class="icon link reference external" href="https://analogdevicesinc.github.io/hdl/user_guide/build_hdl.html#build-hdl" target="_blank" title="(in HDL)"><span>Build an HDL project</span></a>.</p></li>
 </ul>
 </section>
 <section id="required-software">
@@ -601,26 +607,25 @@ four zero Ohm resistors:</p>
 <p>These resistors can be found on the backside of the A10SoC, underneath the
 FMCA connector (J29). The following picture shows the required configuration
 to be compatible with the <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9081" target="_blank">EVAL-AD9081</a>.</p>
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc_fmc_rework.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc_fmc_rework.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc_fmc_rework.jpg" width="400" />
+</a>
 </section>
 </section>
 <section id="testing">
 <h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
 <section id="creating-the-setup">
 <h4>Creating the setup<a class="headerlink" href="#creating-the-setup" title="Link to this heading"></a></h4>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc.jpg" width="900" />
+<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/ad9081_a10soc_setup.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/ad9081_a10soc_setup.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/ad9081_a10soc_setup.jpg" width="800" />
 </a>
-<div><div class="esd-warning docutils container">
-<div class="icon"></div><p>All the products described on this page include ESD (electrostatic discharge) sensitive devices. Electrostatic charges as high as 4000V readily accumulate on the human body or test equipment and can discharge without detection.
-Although the boards feature ESD protection circuitry, permanent damage may occur on devices subjected to high-energy electrostatic discharges. Therefore, proper ESD precautions are recommended to avoid performance degradation or loss of functionality. This includes removing static charge on external equipment, cables, or antennas before connecting to the device. </p>
-</div>
-</div><p>In the following example, we will make a physical loopback between the ADC
+<p>In the following example, we will make a physical loopback between the ADC
 and the DAC channels on the evaluation board, using SMA cables.</p>
 <p>Follow the steps in this order, to avoid damaging the components:</p>
 <ol class="arabic simple">
 <li><p>Connect the SMA cables ADC0-DAC0, ADC1-DAC1, ADC2-DAC2, ADC3-DAC3</p></li>
-<li><p>Connect the <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9081" target="_blank">EVAL-AD9081</a> / <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9082" target="_blank">EVAL-AD9082</a> FMC board to the
-FPGA carrier <strong>HPC1</strong> FMCA (J29) socket</p></li>
-<li><p>Both the HPS (J26) and FPGA (J27) memory module must be installed on the A10SoC</p></li>
+<li><p>Connect the <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9081" target="_blank">EVAL-AD9081</a> / <a class="icon adi reference external" href="https://www.analog.com/EVAL-AD9082" target="_blank">EVAL-AD9082</a> FMC board to the A10SOC
+<strong>HPC1</strong> FMCA (J29) socket</p></li>
+<li><p>Both the HPS (J26) and FPGA (J27) memory module must be installed on the
+A10SoC</p></li>
 <li><p>Insert microSD card into the card socket on the FPGA</p></li>
 <li><p>Configure the FPGA for SD card boot mode. That is the
 <a class="icon link reference external" href="https://www.intel.com/content/www/us/en/docs/programmable/683735/current/boot-select.html" target="_blank">default position</a></p></li>
@@ -633,8 +638,6 @@ the FPGA board</p></li>
 <li><p>Observe Kernel and serial console output messages on your terminal (use
 the first ttyUSB or COM port registered)</p></li>
 </ol>
-<a class="reference internal image-reference" href="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc_fmc_rework.jpg"><img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc_fmc_rework.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/main/docs/solutions/reference-designs/images/a10soc_fmc_rework.jpg" width="400" />
-</a>
 </section>
 <section id="boot-messages">
 <h4>Boot messages<a class="headerlink" href="#boot-messages" title="Link to this heading"></a></h4>
@@ -1167,7 +1170,8 @@ message to be printed, then power off the FPGA board from the switch as well.</p
 be taken not to corrupt the file system – please shut down things, don’t
 just turn off the power switch. Depending on your monitor, the standard
 power off could be hiding. You can do this from the terminal as well with
-<code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">shutdown</span> <span class="pre">-h</span> <span class="pre">now</span></code> or the above-mentioned command for powering off.</p>
+<code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">shutdown</span> <span class="pre">-h</span> <span class="pre">now</span></code> or the above-mentioned command for powering
+off.</p>
 </div>
 </section>
 </section>
@@ -1205,7 +1209,7 @@ application.</p>
               <div class="related">
                 &nbsp;
     <a href="index.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Quick start guides</a>
-    <a href="versal.html" title="Next document (Alt+Shift+RightArrow)" class="next">VCK190 Quick start</a>
+    <a href="vck190.html" title="Next document (Alt+Shift+RightArrow)" class="next">VCK190 Quick start</a>
               </div>
           
         </div>
