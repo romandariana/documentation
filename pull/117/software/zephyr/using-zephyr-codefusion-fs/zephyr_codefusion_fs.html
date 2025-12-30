@@ -535,8 +535,8 @@ retroactive fault analysis.</p>
 <p>To set up a custom partition in Codefusion Studio, open the Memory
 Analysis tool by using the .cfsconfig file within the .cfs folder of a
 workspace.</p>
-<img alt="../../../_images/cfs-workspace.png" src="../../../_images/cfs-workspace.png" />
-<img alt="../../../_images/cfs-mem-allocation.png" src="../../../_images/cfs-mem-allocation.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-workspace.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-workspace.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-mem-allocation.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-mem-allocation.png" />
 <p>traditional method of mapping out device memory (GNU Linkerscript) and
 you might actually find this rather pleasing! What we want to do is 2
 things:</p>
@@ -549,19 +549,19 @@ MB.</p></li>
 <h3>Decreasing the size of the Cortex M4 Flash<a class="headerlink" href="#decreasing-the-size-of-the-cortex-m4-flash" title="Link to this heading"></a></h3>
 <p>To do this, click the “Non-Volatile Memory” menu, then click the slider
 icon on the “m4 flash” partition.</p>
-<img alt="../../../_images/cfs-arm-partitions.png" src="../../../_images/cfs-arm-partitions.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-arm-partitions.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-arm-partitions.png" />
 <p>A menu will open on the right side, which has a lot of cool features! I
 will save most of them for another day, to keep this explanation brief.
 Scroll to the “Memory Blocks” section at the bottom of the menu, then
 decrease the size of the “m4 flash” partition to 2 Megabytes. Then click
 “Edit Partition”.</p>
-<img alt="../../../_images/cfs-partition-edit.png" src="../../../_images/cfs-partition-edit.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-partition-edit.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-partition-edit.png" />
 </section>
 <section id="creating-a-storage-partition">
 <h3>Creating a Storage Partition<a class="headerlink" href="#creating-a-storage-partition" title="Link to this heading"></a></h3>
 <p>Next, click the “Create Partition” button on the far-left side of the
 Memory Allocator menu. Create the partition with the following settings:</p>
-<img alt="../../../_images/cfs-create-partition.png" src="../../../_images/cfs-create-partition.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-create-partition.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-create-partition.png" />
 <section id="storage-partition-attributes">
 <h4>Storage Partition Attributes<a class="headerlink" href="#storage-partition-attributes" title="Link to this heading"></a></h4>
 <div class="table-wrapper docutils container">
@@ -591,13 +591,13 @@ Memory Allocator menu. Create the partition with the following settings:</p>
 </tbody>
 </table>
 </div>
-<img alt="../../../_images/cfs-parition-specs.png" src="../../../_images/cfs-parition-specs.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-parition-specs.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-parition-specs.png" />
 </section>
 </section>
 <section id="generate-code">
 <h3>Generate Code<a class="headerlink" href="#generate-code" title="Link to this heading"></a></h3>
 <p>Finally, head to the end of the Config Tools, and click “Generate”.</p>
-<img alt="../../../_images/cfs-generate.png" src="../../../_images/cfs-generate.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-generate.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/cfs-generate.png" />
 <p>This should produce an overlay file under “boards” that contains the
 flash partition shown at the top of this page. Next, we have to enable
 the correct Kconfigs to include the flash filesystem, set it to use
@@ -637,7 +637,7 @@ mount the filesystem, create a directory, use Unix-style file commands,
 and finally run a write/read test. The commands of interest are shown
 below. Note that in the below image, the “test” directory had already
 been created by calling the mkdir test command.</p>
-<img alt="../../../_images/fs-shell-teraterm.png" src="../../../_images/fs-shell-teraterm.png" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/fs-shell-teraterm.png" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/software/zephyr/using-zephyr-codefusion-fs/img/fs-shell-teraterm.png" />
 </section>
 </section>
 </section>

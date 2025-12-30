@@ -689,7 +689,7 @@ before proceeding in order to add the profile to the Linux build.</p>
 <h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
 <p>The following steps are intended for <a class="icon link reference external" href="https://www.xilinx.com/VCK190" target="_blank">VCK190</a> but they mostly apply to
 <a class="icon link reference external" href="https://www.xilinx.com/VPK180" target="_blank">VPK180</a> as well.</p>
-<img alt="../../../../_images/vck1901.jpg" src="../../../../_images/vck1901.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190.jpg" />
 <section id="physical-setup">
 <h3>Physical setup<a class="headerlink" href="#physical-setup" title="Link to this heading"></a></h3>
 <ol class="arabic">
@@ -698,14 +698,14 @@ before proceeding in order to add the profile to the Linux build.</p>
 <li><p>Connect USB UART J207 (Type-C USB) to your host PC.</p></li>
 <li><p>(<a class="icon link reference external" href="https://www.xilinx.com/VCK190" target="_blank">VCK190</a> only) Insert System Controller SD card into socket J206.</p></li>
 <li><p>Configure ACAP for SD BOOT (mode SW1[4:1] switch in the position <strong>OFF,OFF,OFF,ON</strong> as seen in the below picture).</p>
-<img alt="../../../../_images/vck190_sw12.jpg" src="../../../../_images/vck190_sw12.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190_sw1.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190_sw1.jpg" />
 </li>
 <li><p>Configure System Controller for SD BOOT (mode SW11[4:1] switch in the position <strong>OFF,OFF,OFF,ON</strong> as seen in the below picture).</p>
-<img alt="../../../../_images/vck190_sw111.jpg" src="../../../../_images/vck190_sw111.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190_sw11.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190_sw11.jpg" />
 </li>
 <li><p>Connect <a class="icon adi reference external" href="https://www.analog.com/AD9084" target="_blank">AD9084-FMCA-EBZ</a> to FMCP2 (J53) with FMC+ riser or equivalent.</p></li>
 <li><p>Connect the power supplies to the FPGA carrier board and the AD9084-FMCA-EBZ evaluation board.</p>
-<img alt="../../../../_images/vck190_ad9084_ebz.jpg" src="../../../../_images/vck190_ad9084_ebz.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190_ad9084_ebz.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/vck190_ad9084_ebz.jpg" />
 </li>
 <li><p>Verify VADJ is set to 1.5 V</p></li>
 </ol>
@@ -722,9 +722,9 @@ and try the other 2 to find the one for System Controller)</p></li>
 Go to this web address to set VADJ_FMC to 1.5V.</p></li>
 <li><p>To change VADJ_FMC On BEAM, click “Test The Board”&gt;”Board Settings”&gt;”FMC”.
 Then on “Set VADJ_FMC”, select 1.5V and click “Set”, AD9084 LEDs should turn on immediately.</p>
-<img alt="../../../../_images/beam-home.jpg" src="../../../../_images/beam-home.jpg" />
-<img alt="../../../../_images/beam-board-settings.jpg" src="../../../../_images/beam-board-settings.jpg" />
-<img alt="../../../../_images/beam-set-vadj.jpg" src="../../../../_images/beam-set-vadj.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/beam-home.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/beam-home.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/beam-board-settings.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/beam-board-settings.jpg" />
+<img alt="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/beam-set-vadj.jpg" src="https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad9084_ebz/quickstart/versal/beam-set-vadj.jpg" />
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Alternatively to the GUI, you can setup VADJ and reboot with <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>

@@ -14,7 +14,7 @@
                     }
                 }
             },
-            "image": "documentation/_images/industrial.png",
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/learning/workshops_applied_systems_control/industrial.png",
             "subtitle": "Overview of industrial control and automation systems.",
             "label": [
                 "workshop"
@@ -40,7 +40,7 @@
                     }
                 }
             },
-            "image": "documentation/_images/eval-angle.png",
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/ad4052-ardz/eval-angle.png",
             "subtitle": "Evaluating the AD4050/AD4052 Compact, Low Power, 12-Bit/16-Bit, 2 MSPS Easy Drive SAR ADCs",
             "label": [
                 "eval",
@@ -70,7 +70,7 @@
                     }
                 }
             },
-            "image": "documentation/_images/eval-angle1.png",
+            "image": "https://media.githubusercontent.com/media/analogdevicesinc/documentation/git-lfs/docs/solutions/reference-designs/adxl355-pmdz/eval-angle.png",
             "subtitle": "Evaluating the ADXL355 Low-Noise, Low-Drift, Low-Power, 3-Axis MEMS Accelerometers",
             "label": [
                 "eval",
