@@ -13,6 +13,23 @@ Through interactive demonstrations and hands-on activities, you'll gain
 practical experience and see how these concepts apply to real-world projects.
 Let's dive in and start our journey into the world of embedded systems!
 
+Slide Deck and Booklet
+----------------------
+
+Since this tutorial is also designed to be presented as a live, hands-on
+workshop, a slide deck is provided here:
+
+.. admonition:: Download
+
+   :download:`Embedded Baremetal Slide Deck <baremetal.pdf>`
+
+A complete booklet of the hands-on activity is also provided, as a companion to
+following the tutorial yourself:
+
+.. admonition:: Download
+
+   :download:`Embedded Baremetal Booklet <baremetal_booklet.pdf>`
+
 Theory
 ------
 
@@ -653,23 +670,6 @@ Move the accelerometer board around and observe the output. Be careful not to
 disconnect the wires.
 
 Let's see if you can beat the game!
-
-Slide Deck and Booklet
-----------------------
-
-Since this tutorial is also designed to be presented as a live, hands-on
-workshop, a slide deck is provided here:
-
-.. admonition:: Download
-
-   :download:`Embedded Baremetal Slide Deck <baremetal.pdf>`
-
-A complete booklet of the hands-on activity is also provided, as a companion to
-following the tutorial yourself:
-
-.. admonition:: Download
-
-   :download:`Embedded Baremetal Booklet <baremetal_booklet.pdf>`
 
 Takeaways
 ---------
