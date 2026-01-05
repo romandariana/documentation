@@ -11,6 +11,23 @@ boards and reference designs. Through hands-on activities, you'll learn to build
 custom Kuiper 2 images, configure boot files for different carrier boards, and
 interact with ADI hardware using IIO tools.
 
+Slide Deck and Booklet
+----------------------
+
+Since this tutorial is also designed to be presented as a live, hands-on
+workshop, a slide deck is provided here:
+
+.. admonition:: Download
+
+   :download:`Customizing ADI Kuiper Linux Slide Deck <ftc_2025_kuiper.pdf>`
+
+A complete booklet of the hands-on activity is also provided, as a companion to
+following the tutorial yourself:
+
+.. admonition:: Download
+
+   :download:`Customizing ADI Kuiper Linux Booklet <ftc_2025_kuiper_booklet.pdf>`
+
 Theory
 ------
 
@@ -1073,23 +1090,6 @@ and will boot it on the Raspberry Pi 5 in front of you.
    contains.
 
 **Congratulations! You booted your first Kuiper 2 custom image!**
-
-Slide Deck and Booklet
-----------------------
-
-Since this tutorial is also designed to be presented as a live, hands-on
-workshop, a slide deck is provided here:
-
-.. admonition:: Download
-
-   :download:`Customizing ADI Kuiper Linux Slide Deck <ftc_2025_kuiper.pdf>`
-
-A complete booklet of the hands-on activity is also provided, as a companion to
-following the tutorial yourself:
-
-.. admonition:: Download
-
-   :download:`Customizing ADI Kuiper Linux Booklet <ftc_2025_kuiper_booklet.pdf>`
 
 Takeaways
 ---------
