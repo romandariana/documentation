@@ -12,6 +12,23 @@ practical experience working with Linux device drivers, the IIO subsystem, and
 GPIO interfaces on real hardware. Let's dive in and start our journey into
 embedded Linux applications!
 
+Slide Deck and Booklet
+----------------------
+
+Since this tutorial is also designed to be presented as a live, hands-on
+workshop, a slide deck is provided here:
+
+.. admonition:: Download
+
+   :download:`Embedded Linux Slide Deck <embedded_linux.pdf>`
+
+A complete booklet of the hands-on activity is also provided, as a companion to
+following the tutorial yourself:
+
+.. admonition:: Download
+
+   :download:`Embedded Linux Booklet <embedded_linux_booklet.pdf>`
+
 Theory
 ------
 
@@ -631,23 +648,6 @@ Move the accelerometer board around and observe the output. Be careful not to
 disconnect the wires.
 
 Have fun!
-
-Slide Deck and Booklet
-----------------------
-
-Since this tutorial is also designed to be presented as a live, hands-on
-workshop, a slide deck is provided here:
-
-.. admonition:: Download
-
-   :download:`Embedded Linux Slide Deck <embedded_linux.pdf>`
-
-A complete booklet of the hands-on activity is also provided, as a companion to
-following the tutorial yourself:
-
-.. admonition:: Download
-
-   :download:`Embedded Linux Booklet <embedded_linux_booklet.pdf>`
 
 Takeaways
 ---------
